@@ -1,0 +1,15 @@
+.search {
+    width: 300px;
+    height: 30px;
+    border-radius: 18px;
+    border: 1px solid #e66c08;
+    outline: none;
+    background-color: inherit;
+    padding: 4px 8px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.search:focus {
+    background-color: rgb(240, 182, 135);
+}

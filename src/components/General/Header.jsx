@@ -6,6 +6,7 @@ import {
     BuildingUp,
     BuildingDown
 } from "react-bootstrap-icons";
+import Search from "../Search";
 
 // const Header = (props) => {
 //     console.log(props.user)
@@ -13,10 +14,16 @@ import {
 // const Header = ({user}) => {
 //     console.log(user)
 // }
-const Header = ({ user, upd }) => {
+const Header = ({
+    user,
+    upd,
+    searchArr,
+    setGoods,
+    setSearchResult
+}) => {
     const login = () => {
-        localStorage.setItem("user12", "Vasya");
-        upd("Vasya");
+        localStorage.setItem("user12", "Di");
+        upd("Lou");
     }
     const logout = () => {
         localStorage.removeItem("user12");
@@ -24,7 +31,13 @@ const Header = ({ user, upd }) => {
     }
     return <header>
         <Logo />
-        <div className="search-block"></div>
+        <div className="search-block">
+            <Search
+                data={searchArr}
+                setGoods={setGoods}
+                setSearchResult={setSearchResult}
+            />
+        </div>
         <nav className="header__menu">
             {user && <>
                 <a href="">

@@ -28,15 +28,25 @@ const App = () => {
         } */
     // const user = localStorage.getItem("user12");
     const [user, setUser] = useState(localStorage.getItem("user12"))
+    const [goods, setGoods] = useState(testData)
+    const [searchResult, setSearchResult] = useState("");
     // Сохрани в переменную user то значение, что находится внутри useState
     return (
         <>
             {/* upd - передали функцию setUser внутрь компонента Header, чтобы внутри использовать ее как слово upd() */}
-            <Header />
+            <Header
+                user={user}
+                upd={setUser}
+                searchArr={testData}
+                setGoods={setGoods}
+                setSearchResult={setSearchResult}
+            />
             <div>
                 {/* <h1>First Page</h1> */}
                 <div className="container"> {/* контейнер карт */}
-                    {testData.map((pro, i) => ( /* модификация объектов массива */
+                    {/* {testData.map((pro, i) => ( */} {/* модификация объектов массива */}
+                    {searchResult && <p className="search-result">{searchResult}</p>}
+                    {goods.map((pro, i) => (
                         <Card key={i} img={pro.pictures} name={pro.name} price={pro.price} />
                     ))}
                     {/* <Promo text="First"/>
