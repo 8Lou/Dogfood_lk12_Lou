@@ -1,39 +1,48 @@
 header {
-    background: yellow;
-    padding: 12px 20px;
+    background: rgb(250, 158, 104);
+    color: rgb(64, 88, 86);
+    padding: 15px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 footer {
-    padding: 12px 20px;
+    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
-    background-color: #222;
-    color: yellow;
+    background: rgb(250, 158, 104);
+    color: rgb(64, 88, 86);
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
     font-weight: bold;
     font-size: 1.2rem;
 }
+
 .logo img {
+    margin: 0 10px 0 50px;
     height: 30px;
 }
+
 .footer__copy {
+    margin-left: 50px;
     display: grid;
     align-content: space-between;
 }
+
 .footer__nav {
+    margin: 0 50px;
     display: grid;
     gap: 10px;
 }
+
 .footer__nav a:hover {
-    color: orange;
+    color: rgb(91, 60, 141);
 }
+
 .header__menu,
 .header__menu>span {
     font-size: 1.2rem;
@@ -41,17 +50,18 @@ footer {
     align-items: center;
     gap: 10px;
 }
+
 .header__menu>span>* {
     cursor: pointer;
 }
+
 .header__menu svg:hover {
-    fill: orange;
+    fill: rgb(91, 60, 141);
 }
 
 /* 
     То же самое
     .header__menu a:hover,
     .header__menu span:hover {
-        color: orange
     } 
 */

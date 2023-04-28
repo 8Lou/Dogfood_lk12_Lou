@@ -1,5 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+}
+
+.App {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 33px 1fr 50px;
+  grid-column-gap: 0px;
+}
+
 body {
-  background-color: springgreen;
+  background-color: rgb(95, 133, 148);
   font-family: sans-serif;
 }
 
@@ -14,14 +29,15 @@ ul {
 }
 
 p {
-  color: rgb(87, 238, 218);
+  color: rgb(64, 88, 86);
   font-size: 20px;
 }
 
 .container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+  padding: 20px;
 }
 
 /*  для контейнера с картами */

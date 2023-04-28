@@ -15,15 +15,15 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // Собрать внутрь тега код из круглых скобок
 // root.render(
-//   React.createElement("h1", {title: "doggy"}, "Hello React!")
+//   React.createElement("h1", {title: ""}, "Hello React!")
 // )
 
 // root.render(
 //   React.createElement(
 //     "div", 
-//     {title: "doggy"}, 
+//     {title: ""}, 
 //     React.createElement("h1", null, "Hello React"),
-//     React.createElement("p", {style:{color: "red"}}, "DogFood shop")
+//     React.createElement("p", {style:{color: "red"}}, "Shop")
 //   )
 // )
 

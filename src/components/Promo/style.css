@@ -1,11 +1,13 @@
 .promo__block {
     border: 1px solid;
-    border-radius: 8px;
+    border-radius: 18px;
     position: relative;
 }
+
 .promo__text {
     padding: 10px 20px;
 }
+
 .promo__img {
     background-image: radial-gradient(circle, orange, forestgreen, transparent);
     width: 40px;

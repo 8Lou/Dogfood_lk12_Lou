@@ -1,19 +1,22 @@
 [
 	{
-		"name": "Желудки утиные сушено-вяленые",
+		"name": "Босоножки",
 		"price": 550,
 		"discount": 15,
-		"wight": "100 г",
+		"wight": "45 р.",
 		"description": "Описание demo",
 		"isFavorite": false,
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"pictures": "https://react-learning.ru/image-compressed/1.jpg",
-		"tags": ["new", "sale"]
+		"pictures": "https://cdn1.ozone.ru/s3/multimedia-j/6150566203.jpg",
+		"tags": [
+			"new",
+			"sale"
+		]
 	},
 	{
-		"name": "Куриные желудочки для собак",
+		"name": "Туфли на каблуках",
 		"price": 450,
 		"discount": 10,
 		"wight": "100 г",
@@ -22,10 +25,10 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"pictures": "https://react-learning.ru/image-compressed/2.jpg"
+		"pictures": "https://i.pinimg.com/736x/b5/b6/83/b5b68368e80fadaa3e31eb13e0be0c47--red-wing--best-shoes-for-men.jpg"
 	},
 	{
-		"name": "Крупная говяжья сушено-вяленая жилка",
+		"name": "Макасины",
 		"price": 360,
 		"discount": 0,
 		"wight": "100 г",
@@ -34,10 +37,10 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"pictures": "https://react-learning.ru/image-compressed/3.jpg"
+		"pictures": "https://safeworkwears.com/wp-content/uploads/2019/07/timberland-boots.jpg"
 	},
 	{
-		"name": "Мелкая говяжья сушено-вяленая жилка",
+		"name": "Шлепанцы",
 		"price": 300,
 		"discount": 0,
 		"wight": "100 г",
@@ -46,10 +49,10 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"pictures": "https://react-learning.ru/image-compressed/4.jpg"
+		"pictures": "https://i.pinimg.com/736x/0a/d2/9b/0ad29b80ed4847548d360c455d6b0dda.jpg"
 	},
 	{
-		"name": "Калтык говяжий для собак",
+		"name": "Говнодавы",
 		"price": 290,
 		"discount": 0,
 		"wight": "100 г",
@@ -58,10 +61,10 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"pictures": "https://react-learning.ru/image-compressed/5.jpg"
+		"pictures": "https://i.ebayimg.com/images/g/5owAAOSwjxBc1fAI/s-l300.jpg"
 	},
 	{
-		"name": "Бублик из бычьего корня",
+		"name": "Сланцы пляжные",
 		"price": 340,
 		"discount": 0,
 		"wight": "100 г",
@@ -70,10 +73,10 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"pictures": "https://react-learning.ru/image-compressed/6.jpg"
+		"pictures": "https://i.etsystatic.com/12710139/r/il/fb41b5/1635683714/il_1588xN.1635683714_mwpe.jpg"
 	},
 	{
-		"name": "Копыто оленье",
+		"name": "Туфли с носом, как у шута",
 		"price": 490,
 		"discount": 0,
 		"wight": "1 шт",
@@ -82,10 +85,10 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"pictures": "https://react-learning.ru/image-compressed/7.jpg"
+		"pictures": "https://i.pinimg.com/originals/0d/1a/ae/0d1aaec32fa5f82023efac1009abe0f1.jpg"
 	},
 	{
-		"name": "Бараний рубец сушенный",
+		"name": "Бутсы на все случаи жизни",
 		"price": 330,
 		"discount": 0,
 		"wight": "100 г",
@@ -94,10 +97,10 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"pictures": "https://react-learning.ru/image-compressed/8.jpg"
+		"pictures": "https://techno-electrical.ru/pictures/product/middle/52558_middle.jpg"
 	},
 	{
-		"name": "Рубец говяжий для собак",
+		"name": "Скороходы",
 		"price": 290,
 		"discount": 0,
 		"wight": "100 г",
@@ -106,10 +109,10 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"pictures": "https://react-learning.ru/image-compressed/9.jpg"
+		"pictures": "https://i.yapx.ru/V8YwM.jpg"
 	},
 	{
-		"name": "Свиные уши для собак",
+		"name": "Чешки",
 		"price": 330,
 		"discount": 0,
 		"wight": "100 г",
@@ -118,78 +121,6 @@
 		"isCart": false,
 		"available": true,
 		"stock": 10,
-		"pictures": "https://react-learning.ru/image-compressed/10.jpg"
-	},
-	{
-		"name": "Уши говяжьи для собак",
-		"price": 330,
-		"discount": 0,
-		"wight": "100 г",
-		"description": "Описание demo",
-		"isFavorite": false,
-		"isCart": false,
-		"available": true,
-		"stock": 10,
-		"pictures": "https://react-learning.ru/image-compressed/11.jpg"
-	},
-	{
-		"name": "Печенья с яблоком (печень говяжья, сердце)",
-		"price": 340,
-		"discount": 0,
-		"wight": "14 шт",
-		"description": "Описание demo",
-		"isFavorite": false,
-		"isCart": false,
-		"available": true,
-		"stock": 10,
-		"pictures": "https://react-learning.ru/image-compressed/12.jpg"
-	},
-	{
-		"name": "Рога оленя для собак весом до 3кг. Размер XS",
-		"price": 350,
-		"discount": 14,
-		"wight": "1 шт",
-		"description": "Описание demo",
-		"isFavorite": false,
-		"isCart": false,
-		"available": true,
-		"stock": 10,
-		"pictures": "https://react-learning.ru/image-compressed/13.jpg"
-	},
-	{
-		"name": "Рога оленя для собак весом от 3 до 5 кг. Размер S",
-		"price": 400,
-		"discount": 0,
-		"wight": "1 шт",
-		"description": "Описание demo",
-		"isFavorite": false,
-		"isCart": false,
-		"available": true,
-		"stock": 10,
-		"pictures": "https://react-learning.ru/image-compressed/14.jpg"
-	},
-	{
-		"name": "Рога оленя для собак весом от 5 до 10 кг. Размер M",
-		"price": 600,
-		"discount": 0,
-		"wight": "1 шт",
-		"description": "Описание demo",
-		"isFavorite": false,
-		"isCart": false,
-		"available": true,
-		"stock": 10,
-		"pictures": "https://react-learning.ru/image-compressed/15.jpg"
-	},
-	{
-		"name": "Рога оленя для собак весом от 10 до 30 кг. Размер L",
-		"price": 800,
-		"discount": 0,
-		"wight": "1 шт",
-		"description": "Описание demo",
-		"isFavorite": false,
-		"isCart": false,
-		"available": true,
-		"stock": 10,
-		"pictures": "https://react-learning.ru/image-compressed/16.jpg"
+		"pictures": "https://i.yapx.ru/V8YwL.jpg"
 	}
 ]
