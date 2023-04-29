@@ -4,7 +4,7 @@ import "./style.css";
 const Search = ({ data, setGoods, setSearchResult }) => {
     // let text = "123"
     const [text, setText] = useState("");
-    const [num, setNum] = useState(0);
+    const [num, setNum] = useState(0); // в массиве существительное и глагол)
     // в переменной text находится пустая строка
     const changeValue = (e) => {
         let val = e.target.value.toLowerCase();
@@ -18,7 +18,7 @@ const Search = ({ data, setGoods, setSearchResult }) => {
         // setNum(data.filter(el => el.name.toLowerCase().includes(
         // 	e.target.value.toLowerCase()
         // )).length);
-        // setNum(data.filter(el => el.name.toLowerCase().includes(val)).length);
+        // setNum(data.filter(el => el.name.toLowerCase().includes(val)).length); //фильтр сопоставления
     }
     const changeText = () => {
         console.log("Click")
@@ -44,7 +44,7 @@ const Search = ({ data, setGoods, setSearchResult }) => {
         console.log(result);
     }, [text]);
     return <>
-        <input className="search" type="search" value={text} onChange={changeValue} />
+        <input className="search" type="search" value={text} onChange={changeValue} /> {/* состояние */}
         {/*<button onClick={changeText}>Тык {num} раз</button>*/}
         {/*{text && <p>По запросу {text} найдено {num} товаров</p>}*/}
     </>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import testData from "./assents/data.json";
+import testData from "./assents/data.json"; //товары
 import Card from "./components/Card/Card"; // Card.jsx
 import Promo from "./components/Promo/Promo";
 import { Header, Footer } from "./components/General";// index.jsx
@@ -29,7 +29,7 @@ const App = () => {
     // const user = localStorage.getItem("user12");
     const [user, setUser] = useState(localStorage.getItem("user12"))
     const [goods, setGoods] = useState(testData)
-    const [searchResult, setSearchResult] = useState("");
+    const [searchResult, setSearchResult] = useState(""); //по умолчанию пуст
     // Сохрани в переменную user то значение, что находится внутри useState
     return (
         <>
