@@ -2,7 +2,7 @@
     width: 300px;
     height: 30px;
     border-radius: 18px;
-    border: 1px solid #e66c08;
+    border: 1px solid rgb(71, 133, 133);
     outline: none;
     background-color: inherit;
     padding: 4px 8px;
@@ -11,5 +11,5 @@
 }
 
 .search:focus {
-    background-color: rgb(245, 221, 201);
+    background-color: rgb(246, 250, 250);
 }

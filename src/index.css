@@ -14,7 +14,7 @@
 }
 
 body {
-  background-color: rgb(95, 133, 148);
+  background-color: rgb(71, 133, 133);
   font-family: sans-serif;
 }
 
@@ -26,7 +26,8 @@ body {
 }
 
 a {
-  color: inherit;
+  color: rgb(71, 133, 133);
+  font-weight: 600;
   text-decoration: none;
 }
 
@@ -36,8 +37,8 @@ ul {
 }
 
 p {
-  color: #e66c08;
-  font-size: 1em;
+  color: rgb(71, 133, 133);
+  font-size: 1.1em;
   font-weight: 600;
 }
 
@@ -51,16 +52,16 @@ p {
 }
 
 .search-result {
-  grid-column-end:
-    /* span 3; т к 3 элемента */
-    margin: 0;
-  color: grey;
-  font-size: 1rem;
+  grid-column-end: span 3;
+  /*т к 3 элемента */
+  margin: 0;
+  color: #e66c08;
+  font-size: 1.1rem;
 }
 
-@media (min-width: 576px) {
+@media (max-width: 576px) {
   .container {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

@@ -3,8 +3,8 @@ import {
     Heart,
     Cart4,
     PersonCircle,
-    HouseDoorFill,
-    HouseDoor
+    /* HouseDoorFill,
+    HouseDoor */
 } from "react-bootstrap-icons";
 import Search from "../Search";
 
@@ -50,10 +50,10 @@ const Header = ({
                     <PersonCircle title="Личный кабинет" />
                 </a>
             </>}
-            <span>
+            {/*             <span>
                 {!user && <HouseDoorFill title="Войти" onClick={login} />}
                 {user && <HouseDoor title="Выйти" onClick={logout} />}
-            </span>
+            </span> */}
         </nav>
     </header>
 }

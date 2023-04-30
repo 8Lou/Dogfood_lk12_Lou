@@ -25,6 +25,7 @@ const Search = ({ data, setGoods, setSearchResult }) => {
         setText("Привет!");
     }
     console.log(text);
+    /* для поиска числа или текста */
     useEffect(() => {
         let str = '';
         if (num && text) {
@@ -36,6 +37,7 @@ const Search = ({ data, setGoods, setSearchResult }) => {
         }
         setSearchResult(str);
     }, [num, text]);
+    /* только для поиска текста */
     useEffect(() => {
         // console.log("123");
         let result = data.filter(el => el.name.toLowerCase().includes(text));

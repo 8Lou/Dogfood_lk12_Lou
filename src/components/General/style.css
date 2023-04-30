@@ -7,10 +7,12 @@ header {
     justify-content: space-between;
     padding: 12px 20px;
     flex-wrap: wrap;
+    gap: 10px;
 }
 
 header .search-block {
     order: 1;
+    /* переделть последовательность при адаптации */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -21,7 +23,14 @@ footer {
     display: flex;
     justify-content: center;
     background: rgb(250, 158, 104);
-    color: rgb(64, 88, 86);
+    color: rgb(71, 133, 133);
+    font-weight: 600;
+}
+
+.getFullYear {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 10px;
 }
 
 .logo {
@@ -29,7 +38,7 @@ footer {
     display: flex;
     align-items: center;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .logo img {
@@ -50,19 +59,18 @@ footer {
 }
 
 .footer__nav a:hover {
-    color: rgb(91, 60, 141);
+    color: rgb(4, 64, 104);
 }
 
 .header__menu,
-.header__menu>span {
+.header__menu>span>* {
+    color: rgb(71, 133, 133);
     font-size: 1.2rem;
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.header__menu>span>* {
     cursor: pointer;
+    margin-right: 20px;
 }
 
 .header__menu svg:hover {
