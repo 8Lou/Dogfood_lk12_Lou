@@ -3,10 +3,11 @@
     display: grid;
     gap: 15px;
     padding: 12px;
-    border-radius: 8px;
+    border-radius: 6px;
     grid-template-rows: 200px auto 1fr 30px;
     /* распределение элементов карточки по вертикали */
     align-content: flex-start;
+    width: 320px;
 }
 
 .card-lite:hover {
@@ -15,7 +16,7 @@
 }
 
 .card-lite h4 {
-    color: #e66c08;
+    color: #f37b66;
     font-size: 1.2em;
     font-weight: 600;
     margin: 0;
@@ -26,7 +27,7 @@
 }
 
 .card-lite img {
-    border-radius: 8px;
+    border-radius: 6px;
     height: 200px;
     justify-self: end;
 }
@@ -35,7 +36,7 @@
     color: aqua;
     height: 35px;
     border-radius: 20px;
-    background-color: #e66c08;
+    background-color: #f37b66;
     outline: none;
     border: none;
     font-size: 1em;
@@ -44,7 +45,7 @@
 }
 
 .btn:hover {
-    color: #e66c08;
-    border: 1px solid #e66c08;
+    color: #f37b66;
+    border: 1px solid#f37b66;
     background-color: inherit;
 }

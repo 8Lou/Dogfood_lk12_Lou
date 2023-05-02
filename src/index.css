@@ -26,8 +26,8 @@ body {
 }
 
 a {
-  color: rgb(71, 133, 133);
-  font-weight: 600;
+  color: rgb(41, 100, 100);
+  font-weight: 400;
   text-decoration: none;
 }
 
@@ -38,7 +38,7 @@ ul {
 
 p {
   color: rgb(71, 133, 133);
-  font-size: 1.1em;
+  font-size: 1.3em;
   font-weight: 600;
 }
 

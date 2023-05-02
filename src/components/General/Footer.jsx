@@ -8,7 +8,7 @@ const links = [
 const Footer = () => <footer>
     <div className="footer__copy">
         <Logo />
-        <span className="getFullYear">©{new Date().getFullYear()}</span>
+        <span className="getFullYear">© {new Date().getFullYear()}</span>
     </div>
     <ul className="footer__nav">
         {links.map(el => <li key={el.name}>

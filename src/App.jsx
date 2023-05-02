@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import testData from "./assents/data.json"; //товары
 import Card from "./components/Card/Card"; // Card.jsx
-import Promo from "./components/Promo/Promo";
+/* import Promo from "./components/Promo/Promo"; */
 import Modal from "./components/Modal";
 import { Header, Footer } from "./components/General";// index.jsx
 
 //3 создать массив данных
-const promoData = ["=)", "^_^", "O_o", "x_x", "=(", ";(", "0l0"];
+/* const promoData = ["=)", "^_^", "O_o", "x_x", "=(", ";(", "0l0"]; */
 // .map() => преобразовывает один елемент массива в другой элемент (для всех без исключения)
 
 console.log(testData);
@@ -82,7 +82,7 @@ const App = () => {
                     <Promo text={promoData[1]} />
                     <Promo text={promoData[2]} />
                     {smiles} */}
-                {promoData.map(el => <Promo key={el} text={el} />)}
+                {/*  {promoData.map(el => <Promo key={el} text={el} />)} */}
             </div>
             <Footer />
             <Modal
