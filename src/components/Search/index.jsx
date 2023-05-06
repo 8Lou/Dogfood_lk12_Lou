@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./style.css";
 
 const Search = ({ data, setGoods, setSearchResult }) => {
     // let text = "123"
+    const navigate = useNavigate(); /* замыкание */
     const [text, setText] = useState("");
     const [num, setNum] = useState(0); // в массиве существительное и глагол)
     // в переменной text находится пустая строка
     const changeValue = (e) => {
+        navigate("/catalog"); /* перенаправление в каталог */
         let val = e.target.value.toLowerCase();
         // console.log(e.target.value);
         setText(val);
@@ -22,9 +25,10 @@ const Search = ({ data, setGoods, setSearchResult }) => {
     }
     const changeText = () => {
         console.log("Click")
-        setText("Привет!");
+        setText("Дароф!");
     }
     console.log(text);
+
     /* для поиска числа или текста */
     useEffect(() => {
         let str = '';
@@ -37,6 +41,7 @@ const Search = ({ data, setGoods, setSearchResult }) => {
         }
         setSearchResult(str);
     }, [num, text]);
+
     /* только для поиска текста */
     useEffect(() => {
         // console.log("123");

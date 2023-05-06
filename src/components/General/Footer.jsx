@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 import Logo from "./Logo";
 const links = [
     { name: "Каталог", src: "/" },
@@ -12,7 +14,7 @@ const Footer = () => <footer>
     </div>
     <ul className="footer__nav">
         {links.map(el => <li key={el.name}>
-            <a href={el.src}>{el.name}</a>
+            <Link to={el.src}>{el.name}</Link>
         </li>)}
     </ul>
 </footer>

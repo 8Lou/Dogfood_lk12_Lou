@@ -1,13 +1,15 @@
+import { Link } from "react-router-dom";
+
 import Logo from "./Logo";
 import {
     Heart,
     Cart4,
     PersonCircle,
-    /* HouseDoorFill,
-    HouseDoor */
+    HouseDoorFill,
+    HouseDoor
 } from "react-bootstrap-icons";
-import Search from "../Search";
 
+import Search from "../Search";
 // const Header = (props) => {
 //     console.log(props.user)
 // }
@@ -42,20 +44,22 @@ const Header = ({
         </div>
         <nav className="header__menu">
             {user && <>
-                <a href="">
+                {/* <a href=""> */} {/* замена */}
+                <Link to="/">
                     <Heart title="Избранное" />
-                </a>
-                <a href="">
+                </Link>
+                {/*  </a> */}
+                <Link to="/">
                     <Cart4 title="Корзина" />
-                </a>
-                <a href="">
+                </Link>
+                <Link to="/">
                     <PersonCircle title="Личный кабинет" />
-                </a>
+                </Link>
             </>}
-            {/*             <span>
+            <span>
                 {!user && <HouseDoorFill title="Войти" onClick={login} />}
                 {user && <HouseDoor title="Выйти" onClick={logout} />}
-            </span> */}
+            </span>
         </nav>
     </header>
 }

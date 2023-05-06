@@ -65,6 +65,25 @@ p {
   }
 }
 
+
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-link {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-shadow: 0 0 1px rgb(125, 225, 238);
+  user-select: none;
+}
+
+.info-link:hover {
+  text-shadow: 0 0 7px rgb(7, 128, 145);
+}
+
 /*  для контейнера с картами */
 /* .promo__block {
   border: 1px solid;
