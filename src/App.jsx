@@ -1,23 +1,26 @@
-import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
 /* SPA - Single Page Application - Приложение с одной страницей */
 /* import testData from "./assents/data.json"; */ //тест товары
 
-import Card from "./components/Card/Card"; // Card.jsx
+/* import Card from "./components/Card/Card"; */ // Card.jsx
 /* import Promo from "./components/Promo/Promo"; */
 
 // Подключить компоненты
-import Modal from "./components/Modal";
-import { Header, Footer } from "./components/General"; // index.jsx
+import Modal from './components/Modal';
+import { Header, Footer } from './components/General'; // index.jsx
 
 //3 создать массив данных
 /* const promoData = ["=)", "^_^", "O_o", "x_x", "=(", ";(", "0l0"]; */
 // .map() => преобразовывает один елемент массива в другой элемент (для всех без исключения)
 
 // Подключить страницы
-import Home from "./pages/Home";
-import Catalog from "./pages/Catalog";
-import OldPage from "./pages/Old";
+import Home from './pages/Home';
+import Catalog from './pages/Catalog';
+import OldPage from './pages/Old';
+import Profile from './pages/Profile';
+import Product from './pages/Product';
 
 /* console.log(testData); */
 
@@ -29,6 +32,7 @@ import OldPage from "./pages/Old";
         <p className="promo__text">{props.text || "-"}</p>
     </div>
 } */
+
 //2 связка и создание компонента
 const App = () => {
   /*     const smiles = []
@@ -38,9 +42,9 @@ const App = () => {
             }
         } */
   // const user = localStorage.getItem("user12");
-  const [user, setUser] = useState(localStorage.getItem("user12"));
-  const [userId, setUserId] = useState(localStorage.getItem("user12-id"));
-  const [token, setToken] = useState(localStorage.getItem("token12"));
+  const [user, setUser] = useState(localStorage.getItem('user12'));
+  const [userId, setUserId] = useState(localStorage.getItem('user12-id'));
+  const [token, setToken] = useState(localStorage.getItem('token12'));
   // Сохранить в переменную user значение, кот находится внутри useState
 
   /*
@@ -53,26 +57,26 @@ const App = () => {
   const [baseData, setBaseData] = useState([]);
   const [goods, setGoods] = useState(baseData);
 
-  const [searchResult, setSearchResult] = useState("");
+  const [searchResult, setSearchResult] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
   // Сохранить в переменную user значение, что находится внутри useState
 
   useEffect(() => {
     if (user) {
-      setUserId(localStorage.getItem("user12-id"));
-      setToken(localStorage.getItem("token12"));
+      setUserId(localStorage.getItem('user12-id'));
+      setToken(localStorage.getItem('token12'));
     } else {
-      localStorage.removeItem("user12-id");
-      localStorage.removeItem("token12");
+      localStorage.removeItem('user12-id');
+      localStorage.removeItem('token12');
       setUserId(null);
       setToken(null);
     }
   }, [user]);
 
   useEffect(() => {
-    console.log("token", token);
+    console.log('token', token);
     if (token) {
-      fetch("https://api.react-learning.ru/products", {
+      fetch('https://api.react-learning.ru/products', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -95,7 +99,7 @@ const App = () => {
       <Header
         user={user}
         upd={setUser}
-        /* searchArr={testData} */
+        searchArr={baseData}
         setGoods={setGoods}
         setSearchResult={setSearchResult}
         setModalOpen={setModalOpen}
@@ -123,18 +127,50 @@ const App = () => {
                     {smiles} */}
       {/*  {promoData.map(el => <Promo key={el} text={el} />)} */}
       {/* </div> */}
-      <Routes>
-        <Route
-          path="/"
-          element={<Home user={user} setActive={setModalOpen} />}
-        />{" "}
-        {/* главная страница / */}
-        <Route path="/catalog" element={<Catalog goods={goods} />} />
-        <Route
-          path="/old"
-          element={<OldPage searchText={searchResult} goods={goods} />}
-        />
-      </Routes>
+      <main>
+        <Routes>
+          <Route
+            path='/'
+            element={<Home user={user} setActive={setModalOpen} />}
+          />
+
+          {/* главная страница / */}
+          <Route
+            path='/catalog'
+            element={
+              <Catalog
+                goods={goods}
+                setBaseData={setBaseData}
+                userId={userId}
+              />
+            }
+          />
+          <Route
+            path='/old'
+            element={<OldPage searchText={searchResult} goods={goods} />}
+          />
+          <Route
+            path='/profile'
+            element={<Profile user={user} setUser={setUser} />}
+          />
+          <Route path='/product/:id' element={<Product />} />
+        </Routes>
+        {/*
+                        :id - параметризованный запрос, где то, что идет после : является различными данными, которые можно вызвать при помощи свойства id
+                        {id: "...."}
+
+                        шаблон: /product/:brand/:year/:id
+                        /product/samsung/2019/12345
+                        /product/samsung/2019/78923
+                        /product/xaomi/2022/93838
+                        /product/apple/2019/32483
+
+                        шаблон: /product/year/:year
+                        {year: "..."}
+                        /product/year/2022
+                        /product/year/2019
+        */}
+      </main>
       <Footer />
       <Modal
         isActive={modalOpen}

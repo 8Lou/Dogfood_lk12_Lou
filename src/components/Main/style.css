@@ -76,7 +76,9 @@ footer {
 .header__menu svg:hover {
     fill: rgb(91, 60, 141);
 }
-
+.header__menu>span>* {
+    cursor: pointer;
+}
 /* 
     То же самое
     .header__menu a:hover,
