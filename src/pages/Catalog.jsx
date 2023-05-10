@@ -2,7 +2,7 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import BsCard from '../components/BsCard';
 
-const Catalog = ({ goods, setBaseData, userId }) => {
+const Catalog = ({ goods, setBaseData, userId }) => { /* принять из Апп */
   console.log(goods);
   return <Container className="d-block">
     <Row className="g-4">
@@ -20,7 +20,7 @@ const Catalog = ({ goods, setBaseData, userId }) => {
         {/* <Card key={i} img={pro.pictures} name={pro.name} price={pro.price} /> */}
 
         <Col key={i} xs={12} sm={6} md={4} lg={3}>
-					<BsCard img={pro.pictures} {...pro} setBaseData={setBaseData} user={userId}/>
+					<BsCard img={pro.pictures} {...pro} setBaseData={setBaseData} user={userId}/> {/* отправить в Кард */}
 				</Col>
       ))}
 		</Row>

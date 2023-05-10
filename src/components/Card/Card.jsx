@@ -49,6 +49,7 @@ const Card = ({
   return (
     <div className='card-lite' id={'pro_' + _id}>
       <span className='card-like' onClick={likeHandler}>
+        {/* событие по клику обрабатывается */}
         {isLike ? <SuitHeartFill /> : <SuitHeart />}
       </span>
       <img src={pictures} alt={name} />
@@ -56,7 +57,7 @@ const Card = ({
       <p>{name}</p>
       <button>Купить</button>
       <Link to={`/product/${_id}`} className='card-link'></Link>
-    </div>
+    </div> /* реализован только визуал, на сервер данные пока не отправляются */
   );
 };
 

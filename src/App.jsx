@@ -139,6 +139,7 @@ const App = () => {
             path='/catalog'
             element={
               <Catalog
+                /* передать в Каталог  */
                 goods={goods}
                 setBaseData={setBaseData}
                 userId={userId}
@@ -147,7 +148,7 @@ const App = () => {
           />
           <Route
             path='/old'
-            element={<OldPage searchText={searchResult} goods={goods} />}//что принимаем, то и передаем{}
+            element={<OldPage searchText={searchResult} goods={goods} />} //что принимаем, то и передаем{}
           />
           <Route
             path='/profile'
