@@ -9,7 +9,7 @@ import { Routes, Route } from 'react-router-dom';
 
 // Подключить компоненты
 import Modal from './components/Modal';
-import { Header, Footer } from './components/General'; // index.jsx
+import { Header, Footer } from './components/Main'; // index.jsx
 
 //3 создать массив данных
 /* const promoData = ["=)", "^_^", "O_o", "x_x", "=(", ";(", "0l0"]; */
@@ -147,7 +147,7 @@ const App = () => {
           />
           <Route
             path='/old'
-            element={<OldPage searchText={searchResult} goods={goods} />}
+            element={<OldPage searchText={searchResult} goods={goods} />}//что принимаем, то и передаем{}
           />
           <Route
             path='/profile'
