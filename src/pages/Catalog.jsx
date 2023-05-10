@@ -26,6 +26,10 @@ const Catalog = ({ goods, setBaseData, userId }) => {
   );
 };
 
+/* применены стили библиотеки Реакт-Бутстрап и адаптивные инструменты
+xs, sm, md, lg для отображения на разных экранах;
+d-block - display: block
+g-4 - gap: 4*/
 {
   /*  <div className='container'>
 <h1 style={{ margin: 0, gridColumnEnd: 'span 4' }}>Каталог</h1> */
