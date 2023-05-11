@@ -14,7 +14,7 @@
 }
 
 body {
-  background-color: rgb(71, 133, 133);
+  background-color: rgb(66, 72, 83);
   font-family: sans-serif;
 }
 
@@ -64,7 +64,6 @@ p {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
 
 .info {
   display: flex;

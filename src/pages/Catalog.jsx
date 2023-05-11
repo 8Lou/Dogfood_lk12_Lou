@@ -1,6 +1,6 @@
-/* import Card from "../components/Card/Card"; */
+import Card from '../components/Card/Card';
 import { Container, Row, Col } from 'react-bootstrap';
-import BsCard from '../components/BsCard';
+/* import BsCard from '../components/BsCard'; */
 
 const Catalog = ({ goods, setBaseData, userId }) => {
   console.log(goods);
@@ -13,7 +13,7 @@ const Catalog = ({ goods, setBaseData, userId }) => {
 
         {goods.map((pro, i) => (
           <Col key={i} xs={12} sm={6} md={4} lg={3}>
-            <BsCard
+            <Card
               img={pro.pictures}
               {...pro}
               setBaseData={setBaseData}
@@ -29,7 +29,8 @@ const Catalog = ({ goods, setBaseData, userId }) => {
 /* применены стили библиотеки Реакт-Бутстрап и адаптивные инструменты
 xs, sm, md, lg для отображения на разных экранах;
 d-block - display: block
-g-4 - gap: 4*/
+g-4 - gap: 4
+для подключения карточек по Бутстрап, изменить Card na BsCard в 16 строке*/
 {
   /*  <div className='container'>
 <h1 style={{ margin: 0, gridColumnEnd: 'span 4' }}>Каталог</h1> */
