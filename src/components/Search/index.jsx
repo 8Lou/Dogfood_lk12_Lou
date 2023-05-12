@@ -18,7 +18,7 @@ const Search = ({ data, setGoods, setSearchResult }) => {
   useEffect(() => {
     let str = "";
     if (num && text) {
-      str = `По запросу ${text} найдено ${num} товаров`;
+      str = `По запросу ${text} найдено ${num} товар(а)(ов)`;
     } else if (text) {
       str = `По запросу ${text} не найдено ни одного товара`;
     } else {
