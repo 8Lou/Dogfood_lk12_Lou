@@ -13,3 +13,24 @@
 .search:focus {
   background-color: #88a3e2;
 }
+
+.sort-cards {
+  background: #aaecfc;
+  box-shadow: 0px 2px 4px rgba(40, 41, 61, 0.04),
+    0px 8px 16px rgba(96, 97, 112, 0.16);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 40px;
+  max-height: 25px;
+  margin: -25px 20px 0 40px;
+}
+.sort-item {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgb(91, 60, 141);
+  cursor: pointer;
+  padding: 5px;
+}

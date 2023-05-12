@@ -85,6 +85,7 @@ footer {
     .header__menu span:hover {
     } 
 */
+
 @media (min-width: 576px) {
   header {
     flex-wrap: no-wrap;

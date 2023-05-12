@@ -1,11 +1,23 @@
 /* import Card from '../components/Card/Card'; */
 import { Container, Row, Col } from "react-bootstrap";
 import BsCard from "../components/BsCard";
+import "../../src/components/Search/style.css";
 
-const Catalog = ({ goods, setBaseData, userId }) => {
-  console.log(goods);
+const Catalog = ({ goods, setBaseData, userId, cards, onSort }) => {
+  const sortedItems = [
+    { id: "Популярные", title: "POPULAR" },
+    { id: "Новые", title: "NEWEST" },
+    { id: "Все", title: "ALL" },
+  ];
   return (
     <Container className="d-block">
+      <div className="sort-cards">
+        {sortedItems.map((e) => (
+          <span className="sort-item" key={e.id} onClick={() => onSort(e.id)}>
+            {e.id}
+          </span>
+        ))}
+      </div>
       <Row className="g-4">
         <Col xs={12}>
           <h1 style={{ margin: 0, gridColumnEnd: "span 4" }}>Каталог</h1>
