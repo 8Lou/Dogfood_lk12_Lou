@@ -30,19 +30,6 @@ const BsCard = ({
     );
   };
 
-  // return <div className="card pt-3" id={"pro_" + _id}>
-  //     <span className="card-like" onClick={likeHandler}>
-  //         {isLike ? <SuitHeartFill/> : <SuitHeart/>}
-  //     </span>
-  //     <img src={pictures} alt={name} className="card-img-top align-self-center w-auto" height="100"/>
-  //     <div className="card-body d-flex flex-column">
-  //         <h4>{price} ₽</h4>
-  //         <p className="text-secondary fs-5 flex-grow-1">{name}</p>
-  //         <button className="btn btn-warning w-100">Купить</button>
-  //     </div>
-  //     <Link to={`/product/${_id}`} className="card-link"></Link>
-  // </div>
-  
   return (
     <Card className='pt-3 h-100' id={'pro_' + _id}>
       <span className='card-like' onClick={likeHandler}>

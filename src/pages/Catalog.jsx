@@ -8,7 +8,7 @@ const Catalog = ({ goods, setBaseData, userId }) => {
     <Container className="d-block">
       <Row className="g-4">
         <Col xs={12}>
-          <h1 style={{ margin: 0, gridColumnEnd: "span 3" }}>Каталог</h1>
+          <h1 style={{ margin: 0, gridColumnEnd: "span 4" }}>Каталог</h1>
         </Col>
 
         {goods.map((pro, i) => (
@@ -25,21 +25,17 @@ const Catalog = ({ goods, setBaseData, userId }) => {
     </Container>
   );
 };
+export default Catalog;
 
-/* применены стили библиотеки Реакт-Бутстрап и адаптивные инструменты
+/* стили библиотеки Реакт-Бутстрап и адаптивные инструменты
 xs, sm, md, lg для отображения на разных экранах;
 d-block - display: block
 g-4 - gap: 4
-для подключения карточек по Бутстрап, изменить Card na BsCard в 16 строке*/
+
 {
   /*  <div className='container'>
 <h1 style={{ margin: 0, gridColumnEnd: 'span 4' }}>Каталог</h1> */
-}
 
 // {name, price, likes, _id} => name={pro.name} price={pro.price} _id={pro._id} likes={pro.likes}
 
-{
-  /* <Card key={i} img={pro.pictures} name={pro.name} price={pro.price} /> */
-}
-
-export default Catalog;
+/* <Card key={i} img={pro.pictures} name={pro.name} price={pro.price} /> */

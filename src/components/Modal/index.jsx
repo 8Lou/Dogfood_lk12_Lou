@@ -23,14 +23,14 @@ const Modal = ({
         setEmail("");
         setPwd("");
         setPwd2("");
-    } /* очищает форму и возвращает в перв-е сост-е */
+    } 
 
     const handleForm = async (e) => {
         e.preventDefault();
         const body = {
             email: email,
             password: pwd
-        } /* тело объекта боди отправится */
+        }
         if (isReg) {
             body.name = name
             body.group = "12"
@@ -44,8 +44,7 @@ const Modal = ({
         // 	email: "lou8@mail.ru"
         // }
 
-        /* версия: асихронная функция фетч-запроса */
-        const path = `https://api.react-learning.ru/${isReg ? "signup" : "signin"}`;
+              const path = `https://api.react-learning.ru/${isReg ? "signup" : "signin"}`;
         const res = await fetch(path, {
             method: "POST",
             headers: {
@@ -71,22 +70,11 @@ const Modal = ({
                 setIsActive(false);
             }
         }
-
-        // v2
-        // fetch(path, {
-        // 	method: "POST",
-        // 	headers: {
-        // 		"Content-Type": "application/json"
-        // 	},
-        // 	body: JSON.stringify(body)
-        // })
-        // 	.then(res => res.json())
-        // 	.then(data => console.log(data))
     }
 
     const st = {
         display: isActive ? "flex" : "none"
-    } /* стили */
+    }
 
     return <div className="modal-wrapper" style={st}>
         <div className="modal">
@@ -123,7 +111,6 @@ const Modal = ({
                     onChange={(e) => setPwd2(e.target.value)}
                 />}
                 <div className="modal-btns">
-                    {/* Если у меня форма регистрации и пароли не равны или не введен пароль - кнопка не активна */}
                     <button type="submit" disabled={isReg && (!pwd || pwd !== pwd2)}>
                         {isReg ? "Зарегистрироваться" : "Войти"}
                     </button>

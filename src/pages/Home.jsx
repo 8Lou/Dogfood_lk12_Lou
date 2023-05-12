@@ -12,5 +12,4 @@ const Home = ({ user, setActive }) => {
             для доступа</>}
     </div>
 }
-/* внутри Линк нельзя использовать див (только спан) */
 export default Home;
