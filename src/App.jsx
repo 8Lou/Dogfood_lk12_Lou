@@ -7,9 +7,11 @@ import Catalog from "./pages/Catalog";
 import OldData from "./pages/Old_data";
 import Profile from "./pages/Profile";
 import Product from "./pages/Product";
+import { ErrorPage } from "./pages/ErrorPage";
 
 //2 связка и создание компонента
 const App = () => {
+  const [cards, setCards] = useState([]);
   const [user, setUser] = useState(localStorage.getItem("user12"));
   const [userId, setUserId] = useState(localStorage.getItem("user12-id"));
   const [token, setToken] = useState(localStorage.getItem("token12"));
@@ -49,6 +51,26 @@ const App = () => {
     setGoods(baseData);
   }, [baseData]);
 
+  const onSort = (sortId) => {
+    if (sortId === "Популярные") {
+      const newCards = cards.sort((a, b) => b.likes.length - a.likes.length);
+      setCards([...newCards]);
+      return;
+    }
+    if (sortId === "Новые") {
+      const newCards = cards.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+      );
+      setCards([...newCards]);
+      return;
+    }
+    if (sortId === "Все") {
+      const newCards = cards;
+      setCards([...newCards]);
+      return;
+    }
+  };
+
   return (
     <>
       <Header
@@ -76,15 +98,21 @@ const App = () => {
               />
             }
           />
+
+          <Route path="/" element={<Header onSort={onSort} cards={cards} />} />
+
           <Route
             path="/old"
             element={<OldData searchText={searchResult} goods={goods} />}
           />
+
           <Route
             path="/profile"
             element={<Profile user={user} setUser={setUser} />}
           />
           <Route path="/product/:id" element={<Product />} />
+          <Route path="*" element={<div>NOT FOUND 404</div>} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </main>
       <Footer />
