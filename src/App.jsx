@@ -50,7 +50,6 @@ const App = () => {
   /*
         Есть массив с товарами (основной) [a,b,c] => [b,c] => [a]???
         | |
-         U
         Есть массив с товарами фильтруемый [b,c], [a]
     */
 
@@ -104,6 +103,7 @@ const App = () => {
         setSearchResult={setSearchResult}
         setModalOpen={setModalOpen}
       />
+      
       {/* <h1>First Page</h1> */}
       {/* <div className="container"> */} {/* контейнер карт */}
       {/* {testData.map((pro, i) => ( */} {/* модификация объектов массива */}

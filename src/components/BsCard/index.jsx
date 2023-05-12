@@ -29,6 +29,7 @@ const BsCard = ({
       })
     );
   };
+
   // return <div className="card pt-3" id={"pro_" + _id}>
   //     <span className="card-like" onClick={likeHandler}>
   //         {isLike ? <SuitHeartFill/> : <SuitHeart/>}
@@ -41,6 +42,7 @@ const BsCard = ({
   //     </div>
   //     <Link to={`/product/${_id}`} className="card-link"></Link>
   // </div>
+  
   return (
     <Card className='pt-3 h-100' id={'pro_' + _id}>
       <span className='card-like' onClick={likeHandler}>
