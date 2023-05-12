@@ -1,83 +1,83 @@
 header {
-    background: #f37b66;
-    color: rgb(64, 88, 86);
-    padding: 15px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 20px;
-    flex-wrap: wrap;
-    gap: 10px;
+  background: #88a3e2;
+  color: #aaecfc;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 header .search-block {
-    order: 1;
-    /* переделть последовательность при адаптации */
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
+  order: 1;
+  /* переделть последовательность при адаптации */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
 }
 
 footer {
-    padding: 15px 20px;
-    display: flex;
-    justify-content: center;
-    background: #f37b66;
-    color: rgb(41, 100, 100);
-    font-weight: 400;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  background: #88a3e2;
+  color: #aaecfc;
+  font-weight: 400;
 }
 
 .getFullYear {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .logo {
-    color: rgb(41, 100, 100);
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    font-size: 1.5rem;
+  color: #aaecfc;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .logo img {
-    margin: 0 10px 0 50px;
-    height: 30px;
+  margin: 0 10px 0 50px;
+  height: 30px;
 }
 
 .footer__copy {
-    margin-left: 50px;
-    display: grid;
-    align-content: space-between;
+  margin-left: 50px;
+  display: grid;
+  align-content: space-between;
 }
 
 .footer__nav {
-    margin: 0 50px;
-    display: grid;
-    gap: 10px;
+  margin: 0 50px;
+  display: grid;
+  gap: 10px;
 }
 
 .footer__nav a:hover {
-    color: rgb(4, 64, 104);
+  color: #c37edb;
 }
 
 .header__menu,
-.header__menu>span>* {
-    color: rgb(41, 100, 100);
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 19px;
-    cursor: pointer;
-    margin-right: 30px;
+.header__menu > span > * {
+  color: #aaecfc;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  cursor: pointer;
+  margin-right: 30px;
 }
 
 .header__menu svg:hover {
-    fill: rgb(91, 60, 141);
+  fill: rgb(91, 60, 141);
 }
-.header__menu>span>* {
-    cursor: pointer;
+.header__menu > span > * {
+  cursor: pointer;
 }
 /* 
     То же самое
@@ -86,12 +86,12 @@ footer {
     } 
 */
 @media (min-width: 576px) {
-    header {
-        flex-wrap: no-wrap;
-    }
+  header {
+    flex-wrap: no-wrap;
+  }
 
-    header .search-block {
-        order: 0;
-        width: auto;
-    }
+  header .search-block {
+    order: 0;
+    width: auto;
+  }
 }

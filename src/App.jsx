@@ -70,7 +70,6 @@ const App = () => {
             path="/catalog"
             element={
               <Catalog
-                /* передать в Каталог  */
                 goods={goods}
                 setBaseData={setBaseData}
                 userId={userId}
@@ -79,7 +78,7 @@ const App = () => {
           />
           <Route
             path="/old"
-            element={<OldData searchText={searchResult} goods={goods} />} //что принимаем, то и передаем{}
+            element={<OldData searchText={searchResult} goods={goods} />}
           />
           <Route
             path="/profile"

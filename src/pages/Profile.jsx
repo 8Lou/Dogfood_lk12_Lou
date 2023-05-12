@@ -1,3 +1,4 @@
+import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const Profile = ({ user, setUser }) => {
@@ -11,7 +12,9 @@ const Profile = ({ user, setUser }) => {
     <>
       <h1>Личный кабинет</h1>
       <p>Добро пожаловать, {user}!</p>
-      <button onClick={logOut}>Выйти из аккаунта</button>
+      <Button variant="info" onClick={logOut}>
+        Выйти из аккаунта
+      </Button>
     </>
   );
 };

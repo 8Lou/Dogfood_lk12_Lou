@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { SuitHeart, SuitHeartFill } from "react-bootstrap-icons";
 import "./card.css";
+import { Button } from "react-bootstrap";
 
 const Card = ({
   discount,
@@ -37,7 +38,7 @@ const Card = ({
       <img src={pictures} alt={name} />
       <h4>{price} ₽</h4>
       <p>{name}</p>
-      <button>Купить</button>
+      <Button variant="info">Купить</Button>
       <Link to={`/product/${_id}`} className="card-link"></Link>
     </div>
   );

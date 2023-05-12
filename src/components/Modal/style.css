@@ -1,7 +1,7 @@
 .modal-wrapper {
   position: fixed;
   /* относительно экрана */
-  background: rgba(71, 133, 133, 0.9);
+  background: rgba(4, 241, 241, 0.9);
   top: 0;
   bottom: 0;
   left: 0;
@@ -14,7 +14,7 @@
 
 .modal {
   width: 300px;
-  background-color: white;
+  background-color: #b7a6f6;
   padding: 20px;
   box-sizing: border-box;
   position: relative;
@@ -36,7 +36,7 @@
 }
 
 .modal-close:hover {
-  color: #e66c08;
+  color: #88a3e2;
 }
 
 h3 {

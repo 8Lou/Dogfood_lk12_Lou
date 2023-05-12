@@ -1,5 +1,5 @@
 .card-lite {
-  background-color: #98ecf7;
+  background-color: #b7a6f6;
   display: grid;
   gap: 15px;
   padding: 12px;
@@ -18,7 +18,7 @@
 }
 
 .card-lite h4 {
-  color: #f37b66;
+  color: #88a3e2;
   font-size: 1.2em;
   font-weight: 600;
   margin: 0;
@@ -35,10 +35,10 @@
 }
 
 .btn {
-  color: aqua;
+  color: #c37edb;
   height: 35px;
   border-radius: 20px;
-  background-color: #f37b66;
+  background-color: #fc8dca;
   outline: none;
   border: none;
   font-size: 1em;
@@ -46,8 +46,8 @@
 }
 
 .btn:hover {
-  color: #f37b66;
-  border: 1px solid#f37b66;
+  color: #fc8dca;
+  border: 1px solid#C37EDB;
   background-color: inherit;
 }
 

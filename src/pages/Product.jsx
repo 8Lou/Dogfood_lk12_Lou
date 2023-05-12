@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import { ErrorPage } from "./ErrorPage";
 
 const Product = () => {
   const { id } = useParams(); //передается _id свойство товара из базы данных
@@ -8,7 +9,7 @@ const Product = () => {
   useEffect(() => {
     fetch(`https://api.react-learning.ru/products/${id}`, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token12')}`,
+        Authorization: `Bearer ${localStorage.getItem("token12")}`,
       },
     })
       .then((res) => res.json())
@@ -26,16 +27,20 @@ const Product = () => {
           <img src={data.pictures} alt={data.name} />
         </>
       ) : (
-        <div className='info' style={{ textAlign: 'center' }}>
-          Товара {id} не существует
-          <br />
-          или
-          <br />
-          он еще не загружен
-        </div>
+        <Link to="*">
+          <ErrorPage />
+        </Link>
       )}
     </>
   );
 };
 
 export default Product;
+
+/* <div className='info' style={{ textAlign: 'center' }}>
+          Товара {id} не существует
+          <br />
+          или
+          <br />
+          он еще не загружен
+        </div> */
