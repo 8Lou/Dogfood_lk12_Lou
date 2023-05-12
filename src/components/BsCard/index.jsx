@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { SuitHeart, SuitHeartFill } from "react-bootstrap-icons";
 import { Card, Button } from "react-bootstrap";
+import "./style.css";
 
 const BsCard = ({
   discount,
@@ -57,3 +58,14 @@ const BsCard = ({
 };
 
 export default BsCard;
+
+/* <div className="card-lite" id={"pro_" + _id}>
+      <span className="card-like" onClick={likeHandler}>
+        {isLike ? <SuitHeartFill /> : <SuitHeart />}
+      </span>
+      <img src={pictures} alt={name} />
+      <h4>{price} ₽</h4>
+      <p>{name}</p>
+      <Button variant="info">Купить</Button>
+      <Link to={`/product/${_id}`} className="card-link"></Link>
+    </div>; */

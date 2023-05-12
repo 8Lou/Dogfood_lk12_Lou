@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ErrorPage } from "./ErrorPage";
+import { Button } from "react-bootstrap";
 
 const Product = () => {
   const { id } = useParams(); //передается _id свойство товара из базы данных
@@ -20,7 +21,9 @@ const Product = () => {
   }, []); //квадратные внутри круглых - точка останова - юзэффект выполнить 1 раз
   return (
     <>
-      <Link to={`/catalog#pro_${id}`}>Назад</Link>
+      <Link to={`/catalog#pro_${id}`}>
+        <Button variant="info">Назад</Button>
+      </Link>
       {data.name ? ( //проверка имени товара
         <>
           <h1>{data.name}</h1>

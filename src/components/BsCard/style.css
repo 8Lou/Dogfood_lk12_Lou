@@ -34,7 +34,7 @@
   justify-self: end;
 }
 
-.btn {
+/* .btn {
   color: #c37edb;
   height: 35px;
   border-radius: 20px;
@@ -43,7 +43,7 @@
   border: none;
   font-size: 1em;
   font-weight: 600;
-}
+} */
 
 .btn:hover {
   color: #fc8dca;
