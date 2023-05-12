@@ -45,16 +45,16 @@
   font-weight: 600;
 } */
 
-.btn:hover {
+/* .btn:hover {
   color: #fc8dca;
   border: 1px solid#C37EDB;
   background-color: inherit;
-}
+} */
 
-.card-lite button {
+/* .card-lite button {
   position: relative;
   z-index: 1;
-}
+} */
 .card-link {
   position: absolute;
   top: 0;

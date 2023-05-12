@@ -48,9 +48,7 @@ const BsCard = ({
         <Card.Text className="text-secondary fs-5 flex-grow-1">
           {name}
         </Card.Text>
-        <Button variant="info" className="w-100">
-          Купить
-        </Button>
+        <Button variant="info">Купить</Button>
       </Card.Body>
       <Link to={`/product/${_id}`} className="card-link"></Link>
     </Card>
