@@ -17,14 +17,13 @@ const Header = ({
   setGoods,
   setSearchResult,
   setModalOpen,
-  
 }) => {
   const login = () => {
     setModalOpen(true);
     /* localStorage.setItem("user-12", "Di");
         upd("Lou"); */
   };
-  
+
   // const logout = () => {
   //     localStorage.removeItem("user-12");
   //     upd(null);
@@ -33,7 +32,7 @@ const Header = ({
   return (
     <header>
       <Logo />
-      
+
       <div className="search-block">
         <Search
           data={searchArr}
@@ -44,11 +43,9 @@ const Header = ({
       <nav className="header__menu">
         {user && (
           <>
-            {/* <a href=""> */} {/* замена */}
             <Link to="/">
               <Heart title="Избранное" />
             </Link>
-            {/*  </a> */}
             <Link to="/">
               <Cart4 title="Корзина" />
             </Link>

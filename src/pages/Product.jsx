@@ -15,24 +15,26 @@ const Product = () => {
     })
       .then((res) => res.json())
       .then((serverData) => {
-        console.log(id, serverData);
+        /* console.log(id, serverData); */
         setData(serverData);
       });
-  }, []); //квадратные внутри круглых - точка останова - юзэффект выполнить 1 раз
+  }, []); //квадратные внутри круглых - точка останова - useEffect выполнить 1 раз
   return (
     <>
-      <Link to={`/catalog#pro_${id}`}>
-        <Button variant="info">Назад</Button>
-      </Link>
-      {data.name ? ( //проверка имени товара
+      <Link to={`/catalog#pro_${id}`}>Назад</Link>
+      {data.name ? (
         <>
           <h1>{data.name}</h1>
           <img src={data.pictures} alt={data.name} />
         </>
       ) : (
-        <Link to="*">
-          <ErrorPage />
-        </Link>
+        <div className="info" style={{ textAlign: "center" }}>
+          Товара {id} не существует
+          <br />
+          или
+          <br />
+          он еще не загружен
+        </div>
       )}
     </>
   );
@@ -40,10 +42,8 @@ const Product = () => {
 
 export default Product;
 
-/* <div className='info' style={{ textAlign: 'center' }}>
-          Товара {id} не существует
-          <br />
-          или
-          <br />
-          он еще не загружен
-        </div> */
+{
+  /* <Link to="*">
+          <ErrorPage />
+        </Link> */
+}

@@ -58,7 +58,9 @@ p {
   color: #c37edb;
   font-size: 1.1rem;
 }
-
+.home {
+  min-height: 400px;
+}
 @media (max-width: 576px) {
   .container {
     grid-template-columns: repeat(2, 1fr);
@@ -82,7 +84,12 @@ p {
 .info-link:hover {
   text-shadow: 0 0 7px #fc8dca;
 }
-
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
 /*  для контейнера с картами */
 /* .promo__block {
   border: 1px solid;

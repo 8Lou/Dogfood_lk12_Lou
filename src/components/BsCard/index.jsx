@@ -50,7 +50,8 @@ const BsCard = ({
         </Card.Text>
         <Button variant="info">Купить</Button>
       </Card.Body>
-      <Link to={`/product/${_id}`} className="card-link"></Link>
+      {/* <Link to={`/product/${_id}`} className="card-link"></Link> */}
+      <Link to="/product/" className="card-link"></Link>
     </Card>
   );
 };

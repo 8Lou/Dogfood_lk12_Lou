@@ -11,14 +11,10 @@ const Search = ({ data, setGoods, setSearchResult }) => {
     let val = e.target.value.toLowerCase();
     setText(val);
   };
-  const changeText = () => {
-    setText("Дароф!");
-  };
-
   useEffect(() => {
     let str = "";
     if (num && text) {
-      str = `По запросу ${text} найдено ${num} товар(а)(ов)`;
+      str = `По запросу ${text} найдено ${num} товаров`;
     } else if (text) {
       str = `По запросу ${text} не найдено ни одного товара`;
     } else {

@@ -2,6 +2,7 @@
   "name": "Lou_B00tS",
   "version": "0.1.0",
   "dependencies": {
+    "eslint-plugin-disable": "^2.0.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-bootstrap-icons": "^1.10.3",
