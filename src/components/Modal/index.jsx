@@ -32,7 +32,7 @@ const Modal = ({ isActive, setIsActive, setUser }) => {
       body.name = name;
       body.group = "12";
     } /* при удачной регистрации */
-    console.log(body);
+    /* console.log(body); */
 
     // `https://api.react-learning.ru/signup`
     // {
@@ -50,7 +50,7 @@ const Modal = ({ isActive, setIsActive, setUser }) => {
       body: JSON.stringify(body),
     });
     const data = await res.json();
-    console.log(data);
+    /* console.log(data); */
     if (isReg) {
       if (data?._id) {
         setIsReg(false);
@@ -117,7 +117,7 @@ const Modal = ({ isActive, setIsActive, setUser }) => {
             >
               {isReg ? "Зарегистрироваться" : "Войти"}
             </Button>
-            <a className="modal-link" onClick={changeForm}>
+            <a className="modal-link" onClick={changeForm} href="/">
               {isReg ? "Войти" : "Зарегистрироваться"}
             </a>
           </div>
