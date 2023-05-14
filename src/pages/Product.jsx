@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ErrorPage } from "./ErrorPage";
 import { Button } from "react-bootstrap";
+import { Back } from "react-bootstrap-icons";
 
 const Product = () => {
   const { id } = useParams(); //передается _id свойство товара из базы данных
@@ -18,7 +19,8 @@ const Product = () => {
         /* console.log(id, serverData); */
         setData(serverData);
       });
-  }, []); //квадратные внутри круглых - точка останова - useEffect выполнить 1 раз
+  }, [id]); //квадратные внутри круглых - точка останова - useEffect выполнить 1 раз
+
   return (
     <>
       <Link to={`/catalog#pro_${id}`}>Назад</Link>

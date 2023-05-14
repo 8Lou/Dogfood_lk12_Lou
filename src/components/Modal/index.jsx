@@ -3,6 +3,7 @@ import { XLg } from "react-bootstrap-icons"; /* иконка закрытия м
 import "./style.css";
 import { Button } from "react-bootstrap";
 
+
 const Modal = ({ isActive, setIsActive, setUser }) => {
   const [isReg, setIsReg] = useState(false);
   const [name, setName] = useState("");

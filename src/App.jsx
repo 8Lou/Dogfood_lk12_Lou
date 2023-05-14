@@ -111,7 +111,7 @@ const App = () => {
             element={<Profile user={user} setUser={setUser} />}
           />
           <Route path="/product/:id" element={<Product />} />
-          <Route path="*" element={<div>NOT FOUND 404</div>} />
+
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </main>
