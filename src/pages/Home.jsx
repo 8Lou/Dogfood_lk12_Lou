@@ -3,8 +3,7 @@ import "../../src/index.css";
 import { Folder2Open } from "react-bootstrap-icons";
 
 const Home = ({ user, setActive, pictures }) => {
-  return (
-    <>
+  return <>
       <span className="welcome">Наелся и спит...</span>
       <div className="home__img">
         <img src="https://i.gifer.com/S6jK.gif" alt="picture" />
@@ -28,6 +27,5 @@ const Home = ({ user, setActive, pictures }) => {
         )}
       </div>
     </>
-  );
 };
 export default Home;

@@ -48,10 +48,12 @@ const BsCard = ({
         <Card.Text className="text-secondary fs-5 flex-grow-1">
           {name}
         </Card.Text>
-        <Button variant="info">Купить</Button>
+        <Button variant="warning" className="w-100">
+          Купить
+        </Button>
       </Card.Body>
       {/* <Link to={`/product/${_id}`} className="card-link"></Link> */}
-      <Link to="/product/" className="card-link"></Link>
+      <Link to={`/product/${_id}`} className="card-link"></Link>
     </Card>
   );
 };

@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import Modal from "./components/Modal";
+import Modal from "./components/Modal/index";
 import { Header, Footer } from "./components/Main"; // index.jsx
 import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
 import OldData from "./pages/Old_data";
 import Profile from "./pages/Profile";
 import Product from "./pages/Product";
-import { ErrorPage } from "./pages/ErrorPage";
+import {ErrorPage} from "./pages/ErrorPage";
 
 //2 связка и создание компонента
 const App = () => {
@@ -34,18 +34,19 @@ const App = () => {
   }, [user]);
 
   useEffect(() => {
-    if (token) {
-      fetch("https://api.react-learning.ru/products", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setBaseData(data.products);
-        });
-    }
-  }, [token]);
+ if (token) {
+            fetch("https://api.react-learning.ru/products", {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    setBaseData(data.products);
+                })
+        }
+    }, [token])
 
   useEffect(() => {
     setGoods(baseData);
@@ -100,11 +101,6 @@ const App = () => {
           />
 
           <Route path="/" element={<Header onSort={onSort} cards={cards} />} />
-
-          <Route
-            path="/old"
-            element={<OldData searchText={searchResult} goods={goods} />}
-          />
 
           <Route
             path="/profile"

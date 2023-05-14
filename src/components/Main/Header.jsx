@@ -20,8 +20,6 @@ const Header = ({
 }) => {
   const login = () => {
     setModalOpen(true);
-    /* localStorage.setItem("user-12", "Di");
-        upd("Lou"); */
   };
 
   // const logout = () => {
@@ -29,35 +27,32 @@ const Header = ({
   //     upd(null);
   // }
 
-  return (
-    <header>
-      <Logo />
-
-      <div className="search-block">
-        <Search
-          data={searchArr}
-          setGoods={setGoods}
-          setSearchResult={setSearchResult}
-        />
-      </div>
-      <nav className="header__menu">
-        {user && (
-          <>
-            <Link to="/">
-              <Heart title="Избранное" />
-            </Link>
-            <Link to="/">
-              <Cart4 title="Корзина" />
-            </Link>
-            <Link to="/profile">
-              <PersonCircle title="Личный кабинет" />
-            </Link>
-          </>
-        )}
-        <span>{!user && <HouseDoorFill title="Войти" onClick={login} />}</span>
-      </nav>
+    return <header>
+        <Logo/>
+        <div className="search-block">
+            <Search 
+                data={searchArr} 
+                setGoods={setGoods} 
+                setSearchResult={setSearchResult}
+            />
+        </div>
+        <nav className="header__menu">
+            {user && <>
+                <Link to="/">
+                    <Heart title="Избранное"/>
+                </Link>
+                <Link to="/">
+                    <Cart4  title="Корзина"/>
+                </Link>
+                <Link to="/profile">
+                    <PersonCircle  title="Личный кабинет"/>
+                </Link>
+            </>}
+            <span>
+                {!user && <HouseDoorFill  title="Войти" onClick={login}/>}
+                {/*{user && <BuildingDown title="Выйти" onClick={logout}/>}*/}
+            </span>
+        </nav>
     </header>
-  );
-};
-
+}
 export default Header;

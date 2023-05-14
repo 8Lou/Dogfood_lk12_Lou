@@ -8,14 +8,12 @@ const Profile = ({ user, setUser }) => {
     localStorage.removeItem("user12");
     navigate("/");
   };
-  return (
-    <>
+  return <>
       <h1>Личный кабинет</h1>
       <p>Добро пожаловать, {user}!</p>
       <Button variant="info" onClick={logOut}>
         Выйти из аккаунта
       </Button>
     </>
-  );
 };
 export default Profile;
