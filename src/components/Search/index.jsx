@@ -1,43 +1,47 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "./style.css";
 
-const Search = ({ data, setGoods, setSearchResult }) => {
-  const navigate = useNavigate(); /* замыкание */
-  const [text, setText] = useState("");
-  const [num, setNum] = useState(0);
-  const changeValue = (e) => {
-    navigate("/catalog");
-    let val = e.target.value.toLowerCase();
-    setText(val);
-  };
-  useEffect(() => {
-    let str = "";
-    if (num && text) {
-      str = `По запросу ${text} найдено ${num} товаров`;
-    } else if (text) {
-      str = `По запросу ${text} не найдено ни одного товара`;
-    } else {
-      str = "";
-    }
-    setSearchResult(str);
-  }, [num, text]);
+const Search = ({arr, upd}) => {
+	const [text, setText] = useState("");
+	const [quantity, setQuantity] = useState(arr.length);
+	const [count, updateCount] = useState(0);
+	useEffect(() => {
+		if (text) {
+			let result = arr.filter(el => new RegExp(text, "i").test(el.name))
+			upd(result);
+			setQuantity(result.length);
+		} else {
+			upd(arr);
+			setQuantity(arr.length)
+		}
+	}, [arr]);
+	let n = 1;
+	const click = () => {
+		updateCount(count + 1); // новое состояние
+		console.log("count", count);
+	}
+	const searchByText = (e) => {
+		let val = e.target.value;
+		setText(val);
+		// let result = arr.filter(el => el.name.toLowerCase().includes(val.toLowerCase()));
+		let result = arr.filter(el => new RegExp(val, "i").test(el.name))
+		upd(result);
+		setQuantity(result.length);
+		console.log(result);
+	}
 
-  useEffect(() => {
-    let result = data.filter((el) => el.name.toLowerCase().includes(text));
-    setGoods(result);
-    setNum(result.length);
-  }, [text]);
-  return (
-    <>
-      <input
-        className="search"
-        type="search"
-        value={text}
-        onChange={changeValue}
-      />
-    </>
-  );
-};
+	return (
+		<div className="search">
+			<input type="search" value={text} onChange={searchByText} className="search__input"/>
+			{/*<input 
+				type="search" 
+				value={text} 
+				onChange={(e) => setText(e.target.value)}/>*/}
+			<button onClick={click}>Найти</button>
+			<hr/>
+			<div>По вашему запросу {text} найдено {quantity} подходящих товаров</div>
+		</div>
+	)
+}
 
 export default Search;

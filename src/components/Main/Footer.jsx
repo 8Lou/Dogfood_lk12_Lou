@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import Logo from "./Logo";
 const links = [
   { name: "Каталог", src: "/catalog" },
-  { name: "Избранное", src: "/" },
+  { name: "Избранное", src: "/favoritePage" },
   { name: "Корзина", src: "/" },
 ];
 

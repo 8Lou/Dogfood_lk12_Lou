@@ -1,38 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ErrorPage } from "./ErrorPage";
-import { Button } from "react-bootstrap";
-import { Back } from "react-bootstrap-icons";
+
+
+import Loader from "../components/Loader";
 
 const Product = () => {
-	const { id } = useParams()
-	const [data, setData] = useState({});
+    const [product, setProduct] = useState({});
+    const {id} = useParams();
 
-	useEffect(() => {
-		fetch(`https://api.react-learning.ru/products/${id}`, {
-			headers: {
-				"Authorization": `Bearer ${localStorage.getItem("token12")}`
-			}
-		})
-			.then(res => res.json())
-			.then(serverData => {
-				
-				setData(serverData);
-			})
-	}, [id]) //квадратные внутри круглых - точка останова - useEffect выполнить 1 раз
-
-return <>
-		<Link to={`/catalog#pro_${id}`}>Назад</Link>
-		{data.name 
-			? <>
-				<h1>{data.name}</h1>
-				<img src={data.pictures} alt={data.name} />
-			</> 
-			: <div className="info" style={{textAlign: "center"}}>
-				Товара {id} не существует<br/>или<br/>он еще не загружен
-			</div>
-		}
-	</>
+    useEffect(() => {
+        fetch(`https://api.react-learning.ru/products/${id}`, {
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("rockToken")}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (!data.err) {
+                    console.log(data);
+                    setProduct(data);
+                }
+            })
+    }, []);
+    return <>
+        { product.name 
+            ? <>
+                <h1>{product.name}</h1>
+                <img src={product.pictures} alt={product.name} />
+                <mark>{product.price}₽</mark>
+            </>
+            : <Loader/>
+        }
+    </>
 }
 
 export default Product;

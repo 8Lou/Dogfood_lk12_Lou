@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { SuitHeart, SuitHeartFill } from "react-bootstrap-icons";
-import { Card, Button } from "react-bootstrap";
 import "./style.scss";
+import { Link } from "react-router-dom";
+import { SuitHeart, SuitHeartFill, Percent } from "react-bootstrap-icons";
 
 const BsCard = ({
   discount,
@@ -13,60 +12,57 @@ const BsCard = ({
   tags,
   _id,
   user,
-  setBaseData,
+  setServerGoods,
+      img, 
 }) => {
-  const [isLike, setIsLike] = useState(likes.includes(user));
+ const [isLike, setIsLike] = useState(likes.includes(localStorage.getItem("rockId")));
 
-  const likeHandler = () => {
-    setIsLike(!isLike);
-    setBaseData((old) =>
-      old.map((el) => {
-        if (el._id === _id) {
-          isLike
-            ? (el.likes = el.likes.filter((lk) => lk !== user))
-            : el.likes.push(user);
-        }
-        return el;
-      })
-    );
-  };
+    const updLike = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        setIsLike(!isLike);
+        const token = localStorage.getItem("token");
+        fetch(`https://api.react-learning.ru/products/likes/${_id}`, {
+            method: isLike ? "DELETE" : "PUT",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                setServerGoods(function(old) {
+                    console.log(old)
+                    const arr = old.map(el => {
+                        if (el._id === _id) { 
+                            return data;
+                        } else { 
+                            return el; 
+                        }
+                    }); 
+                    return arr; 
+                })
+            })
+    }
 
-  return (
-    <Card className="pt-3 h-100" id={"pro_" + _id}>
-      <span className="card-like" onClick={likeHandler}>
-        {isLike ? <SuitHeartFill /> : <SuitHeart />}
-      </span>
-      <Card.Img
-        variant="top"
-        src={pictures}
-        alt={name}
-        className="align-self-center w-auto"
-        height="100"
-      />
-      <Card.Body className="d-flex flex-column">
-        <Card.Title as="h4">{price} ₽</Card.Title>
-        <Card.Text className="text-secondary fs-5 flex-grow-1">
-          {name}
-        </Card.Text>
-        <Button variant="warning" className="w-100">
-          Купить
-        </Button>
-      </Card.Body>
-      {/* <Link to={`/product/${_id}`} className="card-link"></Link> */}
-      <Link to={`/product/${_id}`} className="card-link"></Link>
-    </Card>
-  );
-};
+    return <Link className="card" to={`/product/${_id}`}>
+        {discount > 0 && <span className="card__discount"><Percent/> {discount}</span>}
+        <span className="card__like" onClick={updLike}>
+            {isLike ? <SuitHeartFill /> : <SuitHeart />}
+        </span>
+        <img src={img} alt="Изображение" className="card__img"/>
+        <span className="card__name">{name}</span>
+        <span className="card__price">
+            {discount > 0 
+                ? <>
+                    <del>{price}</del>
+                    &nbsp;
+                    {price * (100 - discount) / 100}
+                </>
+                : price
+            } 
+        &nbsp;₽</span>
+        <button className="card__btn">В корзину</button>
+    </Link>
+}
 
 export default BsCard;
-
-/* <div className="card-lite" id={"pro_" + _id}>
-      <span className="card-like" onClick={likeHandler}>
-        {isLike ? <SuitHeartFill /> : <SuitHeart />}
-      </span>
-      <img src={pictures} alt={name} />
-      <h4>{price} ₽</h4>
-      <p>{name}</p>
-      <Button variant="info">Купить</Button>
-      <Link to={`/product/${_id}`} className="card-link"></Link>
-    </div>; */

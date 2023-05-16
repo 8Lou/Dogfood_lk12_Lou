@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import "../../src/index.css";
+import "./style.scss"
 import { Folder2Open } from "react-bootstrap-icons";
 
 const Home = ({ user, setActive, pictures }) => {
   return <>
       <span className="welcome">Наелся и спит...</span>
       <div className="home__img">
-        <img src="https://i.gifer.com/S6jK.gif" alt="picture" />
+        <img src="https://i.gifer.com/S6jK.gif" alt="home__picture" />
       </div>
       <span className="welcome">
         Добро пожаловать в магазин "Собачье счастье"
@@ -21,8 +21,8 @@ const Home = ({ user, setActive, pictures }) => {
         {!user && (
           <>
             <span className="info-link" onClick={() => setActive(true)}>
-              Необходима авторизация, для доступа
-            </span>
+{/*               Необходима авторизация, для доступа
+ */}            </span>
           </>
         )}
       </div>

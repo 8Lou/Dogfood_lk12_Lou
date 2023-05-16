@@ -1,20 +1,21 @@
 .search {
-  width: 300px;
-  height: 30px;
-  border-radius: 18px;
-  border: 1px solid #aaecfc;
-  outline: none;
-  background-color: inherit;
-  padding: 4px 8px;
-  box-sizing: border-box;
   font-size: 1rem;
+	background-color: white;
+	color: #88a3e2;
+	border-radius: 4px;
+	padding: 15px 50px;
 }
-
 .search:focus {
   background-color: #88a3e2;
 }
-
-.sort-cards {
+.search__input {
+border: 1px solid #88a3e2;
+border-radius: 18px;
+width: 300px;
+height: 25px;
+margin: 5px;
+}
+.sort-goods {
   background: #aaecfc;
   box-shadow: 0px 2px 4px rgba(40, 41, 61, 0.04),
     0px 8px 16px rgba(96, 97, 112, 0.16);

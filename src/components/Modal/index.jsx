@@ -2,119 +2,140 @@ import { useState } from "react";
 import { XLg } from "react-bootstrap-icons"; /* иконка закрытия модалки */
 import "./style.css";
 
+const Modal = ({active, setActive, setUser}) => {
+	const [auth, setAuth] = useState(true);
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [pwd, setPwd] = useState("");
+	const [testPwd, setTestPwd] = useState("");
 
-const Modal = ({ isActive, setIsActive, setUser }) => {
-  const [isReg, setIsReg] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [pwd, setPwd] = useState("");
-  const [pwd2, setPwd2] = useState("");
+	const testAccess = {
+		color: pwd === testPwd ? "red" : "green"
+	}
 
-  const changeForm = (e) => {
-    e.preventDefault();
-    setIsReg(!isReg);
-    clearForm();
-  };
-  const clearForm = () => {
-    setName("");
-    setEmail("");
-    setPwd("");
-    setPwd2("");
-  };
+	const switchAuth = (e) => {
+		e.preventDefault();
+		setAuth(!auth);
+		clearForm();
+	}
+	
+	const clearForm = () => {
+		setName("");
+		setEmail("");
+		setPwd("");
+		setTestPwd("");
+	}
 
-  const handleForm = async (e) => {
-    e.preventDefault();
-    const body = {
-      email: email,
-      password: pwd,
-    };
-    if (isReg) {
-      body.name = name;
-      body.group = "12";
-    } /* при удачной регистрации */
+	const sendForm = async (e) => {
+		e.preventDefault();
+		let body = {
+			email: email,
+			password: pwd
+		}
+		if (!auth) {
+			body.name = name;
+			body.group = "group-12";
+		}
+		let log = "https://api.react-learning.ru/signin";
+		let reg = "https://api.react-learning.ru/signup";
 
-    /* console.log(body); */
-
-    // `https://api.react-learning.ru/signup`
-    // {
-    // 	group: "12",
-    // 	password: "123",
-    // 	email: "lou8@mail.ru"
-    // }
-
-		const path = `https://api.react-learning.ru/${isReg ? "signup" : "signin"}`;
-		const res = await fetch(path, {
+		let res = await fetch(auth ? log : reg, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify(body)
 		})
-		const data = await res.json();
-		/* console.log(data); */
-		if (isReg) {
-			if (data?._id) {
-				setIsReg(false);
+		let data = await res.json()
+		if (!data.err) {
+			if (!auth) {
+				delete body.name;
+				delete body.group
+				let resLog = await fetch(log, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(body)
+				})
+				let dataLog = await resLog.json()
+				if (!dataLog.err) {
+					localStorage.setItem("rockUser", dataLog.data.name);
+					localStorage.setItem("rockToken", dataLog.token);
+					localStorage.setItem("rockId", dataLog.data._id);
+					clearForm();
+					setActive(false);
+					setUser(dataLog.data.name);
+				}
+			} else {
+				if (!data.err) {
+					console.log(data);
+					localStorage.setItem("rockUser", data.data.name);
+					localStorage.setItem("rockToken", data.token);
+					localStorage.setItem("rockId", data.data._id);
+					clearForm();
+					setActive(false);
+					setUser(data.data.name);
+				}
 			}
-		} else {
-			if (data && data.token) {
-				localStorage.setItem("token12", data.token);
-			}
-			if (data?.data) {
-				localStorage.setItem("user12", data.data.name);
-				setUser(data.data.name);
-				localStorage.setItem("user12-id", data.data._id);
-				clearForm();
-				setIsActive(false);
-			}
+
 		}
-}
-
-	const st = {
-		display: isActive ? "flex" : "none"
+		
 	}
-
-	return <div className="modal-wrapper" style={st}>
+	return <div 
+		className="modal-wrapper"
+		style={{display: active ? "flex" : "none"}}
+	>
 		<div className="modal">
-			<button 
-				className="modal-close" 
-				onClick={(e) => setIsActive(false)}
-			>
-				<XLg/>
-			</button>
-			<h3>{isReg ? "Регистрация" : "Вход"}</h3>
-			<form onSubmit={handleForm}>
-				{isReg && <input 
-					type="text" 
-					placeholder="Ваше имя" 
-					value={name}
-					onChange={(e) => setName(e.target.value)}
-				/>}
-				<input 
-					type="email" 
-					placeholder="Ваш электронный адрес"
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-				/>
-				<input 
-					type="password" 
-					placeholder="Ваш пароль"
-					value={pwd}
-					onChange={(e) => setPwd(e.target.value)}
-				/>
-				{isReg && <input 
-					type="password" 
-					placeholder="Повторите пароль"
-					value={pwd2}
-					onChange={(e) => setPwd2(e.target.value)}
-				/>}
-				<div className="modal-btns">
-					{/* Если пароли не равны - кнопка не активна */}
-					<button type="submit" disabled={isReg && (!pwd || pwd !== pwd2)}>
-						{isReg ? "Зарегистрироваться" : "Войти"}
+			<button onClick={() => setActive(false)}>Закрыть</button>
+			<h3>Авторизация</h3>
+			<form onSubmit={sendForm}>
+				{!auth && <label>
+					Имя пользователя
+					<input 
+						type="text" 
+						value={name} 
+						onChange={(e) => setName(e.target.value)}
+					/>
+				</label>}
+				<label>
+					Электронный адрес
+					<input 
+						type="email" 
+						value={email} 
+						onChange={(e) => setEmail(e.target.value)}
+					/>
+				</label>
+				<label>
+					Пароль
+					<input 
+						type="password" 
+						value={pwd} 
+						onChange={(e) => setPwd(e.target.value)}
+					/>
+				</label>
+				{!auth && <label>
+					Повторить пароль
+					<input 
+						type="password" 
+						value={testPwd} 
+						onChange={(e) => setTestPwd(e.target.value)}
+						style={{border: "1px solid", backgroundColor: "blueviolet"}}
+					/>
+				</label>}
+				<div className="modal-ctl">
+					<button 
+						className="modal-btn"
+						disabled={!auth && (!pwd || pwd !== testPwd)}
+					>
+						{auth ? "Войти" : "Создать аккаунт" }
 					</button>
-					<a className="modal-link" onClick={changeForm}>
-						{isReg ? "Войти" :"Зарегистрироваться"}
+					<a 
+						href=""
+						className="modal-link"
+						onClick={switchAuth}
+					>
+						{auth ? "Регистрация" : "Войти"}
 					</a>
 				</div>
 			</form>

@@ -2,12 +2,10 @@
   "name": "Lou_B00tS",
   "version": "0.1.0",
   "dependencies": {
-    "bootstrap": "^5.2.3",
     "eslint": "^8.40.0",
     "eslint-plugin-disable": "^2.0.3",
     "hooks": "^0.3.2",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.7.4",
     "react-bootstrap-icons": "^1.10.3",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",

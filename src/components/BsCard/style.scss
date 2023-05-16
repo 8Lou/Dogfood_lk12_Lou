@@ -1,4 +1,4 @@
-.card-lite {
+.card {
   background-color: #b7a6f6;
   display: grid;
   gap: 15px;
@@ -12,49 +12,29 @@
   overflow: hidden;
 
 
-&:hover {
-  transition: 0.1s ease-in-out;
-  box-shadow: 0px 0px 10px 5px rgba(82, 243, 243, 0.6);
+  &:hover {
+    transition: 0.1s ease-in-out;
+    box-shadow: 0px 0px 10px 5px rgba(82, 243, 243, 0.6);
+  }
+
+  &__h4 {
+    color: #88a3e2;
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  &__p {
+    margin: 0;
+  }
+
+  &__img {
+    border-radius: 6px;
+    height: 100px;
+    justify-self: center;
+  }
 }
 
-&__h4 {
-  color: #88a3e2;
-  font-size: 1.2em;
-  font-weight: 600;
-  margin: 0;
-}
-
-&__p {
-  margin: 0;
-}
-
-&__img {
-  border-radius: 6px;
-  height: 200px;
-  justify-self: end;
-}
-}
-/* .btn {
-  color: #c37edb;
-  height: 35px;
-  border-radius: 20px;
-  background-color: #fc8dca;
-  outline: none;
-  border: none;
-  font-size: 1em;
-  font-weight: 600;
-} */
-
-/* .btn:hover {
-  color: #fc8dca;
-  border: 1px solid#C37EDB;
-  background-color: inherit;
-} */
-
-/* .card-lite button {
-  position: relative;
-  z-index: 1;
-} */
 .card-link {
   position: absolute;
   top: 0;
@@ -62,6 +42,7 @@
   right: 0;
   bottom: 0;
 }
+
 .card-like {
   position: absolute;
   top: 10px;
@@ -69,4 +50,16 @@
   cursor: pointer;
   z-index: 1;
   color: red;
+  padding: 4px;
+}
+
+.card__discount {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: pink;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
 }

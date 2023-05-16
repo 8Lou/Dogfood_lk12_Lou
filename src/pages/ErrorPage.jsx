@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 /* import "./index.css"; */
-import { Button } from "react-bootstrap";
+import ButtonBack from "./ButtonBack";
 
 export const ErrorPage = () => {
   return (
     <div className="err__container">
       <Link to="/" className="btn__home">
-        <Button variant="warning">Hа главную</Button>
+        <ButtonBack />
       </Link>
       <div className="err__image">
         <img

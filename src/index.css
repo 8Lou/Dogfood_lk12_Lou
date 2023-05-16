@@ -15,6 +15,8 @@
 
 body {
   background-color: #b7a6f6;
+  color: #aaecfc;
+  font-weight: 600;
   font-family: sans-serif;
 }
 
@@ -46,11 +48,13 @@ p {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  padding: 30px;
+  padding: 10px;
   align-content: flex-start;
   /* правило по высоте фикс */
 }
-
+.container .search {
+  grid-column-end: span 4;
+}
 .search-result {
   grid-column-end: span 3;
   /*т к 3 элемента */
