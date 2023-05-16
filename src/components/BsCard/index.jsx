@@ -31,7 +31,6 @@ const BsCard = ({
             .then(res => res.json())
             .then(data => {
                 setServerGoods(function(old) {
-                    console.log(old)
                     const arr = old.map(el => {
                         if (el._id === _id) { 
                             return data;

@@ -4,7 +4,6 @@ import logoImg from "../../assents/images/logo.png";
 
 const Logo = () => (
   <Link className="logo" to="/catalog">
-    {/* <span className="logo__pic"></span> */}
     <img src={logoImg} alt="B00tS" />
     <span className="logo__text">B00tS</span>
   </Link>

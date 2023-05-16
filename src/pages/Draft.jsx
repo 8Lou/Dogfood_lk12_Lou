@@ -1,8 +1,8 @@
-/* import { useState } from "react";
+import { useState } from "react";
 import Search from "../components/Search";
 import BsCard from "../components/BsCard";
-import Promo from "../components/Promo/Promo";
-import cardsData from "../assets/data"; // data.json
+import Promo from "../components/example/Example";
+import cardsData from "../assents/data.json";
 
 const sizes = ["sm", "lg", "md"];
 const adds = [];
@@ -37,4 +37,4 @@ const Draft = () => {
     )
 }
 
-export default Draft; */
+export default Draft;

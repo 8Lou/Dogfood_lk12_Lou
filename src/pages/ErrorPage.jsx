@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-/* import "./index.css"; */
+import "./index.scss";
 import ButtonBack from "./ButtonBack";
 
 export const ErrorPage = () => {
