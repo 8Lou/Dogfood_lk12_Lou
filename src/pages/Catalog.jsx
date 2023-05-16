@@ -1,7 +1,9 @@
 import BsCard from "../components/BsCard"
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AppContext } from "../context/AppContext";
 
-const Catalog = ({goods, setServerGoods}) => {
+const Catalog = () => {
+    const { goods, setServerGoods } = useContext(AppContext)
     const [sort, setSort] = useState(null)
     const filterSt = {
         gridColumnEnd: "span 4",

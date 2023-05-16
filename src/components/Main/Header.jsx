@@ -10,9 +10,11 @@ import {
 } from "react-bootstrap-icons";
 
 /* import Search from "../Search"; */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
-const Header = ({user, setModalActive, serverGoods}) => {
+const Header = () => {
+    const { user, setModalActive, serverGoods } = useContext(AppContext)
     const [likeCnt, setLikeCnt] = useState(0);
     const [cartCnt, setCartCnt] = useState(0);
     useEffect(() => {
