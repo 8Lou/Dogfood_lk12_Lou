@@ -1,0 +1,21 @@
+.primary {
+    background-color: #fc8dca;
+}
+
+.secondary {
+    background-color: #88a3e2;
+}
+
+.btn {
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 55px;
+    padding: 10px 18px;
+}
+
+.btn:hover {
+    border: none;
+    background-color: #88a3e2;
+    /* opacity: 0.5; */
+}
