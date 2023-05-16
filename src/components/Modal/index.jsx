@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { XLg } from "react-bootstrap-icons"; /* иконка закрытия модалки */
 import "./style.css";
+import { Button } from "../Button/Button";
 
 const Modal = ({active, setActive, setUser}) => {
 	const [auth, setAuth] = useState(true);
@@ -123,12 +124,12 @@ const Modal = ({active, setActive, setUser}) => {
 					/>
 				</label>}
 				<div className="modal-ctl">
-					<button 
+					<Button 
 						className="modal-link"
 						disabled={!auth && (!pwd || pwd !== testPwd)}
 					>
 						{auth ? "Войти" : "Создать аккаунт" }
-					</button>
+					</Button>
 					<a 
 						href=""
 						className="modal-link"

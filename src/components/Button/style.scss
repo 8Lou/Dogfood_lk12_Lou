@@ -1,5 +1,5 @@
 .primary {
-    background-color: #fc8dca;
+    background-color: pink;
 }
 
 .secondary {
@@ -7,15 +7,17 @@
 }
 
 .btn {
+    color: #88a3e2;
     border: none;
     cursor: pointer;
-    font-size: 16px;
-    border-radius: 55px;
+    font-size: 14px;
+    border-radius: 8px;
     padding: 10px 18px;
 }
 
 .btn:hover {
+    color: pink;
     border: none;
-    background-color: #88a3e2;
+    background-color: #aaecfc;
     /* opacity: 0.5; */
 }
