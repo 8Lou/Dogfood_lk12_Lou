@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 
 
 import Loader from "../components/Loader";
+import ButtonBack from "./ButtonBack";
 
 const Product = () => {
     const [product, setProduct] = useState({});
@@ -17,7 +18,6 @@ const Product = () => {
             .then(res => res.json())
             .then(data => {
                 if (!data.err) {
-                    console.log(data);
                     setProduct(data);
                 }
             })
@@ -31,6 +31,7 @@ const Product = () => {
             </>
             : <Loader/>
         }
+        <ButtonBack />
     </>
 }
 

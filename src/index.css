@@ -94,23 +94,3 @@ p {
   align-items: center;
   min-height: 400px;
 }
-/*  для контейнера с картами */
-/* .promo__block {
-  border: 1px solid;
-  border-radius: 8px;
-  position: relative; /* родитель */
-/*}*/
-/* внутр.отступы текста */
-/* .promo__text {
-  padding: 10px 20px;
-}
-/* картинки карт */
-/* .promo__img {
-  background-image: radial-gradient(circle, orange, forestgreen, transparent); /* с прозрачным фоном */
-/* width: 40px;
-  height: 40px;
-  position: absolute; /* ребь */
-/* background-size: contain;
-  right: 20px;
-  top: calc(50% - 20px); /* из высоты вычесть выс эл-та и делить на 2 */
-/*} */

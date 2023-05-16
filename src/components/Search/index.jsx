@@ -18,7 +18,6 @@ const Search = ({arr, upd}) => {
 	let n = 1;
 	const click = () => {
 		updateCount(count + 1); // новое состояние
-		console.log("count", count);
 	}
 	const searchByText = (e) => {
 		let val = e.target.value;
@@ -27,7 +26,6 @@ const Search = ({arr, upd}) => {
 		let result = arr.filter(el => new RegExp(val, "i").test(el.name))
 		upd(result);
 		setQuantity(result.length);
-		console.log(result);
 	}
 
 	return (

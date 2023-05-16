@@ -69,7 +69,6 @@ const Modal = ({active, setActive, setUser}) => {
 				}
 			} else {
 				if (!data.err) {
-					console.log(data);
 					localStorage.setItem("rockUser", data.data.name);
 					localStorage.setItem("rockToken", data.token);
 					localStorage.setItem("rockId", data.data._id);
@@ -87,7 +86,7 @@ const Modal = ({active, setActive, setUser}) => {
 		style={{display: active ? "flex" : "none"}}
 	>
 		<div className="modal">
-			<button onClick={() => setActive(false)}>Закрыть</button>
+			<div onClick={() => setActive(false)}><XLg /></div>
 			<h3>Авторизация</h3>
 			<form onSubmit={sendForm}>
 				{!auth && <label>
@@ -125,7 +124,7 @@ const Modal = ({active, setActive, setUser}) => {
 				</label>}
 				<div className="modal-ctl">
 					<button 
-						className="modal-btn"
+						className="modal-link"
 						disabled={!auth && (!pwd || pwd !== testPwd)}
 					>
 						{auth ? "Войти" : "Создать аккаунт" }

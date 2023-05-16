@@ -22,15 +22,19 @@ const Catalog = ({goods, setServerGoods}) => {
     return <div className="container">
         <div style={filterSt}>
             <button 
-                style={{backgroundColor: sort === "up" ? "orange" : "white"}}
+                style={{color: '#88a3e2', backgroundColor: sort === "up" ? "#fc8dca" : "#aaecfc"}}
                 onClick={() => sortHandler("up")}
             >По возростанию цены</button>
             <button
-                style={{backgroundColor: sort === "down" ? "orange" : "white"}}
+                style={{color: '#88a3e2', backgroundColor: sort === "down" ? "#fc8dca" : "#aaecfc"}}
                 onClick={() => sortHandler("down")}
             >По убыванию цены</button>
-            <button>Новинки</button>
-            <button>Скидки</button>
+            <button 
+                style={{color: '#88a3e2', backgroundColor: sort === "up" ? "#fc8dca" : "#aaecfc"}}
+                onClick={() => sortHandler("up")}>Новинки</button>
+            <button 
+                style={{color: '#88a3e2', backgroundColor: sort === "up" ? "#fc8dca" : "#aaecfc"}}
+                onClick={() => sortHandler("up")}>Скидки</button>
         </div>
         {goods.map(g => <BsCard 
             key={g._id} 

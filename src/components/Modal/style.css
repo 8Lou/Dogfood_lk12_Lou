@@ -49,12 +49,12 @@ h3 {
   gap: 10px;
 }
 
-.modal-btns {
+/* .modal-btns {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* 50/50 2 раза по 1 */
+  /* 50/50 2 раза по 1
   font-size: 12px;
-}
+ */
 
 .modal-link {
   border: 1px solid;

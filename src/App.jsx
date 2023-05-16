@@ -27,7 +27,6 @@ const App = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
                     setServerGoods(data.products.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
                 })
         }
