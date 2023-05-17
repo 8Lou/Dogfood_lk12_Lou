@@ -1,11 +1,10 @@
 header {
   background: #88a3e2;
   color: #aaecfc;
-  padding: 15px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 20px;
+  padding: 10px 20px;
   flex-wrap: wrap;
   gap: 10px;
 }
@@ -38,12 +37,13 @@ footer {
   display: flex;
   align-items: center;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.3em;
 }
 
 .logo img {
+  color: #aaecfc;
   margin: 0 10px 0 50px;
-  height: 30px;
+  height: 50px;
 }
 
 .footer__copy {

@@ -33,6 +33,16 @@
     height: 150px;
     justify-self: normal;
   }
+
+  &__name {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  &__price {
+    font-size: 16px;
+    font-weight: 600;
+  }
 }
 
 .card-link {
@@ -57,7 +67,7 @@
   position: absolute;
   top: 40px;
   left: 10px;
-  background-color: pink;
+  background-color: #88a3e2;
   padding: 4px;
   border-radius: 4px;
   display: flex;

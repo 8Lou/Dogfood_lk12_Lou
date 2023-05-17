@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import Logo from "./Logo";
 import {
-  Heart,
+  /* Heart, */
   Cart4,
   Star,
   PersonCircle,
@@ -30,10 +30,10 @@ const Header = () => {
         {/* <div className="search"></div> */}
         <nav className="header__menu">
             {user && <>
-                <Link to="/catalog" title="Каталог" className="badge-el">
-                    <Heart/>
+                {/* <Link to="/catalog" title="Каталог" className="badge-el">
+                    <Heart/> */}
                     {/* <span className="badge-item">{serverGoods.length}</span> */}
-                </Link>
+                {/* </Link> */}
                 <Link to="/favorites" title="Избранное" className="badge-el">
                     <Star/>
                     <span className="badge-item">{likeCnt}</span>
