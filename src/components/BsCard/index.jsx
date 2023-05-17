@@ -22,7 +22,7 @@ const BsCard = ({
         e.stopPropagation();
         e.preventDefault();
         setIsLike(!isLike);
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("rockToken");
         fetch(`https://api.react-learning.ru/products/likes/${_id}`, {
             method: isLike ? "DELETE" : "PUT",
             headers: {
