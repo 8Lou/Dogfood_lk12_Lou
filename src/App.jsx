@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect} from 'react';
 import { Routes, Route } from "react-router-dom";
 import Modal from "./components/Modal/index";
 import { Header, Footer } from "./components/Main"; // index.jsx
@@ -9,6 +9,7 @@ import Product from "./pages/Product";
 import FavoritePage from "./pages/FavoritePage";
 import Search from "./components/Search";
 import Draft from "./pages/Draft";
+import { AppContext } from './context/AppContext';
 
 const App = () => {
     const [user, setUser] = useState(localStorage.getItem("rockUser"));
@@ -17,6 +18,15 @@ const App = () => {
     const [serverGoods, setServerGoods] = useState([]);
     const [goods, setGoods] = useState(serverGoods);
     const [modalActive, setModalActive] = useState(false);
+
+/* const config = {
+    headers: {
+        "Content-Type": "application/json",
+        "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ1NzNlZTMyOTFkNzkwYjMwNzNkOGQiLCJncm91cCI6IjEyIiwiaWF0IjoxNjgyMzIwMTUwLCJleHAiOjE3MTM4NTYxNTB9.JAgKY9HDB1n6OXtsYFOngnu5K8SMjmyQAMCOtLFK0Ao"
+    },
+    baseUrl: "https://api.react-learning.ru/products",
+    baseUserUrl: "https://api.react-learning.ru/users"
+} */
 
     useEffect(() => {
         if (token) {
@@ -29,6 +39,7 @@ const App = () => {
                 .then(data => {
                     setServerGoods(data.products.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
                 })
+                .catch(error => console.error("Что-то пошло не так...(", error))
         }
     }, [token])
 
@@ -48,13 +59,22 @@ const App = () => {
         }
     }, [user]);
 
+      const Context = {
+    setModalActive,
+    serverGoods,
+    user,
+    setUser,
+    goods,
+modalActive,
+goods,
+userId,
+setServerGoods,
+  }
+
     return (
         <>
-            <Header 
-                user={user} 
-                setModalActive={setModalActive}
-                serverGoods={serverGoods}
-            />
+      <AppContext.Provider value={Context}>
+            <Header />
             <main>
                 <Search arr={serverGoods} upd={setGoods}/>
                 <Routes>
@@ -81,6 +101,7 @@ const App = () => {
                 setActive={setModalActive}
                 setUser={setUser}
             />
+      </AppContext.Provider >
         </>
     )
 }

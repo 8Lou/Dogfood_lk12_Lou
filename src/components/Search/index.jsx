@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./style.css";
+import { Button } from "../Button/Button";
 
 const Search = ({arr, upd}) => {
 	const [text, setText] = useState("");
@@ -35,7 +36,7 @@ const Search = ({arr, upd}) => {
 				type="search" 
 				value={text} 
 				onChange={(e) => setText(e.target.value)}/>*/}
-			<button onClick={click}>Найти</button>
+			<Button onClick={click}>Найти</Button>
 			<hr/>
 			<div>По вашему запросу {text} найдено {quantity} подходящих товаров</div>
 		</div>

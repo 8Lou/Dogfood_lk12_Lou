@@ -1,0 +1,23 @@
+.primary {
+    background-color: pink;
+}
+
+.secondary {
+    background-color: #88a3e2;
+}
+
+.btn {
+    color: #88a3e2;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 8px;
+    padding: 10px 18px;
+}
+
+.btn:hover {
+    color: pink;
+    border: none;
+    background-color: #aaecfc;
+    /* opacity: 0.5; */
+}

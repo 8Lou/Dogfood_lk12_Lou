@@ -1,7 +1,10 @@
 import BsCard from "../components/BsCard"
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AppContext } from "../context/AppContext";
+import { Button } from "../components/Button/Button";
 
-const Catalog = ({goods, setServerGoods}) => {
+const Catalog = () => {
+    const { goods, setServerGoods } = useContext(AppContext)
     const [sort, setSort] = useState(null)
     const filterSt = {
         gridColumnEnd: "span 4",
@@ -21,20 +24,20 @@ const Catalog = ({goods, setServerGoods}) => {
     }
     return <div className="container">
         <div style={filterSt}>
-            <button 
+            <Button 
                 style={{color: '#88a3e2', backgroundColor: sort === "up" ? "#fc8dca" : "#aaecfc"}}
                 onClick={() => sortHandler("up")}
-            >По возростанию цены</button>
-            <button
+            >По возростанию цены</Button>
+            <Button
                 style={{color: '#88a3e2', backgroundColor: sort === "down" ? "#fc8dca" : "#aaecfc"}}
                 onClick={() => sortHandler("down")}
-            >По убыванию цены</button>
-            <button 
+            >По убыванию цены</Button>
+            <Button 
                 style={{color: '#88a3e2', backgroundColor: sort === "up" ? "#fc8dca" : "#aaecfc"}}
-                onClick={() => sortHandler("up")}>Новинки</button>
-            <button 
+                onClick={() => sortHandler("up")}>Новинки</Button>
+            <Button 
                 style={{color: '#88a3e2', backgroundColor: sort === "up" ? "#fc8dca" : "#aaecfc"}}
-                onClick={() => sortHandler("up")}>Скидки</button>
+                onClick={() => sortHandler("up")}>Скидки</Button>
         </div>
         {goods.map(g => <BsCard 
             key={g._id} 

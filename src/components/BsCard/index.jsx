@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
 import { SuitHeart, SuitHeartFill, Percent } from "react-bootstrap-icons";
+import { Button } from "../Button/Button";
 
 const BsCard = ({
   discount,
@@ -21,7 +22,7 @@ const BsCard = ({
         e.stopPropagation();
         e.preventDefault();
         setIsLike(!isLike);
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("rockToken");
         fetch(`https://api.react-learning.ru/products/likes/${_id}`, {
             method: isLike ? "DELETE" : "PUT",
             headers: {
@@ -60,7 +61,7 @@ const BsCard = ({
                 : price
             } 
         &nbsp;₽</span>
-        <button className="card__btn">В корзину</button>
+        <Button className="card__btn">В корзину</Button>
     </Link>
 }
 

@@ -21,6 +21,7 @@ const Product = () => {
                     setProduct(data);
                 }
             })
+            .catch(error => console.error("Что-то пошло не так...(", error))
     }, []);
     return <>
         { product.name 

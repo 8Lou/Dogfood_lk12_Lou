@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import Logo from "./Logo";
 import {
-  Heart,
+  /* Heart, */
   Cart4,
   Star,
   PersonCircle,
@@ -10,9 +10,11 @@ import {
 } from "react-bootstrap-icons";
 
 /* import Search from "../Search"; */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
-const Header = ({user, setModalActive, serverGoods}) => {
+const Header = () => {
+    const { user, setModalActive, serverGoods } = useContext(AppContext)
     const [likeCnt, setLikeCnt] = useState(0);
     const [cartCnt, setCartCnt] = useState(0);
     useEffect(() => {
@@ -28,10 +30,10 @@ const Header = ({user, setModalActive, serverGoods}) => {
         {/* <div className="search"></div> */}
         <nav className="header__menu">
             {user && <>
-                <Link to="/catalog" title="Каталог" className="badge-el">
-                    <Heart/>
+                {/* <Link to="/catalog" title="Каталог" className="badge-el">
+                    <Heart/> */}
                     {/* <span className="badge-item">{serverGoods.length}</span> */}
-                </Link>
+                {/* </Link> */}
                 <Link to="/favorites" title="Избранное" className="badge-el">
                     <Star/>
                     <span className="badge-item">{likeCnt}</span>
