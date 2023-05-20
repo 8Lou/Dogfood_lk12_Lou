@@ -3,11 +3,10 @@
 	background-color: white;
 	color: #88a3e2;
 	border-radius: 4px;
-	padding: 15px 50px;
+	padding: 10px 60px;
 }
-.search:focus {
-  background-color: #88a3e2;
-  border: none;
+.search__input:focus {
+  outline: none
 }
 .search__input {
 border: 1px solid #88a3e2;

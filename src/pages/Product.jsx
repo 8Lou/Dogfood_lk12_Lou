@@ -28,7 +28,7 @@ const Product = () => {
             ? <>
                 <h1>{product.name}</h1>
                 <img src={product.pictures} alt={product.name} />
-                <mark>{product.price}₽</mark>
+                <mark className="product__mark">{product.price}₽</mark>
             </>
             : <Loader/>
         }
