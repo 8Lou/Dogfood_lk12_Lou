@@ -32,11 +32,7 @@ const Search = ({arr, upd}) => {
 	return (
 		<div className="search">
 			<input type="search" value={text} onChange={searchByText} className="search__input"/>
-			{/*<input 
-				type="search" 
-				value={text} 
-				onChange={(e) => setText(e.target.value)}/>*/}
-			<Button onClick={click}>Найти</Button>
+			{/* <Button onClick={click}>Найти</Button> */}
 			<hr/>
 			<div>По вашему запросу {text} найдено {quantity} подходящих товаров</div>
 		</div>
