@@ -9,7 +9,7 @@ import Product from "./pages/Product";
 import FavoritePage from "./pages/FavoritePage";
 import Search from "./components/Search";
 import Draft from "./pages/Draft";
-import { AppContext } from './context/AppContext';
+import AppContext from './context/AppContext';
 
 const App = () => {
     const [user, setUser] = useState(localStorage.getItem("rockUser"));
@@ -18,6 +18,17 @@ const App = () => {
     const [serverGoods, setServerGoods] = useState([]);
     const [goods, setGoods] = useState(serverGoods);
     const [modalActive, setModalActive] = useState(false);
+    // let key = "6c7fc5e6a754429ab47063a1b1a54774"
+    //"https://newsapi.org/v2/everything?apiKey=6c7fc5e6a754429ab47063a1b1a54774&q=dogs"
+    const [news, setNews] = useState([]);
+    useEffect(() => {
+        fetch("https://newsapi.org/v2/everything?q=животные&sources=lenta&apiKey=6c7fc5e6a754429ab47063a1b1a54774")
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setNews(data.articles)
+            })
+    }, [])
 
 /* const config = {
     headers: {
@@ -67,6 +78,8 @@ const App = () => {
     goods,
 modalActive,
 goods,
+setGoods,
+news,
 userId,
 setServerGoods,
   }
@@ -74,13 +87,18 @@ setServerGoods,
     return (
         <>
       <AppContext.Provider value={Context}>
-            <Header />
+            <Header 
+                user={user} 
+                setModalActive={setModalActive}
+                serverGoods={serverGoods}
+            />
             <main>
                 <Search arr={serverGoods} upd={setGoods}/>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
+                    <Route path="/home" element={<Home/>}/>
                     <Route path="/catalog" element={<Catalog 
-                        goods={goods} 
+                        /* goods={goods}  */
                         setServerGoods={setServerGoods}
                     />}/>
                     <Route path="/favorites" element={<FavoritePage 
@@ -90,7 +108,7 @@ setServerGoods,
                     />}/>
                     <Route path="/draft" element={<Draft/>}/>
                     <Route path="/profile" element={
-                        <Profile user={user} setUser={setUser} color="yellow"/>
+                        <Profile user={user} setUser={setUser} color="pink"/>
                     }/>
                     <Route path="/product/:id" element={<Product/>}/>
                 </Routes>

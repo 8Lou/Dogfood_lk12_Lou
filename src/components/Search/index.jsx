@@ -1,18 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./style.css";
 import { Button } from "../Button/Button";
+import AppContex from "../../context/AppContext";
 
-const Search = ({arr, upd}) => {
+const Search = ({arr/* , upd */}) => {
+	const {setGoods} = useContext(AppContex);
 	const [text, setText] = useState("");
 	const [quantity, setQuantity] = useState(arr.length);
 	const [count, updateCount] = useState(0);
 	useEffect(() => {
 		if (text) {
 			let result = arr.filter(el => new RegExp(text, "i").test(el.name))
-			upd(result);
+			/* upd(result); */
 			setQuantity(result.length);
 		} else {
-			upd(arr);
+			/* upd(arr); */
 			setQuantity(arr.length)
 		}
 	}, [arr]);
@@ -25,7 +27,8 @@ const Search = ({arr, upd}) => {
 		setText(val);
 		// let result = arr.filter(el => el.name.toLowerCase().includes(val.toLowerCase()));
 		let result = arr.filter(el => new RegExp(val, "i").test(el.name))
-		upd(result);
+		/* upd(result); */
+		setGoods(result)
 		setQuantity(result.length);
 	}
 
@@ -34,7 +37,7 @@ const Search = ({arr, upd}) => {
 			<input type="search" value={text} onChange={searchByText} className="search__input"/>
 			{/* <Button onClick={click}>Найти</Button> */}
 			<hr/>
-			<div>По вашему запросу {text} найдено {quantity} подходящих товаров</div>
+			<div>По вашему запросу « {text} » найдено {quantity} товаров</div>
 		</div>
 	)
 }
