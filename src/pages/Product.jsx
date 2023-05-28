@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
-
+import React, { useState, useEffect, useContext, useCallback } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 import Loader from "../components/Loader";
 import ButtonBack from "./ButtonBack";
+import AppContext from "../context/AppContext";
+import { Trash3 } from "react-bootstrap-icons";
+import Reviews from "../components/Reviews/Reviews";
 
 const Product = () => {
   const [product, setProduct] = useState({});
-    const {id} = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     fetch(`https://api.react-learning.ru/products/${id}`, {

@@ -29,7 +29,7 @@ const Advertisement = () => {
                 src={el.urlToImage}
                 alt={el.title}
                 style={{
-                    animation: "slide 2000ms linear 1"
+                    animation: "slide 3000ms linear 1"
                 }}
             />)}
         </div>

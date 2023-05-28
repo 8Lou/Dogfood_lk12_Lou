@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Modal from "./components/Modal/index";
 import { Header, Footer } from "./components/Main"; // index.jsx
@@ -16,7 +16,7 @@ const App = () => {
   const [token, setToken] = useState(localStorage.getItem("rockToken"));
   const [userId, setUserId] = useState(localStorage.getItem("rockId"));
   const [serverGoods, setServerGoods] = useState([]);
-  const [goods, setGoods] = useState(serverGoods);
+  const [goods, setGoods] = useState(serverGoods);  
   const [modalActive, setModalActive] = useState(false);
   // let key = "6c7fc5e6a754429ab47063a1b1a54774"
   //"https://newsapi.org/v2/everything?apiKey=6c7fc5e6a754429ab47063a1b1a54774&q=dogs"
@@ -52,7 +52,7 @@ const App = () => {
         })
                 .catch(error => console.error("Что-то пошло не так...(", error))
     }
-    }, [token])
+  }, [token]);
 
   useEffect(() => {
     if (!goods.length) {
@@ -62,8 +62,8 @@ const App = () => {
 
   useEffect(() => {
     if (user) {
-      setToken(localStorage.getItem("rockToken"));
-      setUserId(localStorage.getItem("rockId"));
+      setToken(localStorage.getItem(""));
+      setUserId(localStorage.getItem(""));
     } else {
       setToken("");
       setUserId("");
@@ -82,7 +82,7 @@ const App = () => {
     news,
     userId,
     setServerGoods,
-  }
+  };
 
   return (
     <>
@@ -93,35 +93,46 @@ const App = () => {
           serverGoods={serverGoods}
         />
         <main>
-                <Search arr={serverGoods} upd={setGoods}/>
+          <Search arr={serverGoods} upd={setGoods} />
           <Routes>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="/home" element={<Home/>}/>
-                    <Route path="/catalog" element={<Catalog 
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route
+              path="/catalog"
+              element={
+                <Catalog
                   /* goods={goods}  */
                   setServerGoods={setServerGoods}
-                    />}/>
-                    <Route path="/favorites" element={<FavoritePage 
+                />
+              }
+            />
+            <Route
+              path="/favorites"
+              element={
+                <FavoritePage
                   goods={goods}
                   userId={userId}
                   setServerGoods={setServerGoods}
-                    />}/>
-                    <Route path="/draft" element={<Draft/>}/>
-                    <Route path="/profile" element={
-                        <Profile user={user} setUser={setUser} color="pink"/>
-                    }/>
-                    <Route path="/product/:id" element={<Product/>}/>
+                />
+              }
+            />
+            <Route path="/draft" element={<Draft />} />
+            <Route
+              path="/profile"
+              element={<Profile user={user} setUser={setUser} color="pink" />}
+            />
+            <Route path="/product/:id" element={<Product />} />
           </Routes>
         </main>
-            <Footer/>
+        <Footer />
         <Modal
           active={modalActive}
           setActive={setModalActive}
           setUser={setUser}
         />
-      </AppContext.Provider >
+      </AppContext.Provider>
     </>
-    )
-}
+  );
+};
 
 export default App;
