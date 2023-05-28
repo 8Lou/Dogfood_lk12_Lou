@@ -10,11 +10,12 @@ import FavoritePage from "./pages/FavoritePage";
 import Search from "./components/Search";
 import Draft from "./pages/Draft";
 import AppContext from './context/AppContext';
+import { api } from "./utils/Api";
 
 const App = () => {
-  const [user, setUser] = useState(localStorage.getItem("rockUser"));
-  const [token, setToken] = useState(localStorage.getItem("rockToken"));
-  const [userId, setUserId] = useState(localStorage.getItem("rockId"));
+  const [user, setUser] = useState(localStorage.getItem("user"));
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [userId, setUserId] = useState(localStorage.getItem("id"));
   const [serverGoods, setServerGoods] = useState([]);
   const [goods, setGoods] = useState(serverGoods);  
   const [modalActive, setModalActive] = useState(false);
@@ -25,7 +26,6 @@ const App = () => {
         fetch("https://newsapi.org/v2/everything?q=животные&sources=lenta&apiKey=6c7fc5e6a754429ab47063a1b1a54774")
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setNews(data.articles)
             })
     }, [])
@@ -62,8 +62,8 @@ const App = () => {
 
   useEffect(() => {
     if (user) {
-      setToken(localStorage.getItem(""));
-      setUserId(localStorage.getItem(""));
+      setToken(localStorage.getItem("token"));
+      setUserId(localStorage.getItem("id"));
     } else {
       setToken("");
       setUserId("");
@@ -82,6 +82,8 @@ const App = () => {
     news,
     userId,
     setServerGoods,
+        token,
+        api,
   };
 
   return (

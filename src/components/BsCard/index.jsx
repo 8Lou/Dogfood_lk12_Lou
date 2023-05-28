@@ -16,13 +16,13 @@ const BsCard = ({
   setServerGoods,
       img, 
 }) => {
- const [isLike, setIsLike] = useState(likes.includes(localStorage.getItem("rockId")));
+ const [isLike, setIsLike] = useState(likes.includes(localStorage.getItem("id")));
 
     const updLike = (e) => {
         e.stopPropagation();
         e.preventDefault();
         setIsLike(!isLike);
-        const token = localStorage.getItem("rockToken");
+        const token = localStorage.getItem("token");
         fetch(`https://api.react-learning.ru/products/likes/${_id}`, {
             method: isLike ? "DELETE" : "PUT",
             headers: {
