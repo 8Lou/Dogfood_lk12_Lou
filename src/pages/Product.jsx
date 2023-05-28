@@ -17,7 +17,7 @@ const Product = () => {
 	const [revRating, setRevRating] = useState(0);
 	const [hideForm, setHideForm] = useState(true);
   const { api, userId, setServerGoods } = useContext(AppContext);
-  /* const [data, setData] = useState({}); */
+  const [data, setData] = useState({});
   const navigate = useNavigate();
   const tableInfo = [
 		{
@@ -36,11 +36,11 @@ const Product = () => {
 
 	const addReview = (e) => {
 		e.preventDefault();
-		api.setReview(product._id, {
+		api.setReview(data._id, {
 			text: revText,
 			rating: revRating
 		}).then(d => {
-			setProduct(d);
+			setData(d);
 			setRevText("");
 			setRevRating(0);
 			setHideForm(true);
@@ -48,8 +48,8 @@ const Product = () => {
 	}
 
 	const delReview = (id) => {
-		api.delReview(product._id, id).then(d => {
-			setProduct(d);
+		api.delReview(data._id, id).then(d => {
+			setData(d);
 		})
 	}
 
@@ -60,9 +60,9 @@ const Product = () => {
             }
     })
             .then(res => res.json())
-            .then(product => {
-        if (!product.err) {
-          setProduct(product);
+            .then(data => {
+        if (!data.err) {
+          setProduct(data);
         }
       })
             .catch(error => console.error("Что-то пошло не так...(", error))
@@ -70,8 +70,8 @@ const Product = () => {
 
   	const delHandler = () => {
 		api.delSingleProduct(id)
-			.then(product => {
-				console.log(product)
+			.then(data => {
+				console.log(data)
 				setServerGoods(prev => prev.filter(el => el._id !== id));
 				navigate("/catalog");
 			})
@@ -201,11 +201,12 @@ const Product = () => {
 						</div>
 					</div>}
 				</>
-				: <div>
-					<div className="info" style={{textAlign: "center"}}>
-						Товара {id} не существует<br/>или<br/>он еще не загружен
-					</div>
-				</div>
+				//: /* <div>
+				//	<div className="info" style={{textAlign: "center"}}>
+				//		Товара {id} не существует<br/>или<br/>он еще не загружен
+				//	</div>
+				//</div> */
+				: <Loader/>
 		}
 
 

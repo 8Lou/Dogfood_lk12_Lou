@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Star, StarFill } from "react-bootstrap-icons";
 import AppContext from "../../context/AppContext";
 
-export default ({ author, rating, created_at }) => {
+const Reviews = ({ author, rating, created_at }) => {
   const { authors } = useContext(AppContext);
   const person = authors.filter((a) => a._id === author)[0];
   console.log(author);
@@ -25,3 +25,4 @@ export default ({ author, rating, created_at }) => {
     </>
   );
 };
+export default Reviews;
