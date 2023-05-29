@@ -4,8 +4,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import ButtonBack from "./ButtonBack";
 import AppContext from "../context/AppContext";
-import { Trash3 } from "react-bootstrap-icons";
-import Reviews from "../components/Reviews/Reviews";
 import {Basket2, Plus} from "react-bootstrap-icons"
 import { Button } from "../components/Button/Button";
 
@@ -17,7 +15,6 @@ const Product = () => {
 	const [revRating, setRevRating] = useState(0);
 	const [hideForm, setHideForm] = useState(true);
   const { api, userId, setServerGoods } = useContext(AppContext);
-  const [data, setData] = useState({});
   const navigate = useNavigate();
   const tableInfo = [
 		{
@@ -36,11 +33,11 @@ const Product = () => {
 
 	const addReview = (e) => {
 		e.preventDefault();
-		api.setReview(data._id, {
+		api.setReview(product._id, {
 			text: revText,
 			rating: revRating
 		}).then(d => {
-			setData(d);
+			setProduct(d);
 			setRevText("");
 			setRevRating(0);
 			setHideForm(true);
@@ -48,8 +45,8 @@ const Product = () => {
 	}
 
 	const delReview = (id) => {
-		api.delReview(data._id, id).then(d => {
-			setData(d);
+		api.delReview(product._id, id).then(d => {
+			setProduct(d);
 		})
 	}
 
@@ -60,9 +57,9 @@ const Product = () => {
             }
     })
             .then(res => res.json())
-            .then(data => {
-        if (!data.err) {
-          setProduct(data);
+            .then(product => {
+        if (!product.err) {
+          setProduct(product);
         }
       })
             .catch(error => console.error("Что-то пошло не так...(", error))
@@ -70,26 +67,15 @@ const Product = () => {
 
   	const delHandler = () => {
 		api.delSingleProduct(id)
-			.then(data => {
-				console.log(data)
+			.then(product => {
+				console.log(product)
 				setServerGoods(prev => prev.filter(el => el._id !== id));
 				navigate("/catalog");
 			})
 	}
 
-    return <>
-        {/* { product.name 
-            ? <>
-          <h1>{product.name}</h1>
-          <img src={product.pictures} alt={product.name} />
-          <mark className="product__mark">{product.price}₽</mark>
-        	</>
-			            : <Loader/>
-        } */}
+    return <div className="product__container">
       <ButtonBack />
-
-
-
 {product.name
 				? <>
 					<div>
@@ -99,20 +85,20 @@ const Product = () => {
 						<h1>{product.name}</h1>
 					</div>
 					<div>
-						<img src={product.pictures} alt={product.name} className="w-100"/>
+						<img src={product.pictures} alt={product.name} className="product__picture"/>
 					</div>
-					<div className=''>
+					<mark>Обычная цена: {product.price}₽</mark>
+					<div className={`${product.discount ? "text-danger" : "text-secondary"} product__mark`}>{`Цена со скидкой: `}
 						{Math.ceil(product.price * (100 - product.discount) / 100)} ₽
-					</div>
+					</div>					
 					<div>
 						<div>
 							<tbody>
 								{tableInfo.map((el, i) => <tr key={i}>
-									<th className="fw-normal text-secondary small w-25" >{el.text}</th>
+									<th className="" >{el.text}</th>
 									<td>{el.name === "author"
 										? <>
-											<span className="me-3">Имя: {product[el.name].name}</span>
-											<span>Адрес: {product[el.name].email}</span>
+											<span className="">Имя: {product[el.name].name}<br/>Адрес: {product[el.name].email}</span>
 										</>
 										: product[el.name]
 									}</td>
@@ -123,7 +109,7 @@ const Product = () => {
 					{product.reviews.length > 0 ? <div>
 						<h2>Отзывы</h2>
 						<div className="">
-							{product.reviews.map(el => <div>
+							{product.reviews.map(el => <div key={el._id}>
 									<div className="">
 										<div>
 											<span className="d-flex w-100 align-items-center mb-2">
@@ -144,6 +130,9 @@ const Product = () => {
 											</span>
 											<div>{el.rating}</div>
 											<div className="">{el.text}</div>
+											{el.author._id === userId && <span className="">
+												<Basket2 onClick={() => delReview(el._id)}/>												
+											</span>}
 										</div>
 									</div>
 								</div>
@@ -151,7 +140,7 @@ const Product = () => {
 							{hideForm && <div>
 								<Button
 									variant="outline-info"
-									className="fs-1 w-100 h-100"
+									className="secondary"
 									onClick={() => setHideForm(false)}
 								>
 									<Plus/>
@@ -163,7 +152,7 @@ const Product = () => {
 					}
 					{!hideForm && <div className="">
 						<h3>Новый отзыв</h3>
-						<div>
+						<div onSubmit={addReview}>
 							<div className="mb-3">
 								<div htmlFor="rating">Рейтинг (0-5)</div>
 								<div
@@ -189,7 +178,7 @@ const Product = () => {
 							</div>
 							<Button
 								type="reset"
-								className="me-2"
+								className="product__btn"
 								onClick={(e) => {
 									e.preventDefault();
 									setRevText("");
@@ -197,8 +186,8 @@ const Product = () => {
 									setHideForm(true);
 								}}
 							>Отмена</Button>
-							<Button type="submit">Добавить</Button>
-						</div>
+							<Button type="submit" className="product__btn">Добавить</Button>
+							</div>
 					</div>}
 				</>
 				//: /* <div>
@@ -208,9 +197,7 @@ const Product = () => {
 				//</div> */
 				: <Loader/>
 		}
-
-
-    </>
+    </div>
 }
 
 export default Product;

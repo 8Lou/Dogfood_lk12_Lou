@@ -30,7 +30,12 @@ class Api {
       headers: this.headers,
     }).then((res) => res.json());
   }
-
+delSingleProduct(id) {
+        return fetch(`${this.baseUrl}/products/${id}`, {
+            method: "DELETE",
+            headers: this.headers,
+        }).then(res => res.json());
+    }
   getUserInfo() {
     return fetch(`${this.baseUserUrl}/me`, {
       headers: this.headers,
