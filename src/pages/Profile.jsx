@@ -12,9 +12,9 @@ const Profile = ({ user, color, setUser }) => {
     const logOut = (e) => {
         e.preventDefault();
         setUser("")// setUser() => setUser(null) 
-        localStorage.removeItem("rockUser");
-        localStorage.removeItem("rockToken");
-        localStorage.removeItem("rockId");
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+        localStorage.removeItem("id");
         navigate("/");
         // useNavigate()("/")
     }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Modal from "./components/Modal/index";
 import { Header, Footer } from "./components/Main"; // index.jsx
@@ -9,17 +9,28 @@ import Product from "./pages/Product";
 import FavoritePage from "./pages/FavoritePage";
 import Search from "./components/Search";
 import Draft from "./pages/Draft";
-import { AppContext } from './context/AppContext';
+import AppContext from './context/AppContext';
+import { api } from "./utils/Api";
 
 const App = () => {
-    const [user, setUser] = useState(localStorage.getItem("rockUser"));
-    const [token, setToken] = useState(localStorage.getItem("rockToken"));
-    const [userId, setUserId] = useState(localStorage.getItem("rockId"));
-    const [serverGoods, setServerGoods] = useState([]);
-    const [goods, setGoods] = useState(serverGoods);
-    const [modalActive, setModalActive] = useState(false);
+  const [user, setUser] = useState(localStorage.getItem("user"));
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [userId, setUserId] = useState(localStorage.getItem("id"));
+  const [serverGoods, setServerGoods] = useState([]);
+  const [goods, setGoods] = useState(serverGoods);  
+  const [modalActive, setModalActive] = useState(false);
+  // let key = "6c7fc5e6a754429ab47063a1b1a54774"
+  //"https://newsapi.org/v2/everything?apiKey=6c7fc5e6a754429ab47063a1b1a54774&q=dogs"
+  const [news, setNews] = useState([]);
+  useEffect(() => {
+        fetch("https://newsapi.org/v2/everything?q=животные&sources=lenta&apiKey=6c7fc5e6a754429ab47063a1b1a54774")
+            .then(res => res.json())
+            .then(data => {
+                setNews(data.articles)
+            })
+    }, [])
 
-/* const config = {
+  /* const config = {
     headers: {
         "Content-Type": "application/json",
         "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ1NzNlZTMyOTFkNzkwYjMwNzNkOGQiLCJncm91cCI6IjEyIiwiaWF0IjoxNjgyMzIwMTUwLCJleHAiOjE3MTM4NTYxNTB9.JAgKY9HDB1n6OXtsYFOngnu5K8SMjmyQAMCOtLFK0Ao"
@@ -28,82 +39,102 @@ const App = () => {
     baseUserUrl: "https://api.react-learning.ru/users"
 } */
 
-    useEffect(() => {
-        if (token) {
-            fetch("https://api.react-learning.ru/products", {
-                headers: {
+  useEffect(() => {
+    if (token) {
+      fetch("https://api.react-learning.ru/products", {
+        headers: {
                     "Authorization": `Bearer ${token}`
                 }
-            })
+      })
                 .then(res => res.json())
                 .then(data => {
                     setServerGoods(data.products.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
-                })
+        })
                 .catch(error => console.error("Что-то пошло не так...(", error))
-        }
-    }, [token])
+    }
+  }, [token]);
 
-    useEffect(() => {
-        if (!goods.length) {
-            setGoods(serverGoods);
-        }
-    }, [serverGoods]);
+  useEffect(() => {
+    if (!goods.length) {
+      setGoods(serverGoods);
+    }
+  }, [serverGoods]);
 
-    useEffect(() => {
-        if (user) {
-            setToken(localStorage.getItem("rockToken"));
-            setUserId(localStorage.getItem("rockId"));
-        } else {
-            setToken("");
-            setUserId("");
-        }
-    }, [user]);
+  useEffect(() => {
+    if (user) {
+      setToken(localStorage.getItem("token"));
+      setUserId(localStorage.getItem("id"));
+    } else {
+      setToken("");
+      setUserId("");
+    }
+  }, [user]);
 
-      const Context = {
+  const Context = {
     setModalActive,
     serverGoods,
     user,
     setUser,
     goods,
-modalActive,
-goods,
-userId,
-setServerGoods,
-  }
+    modalActive,
+    goods,
+    setGoods,
+    news,
+    userId,
+    setServerGoods,
+        token,
+        api,
+  };
 
-    return (
-        <>
+  return (
+    <>
       <AppContext.Provider value={Context}>
-            <Header />
-            <main>
-                <Search arr={serverGoods} upd={setGoods}/>
-                <Routes>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="/catalog" element={<Catalog 
-                        goods={goods} 
-                        setServerGoods={setServerGoods}
-                    />}/>
-                    <Route path="/favorites" element={<FavoritePage 
-                        goods={goods}
-                        userId={userId}
-                        setServerGoods={setServerGoods}
-                    />}/>
-                    <Route path="/draft" element={<Draft/>}/>
-                    <Route path="/profile" element={
-                        <Profile user={user} setUser={setUser} color="yellow"/>
-                    }/>
-                    <Route path="/product/:id" element={<Product/>}/>
-                </Routes>
-            </main>
-            <Footer/>
-            <Modal 
-                active={modalActive} 
-                setActive={setModalActive}
-                setUser={setUser}
+        <Header
+          user={user}
+          setModalActive={setModalActive}
+          serverGoods={serverGoods}
+        />
+        <main>
+          <Search arr={serverGoods} upd={setGoods} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route
+              path="/catalog"
+              element={
+                <Catalog
+                  /* goods={goods}  */
+                  setServerGoods={setServerGoods}
+                />
+              }
             />
-      </AppContext.Provider >
-        </>
-    )
-}
+            <Route
+              path="/favorites"
+              element={
+                <FavoritePage
+                  goods={goods}
+                  userId={userId}
+                  setServerGoods={setServerGoods}
+                />
+              }
+            />
+            <Route path="/draft" element={<Draft />} />
+            <Route
+              path="/profile"
+              element={<Profile user={user} setUser={setUser} color="pink" />}
+            />
+            <Route path="/product/:id" element={<Product />} />
+          </Routes>
+        </main>
+        <Footer />
+        <Modal
+          active={modalActive}
+          setActive={setModalActive}
+          setUser={setUser}
+        />
+      </AppContext.Provider>
+    </>
+  );
+};
 
 export default App;

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import BsCard from "../components/BsCard";
-import { AppContext } from "../context/AppContext";
+import AppContext from "../context/AppContext";
 
 const Favorites = () => {    
     const { goods, userId, setServerGoods } = useContext(AppContext)

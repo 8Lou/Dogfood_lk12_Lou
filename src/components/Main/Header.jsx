@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import Logo from "./Logo";
 import {
-  /* Heart, */
+  HouseDoor,
   Cart4,
   Star,
   PersonCircle,
@@ -11,14 +11,14 @@ import {
 
 /* import Search from "../Search"; */
 import { useState, useEffect, useContext } from "react";
-import { AppContext } from "../../context/AppContext";
+import AppContext from "../../context/AppContext";
 
 const Header = () => {
     const { user, setModalActive, serverGoods } = useContext(AppContext)
     const [likeCnt, setLikeCnt] = useState(0);
     const [cartCnt, setCartCnt] = useState(0);
     useEffect(() => {
-        setLikeCnt(serverGoods.filter(el => el.likes.includes(localStorage.getItem("rockId"))).length)
+        setLikeCnt(serverGoods.filter(el => el.likes.includes(localStorage.getItem("id"))).length)
     }, [serverGoods]);
 
     const logIn = (e) => {
@@ -30,10 +30,11 @@ const Header = () => {
         {/* <div className="search"></div> */}
         <nav className="header__menu">
             {user && <>
-                {/* <Link to="/catalog" title="Каталог" className="badge-el">
-                    <Heart/> */}
                     {/* <span className="badge-item">{serverGoods.length}</span> */}
                 {/* </Link> */}
+                <Link to="/home" title="На главную" className="">
+                    <HouseDoor/>
+                    </Link>
                 <Link to="/favorites" title="Избранное" className="badge-el">
                     <Star/>
                     <span className="badge-item">{likeCnt}</span>

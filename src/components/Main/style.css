@@ -4,9 +4,10 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 5px 20px;
   flex-wrap: wrap;
   gap: 10px;
+  height: 60px;
 }
 
 header .search-block {
