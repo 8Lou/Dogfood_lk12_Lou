@@ -22,13 +22,13 @@ const App = () => {
   // let key = "6c7fc5e6a754429ab47063a1b1a54774"
   //"https://newsapi.org/v2/everything?apiKey=6c7fc5e6a754429ab47063a1b1a54774&q=dogs"
   const [news, setNews] = useState([]);
-  useEffect(() => {
+  /* useEffect(() => {
         fetch("https://newsapi.org/v2/everything?q=животные&sources=lenta&apiKey=6c7fc5e6a754429ab47063a1b1a54774")
             .then(res => res.json())
             .then(data => {
                 setNews(data.articles)
             })
-    }, [])
+    }, []) */
 
   /* const config = {
     headers: {
@@ -77,7 +77,6 @@ const App = () => {
     setUser,
     goods,
     modalActive,
-    goods,
     setGoods,
     news,
     userId,

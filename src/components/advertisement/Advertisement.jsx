@@ -3,7 +3,7 @@ import AppContex from "../../context/AppContext";
 import "./style.scss"
 
 
-const Advertisement = () => {
+/* const Advertisement = () => {
     const {news} = useContext(AppContex);
     const [data, setData] = useState(news || [])
 
@@ -36,4 +36,4 @@ const Advertisement = () => {
     </div>
 }
 
-export default Advertisement;
+export default Advertisement; */

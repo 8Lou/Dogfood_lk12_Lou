@@ -51,22 +51,15 @@ const Product = () => {
 	}
 
   useEffect(() => {
-    fetch(`https://api.react-learning.ru/products/${id}`, {
-      headers: {
-                "Authorization": `Bearer ${localStorage.getItem("token")}`
-            }
-    })
-            .then(res => res.json())
-            .then(product => {
-        if (!product.err) {
-          setProduct(product);
-        }
-      })
+api.getProductsByID(id)
+			.then(product => {
+				setProduct(product);
+			})
             .catch(error => console.error("Что-то пошло не так...(", error))
   }, []);
 
   	const delHandler = () => {
-		api.delSingleProduct(id)
+		api.delProduct(id)
 			.then(product => {
 				console.log(product)
 				setServerGoods(prev => prev.filter(el => el._id !== id));
@@ -92,7 +85,6 @@ const Product = () => {
 						{Math.ceil(product.price * (100 - product.discount) / 100)} ₽
 					</div>					
 					<div>
-						<div>
 							<tbody>
 								{tableInfo.map((el, i) => <tr key={i}>
 									<th className="" >{el.text}</th>
@@ -104,7 +96,6 @@ const Product = () => {
 									}</td>
 								</tr>)}
 							</tbody>
-						</div>
 					</div>
 					{product.reviews.length > 0 ? <div>
 						<h2>Отзывы</h2>
@@ -112,7 +103,7 @@ const Product = () => {
 							{product.reviews.map(el => <div key={el._id}>
 									<div className="">
 										<div>
-											<span className="d-flex w-100 align-items-center mb-2">
+											<span className="">
 												<span style={{
 													width: "30px",
 													height: "30px",
@@ -121,7 +112,7 @@ const Product = () => {
 													backgroundRepeat: "no-repeat",
 													backgroundSize: "cover",
 													backgroundImage: `url(${el.author.avatar})`,
-													marginRight: "1rem",
+													marginRight: "1em",
 													borderRadius: "50%"
 												}}/>
 												<span>
@@ -190,11 +181,11 @@ const Product = () => {
 							</div>
 					</div>}
 				</>
-				//: /* <div>
-				//	<div className="info" style={{textAlign: "center"}}>
-				//		Товара {id} не существует<br/>или<br/>он еще не загружен
-				//	</div>
-				//</div> */
+				// : <div>
+				// <div className="info" style={{textAlign: "center"}}>
+				// Товара {id} не существует<br/>или<br/>он еще не загружен
+				// </div>
+				// </div>
 				: <Loader/>
 		}
     </div>

@@ -20,8 +20,9 @@ class Api {
   }
 
   getUsers() {
-    return fetch(`${this.baseUrl}/v2/${this.group}/users`, {
-      headers: this.headers,
+    return fetch(`${this.baseUrl}/users`, {
+      method: "GET",
+      headers: this.headers(),
     }).then((res) => res.json());
   }
   
@@ -30,7 +31,7 @@ class Api {
       headers: this.headers,
     }).then((res) => res.json());
   }
-delSingleProduct(id) {
+delProduct(id) {
         return fetch(`${this.baseUrl}/products/${id}`, {
             method: "DELETE",
             headers: this.headers,
