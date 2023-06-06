@@ -31,7 +31,7 @@ class Api {
       headers: this.headers,
     }).then((res) => res.json());
   }
-delProduct(id) {
+  delProduct(id) {
         return fetch(`${this.baseUrl}/products/${id}`, {
             method: "DELETE",
             headers: this.headers,
@@ -55,7 +55,7 @@ delProduct(id) {
             body: JSON.stringify(body)
         }).then(res => res.json())
     }
-    delReview(id, r_id) {
+  delReview(id, r_id) {
         return fetch(`${this.baseUrl}/products/review/${id}/${r_id}`, {
             method: "DELETE",
             headers: this.headers,

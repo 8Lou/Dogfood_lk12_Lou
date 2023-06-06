@@ -14,7 +14,7 @@ const BsCard = ({
   _id,
   user,
   setServerGoods,
-      img, 
+  img, 
 }) => {
  const [isLike, setIsLike] = useState(likes.includes(localStorage.getItem("id")));
 

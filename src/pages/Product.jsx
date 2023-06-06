@@ -12,8 +12,8 @@ const Product = () => {
   const [product, setProduct] = useState({});
   const { id } = useParams();
   const [revText, setRevText] = useState("");
-	const [revRating, setRevRating] = useState(0);
-	const [hideForm, setHideForm] = useState(true);
+  const [revRating, setRevRating] = useState(0);
+  const [hideForm, setHideForm] = useState(true);
   const { api, userId, setServerGoods } = useContext(AppContext);
   const navigate = useNavigate();
   const tableInfo = [
@@ -131,7 +131,7 @@ api.getProductsByID(id)
 							{hideForm && <div>
 								<Button
 									variant="outline-info"
-									className="secondary"
+									className=""
 									onClick={() => setHideForm(false)}
 								>
 									<Plus/>
@@ -144,14 +144,10 @@ api.getProductsByID(id)
 					{!hideForm && <div className="">
 						<h3>Новый отзыв</h3>
 						<div onSubmit={addReview}>
-							<div className="mb-3">
-								<div htmlFor="rating">Рейтинг (0-5)</div>
+							<div className="">
+								<div>Рейтинг (0-5)</div>
 								<div
 									type="number"
-									min={1}
-									max={5}
-									step={1}
-									id="rating"
 									value={revRating}
 									onChange={(e) => setRevRating(+e.target.value)}
 								/>
