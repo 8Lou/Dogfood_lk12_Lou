@@ -2,7 +2,7 @@
 // ----------------------------------------------------
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { api } from "../../utils/api";
+import { api } from "../../utils/Api";
 import { isError, isLoading } from "../utilsStore";
 
 const initialState = {

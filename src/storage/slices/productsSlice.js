@@ -1,6 +1,6 @@
 /* import { CHEAPEST, EXPENSIVE, NEWEST, POPULAR, RATE, SALE } from "../../constants/constants"; */
 import { api } from "../../utils/Api";
-import { filterFavoriteProd, findLiked, getRate } from "../../utils/Utils";
+import { filterFavoriteProd } from "../../utils/Utils";
 import { isError, isLoading } from "../utilsStore";
 
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
@@ -90,7 +90,7 @@ const products = createSlice({
       const authorCards = filterFavoriteProd(action.payload.products) ?? [];
       state.products = authorCards;
       state.favorites = authorCards.filter((e) =>
-        findLiked(e, action.payload.userId)
+        filterFavoriteProd(e, action.payload.userId)
       );
       state.total = action.payload.total;
     });
@@ -127,7 +127,7 @@ const products = createSlice({
 });
 // ----------------------------------------------------
 
-export const { sortHandler } = goods.actions;
+export const { sortHandler } = products.actions;
 // export const setList = products.actions.setList;
 
 export default products.reducer;

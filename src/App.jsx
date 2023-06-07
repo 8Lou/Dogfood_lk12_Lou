@@ -19,6 +19,7 @@ const App = () => {
   const [serverGoods, setServerGoods] = useState([]);
   const [goods, setGoods] = useState(serverGoods);  
   const [modalActive, setModalActive] = useState(false);
+  
   // let key = "6c7fc5e6a754429ab47063a1b1a54774"
   //"https://newsapi.org/v2/everything?apiKey=6c7fc5e6a754429ab47063a1b1a54774&q=dogs"
   const [news, setNews] = useState([]);

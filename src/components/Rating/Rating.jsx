@@ -1,10 +1,10 @@
-import cn  from "classnames";
+import cn from "classnames";
 import s from './index.module.css'
 import { useEffect, useState, useCallback } from "react";
 import { ReactComponent as StarIcon } from "./star.svg";
 
 
-export const Rating = ({isEditable = false, rating, setRating = null}) => {
+export const Rating = ({ isEditable = false, rating, setRating = null }) => {
     const [ratingArray, setRatingArray] = useState(new Array(5).fill(<></>));
 
     const constructRating = useCallback((currentRating) => {
@@ -15,23 +15,23 @@ export const Rating = ({isEditable = false, rating, setRating = null}) => {
                         [s.filled]: index < currentRating,
                         [s.editable]: isEditable
                     })}
-                    onMouseEnter={()=>changeDisplay(index + 1)}
-                    onMouseLeave={()=>changeDisplay(rating)}
+                    onMouseEnter={() => changeDisplay(index + 1)}
+                    onMouseLeave={() => changeDisplay(rating)}
                     onClick={() => changeRating(index + 1)}
 
                 />
             )
         })
         setRatingArray(updateArray)
-    },[rating, isEditable])
-    
+    }, [rating, isEditable])
+
     const changeDisplay = (rating) => {
-        if(!isEditable) return
+        if (!isEditable) return
         constructRating(rating)
     }
 
     const changeRating = (rating) => {
-        if(!isEditable || !setRating) return
+        if (!isEditable || !setRating) return
 
         setRating(rating)
     }
@@ -43,8 +43,8 @@ export const Rating = ({isEditable = false, rating, setRating = null}) => {
 
 
     return (
-        <div> 
-            {ratingArray.map((r, i) => <span key={i}>{ r }</span>) }
+        <div>
+            {ratingArray.map((r, i) => <span key={i}>{r}</span>)}
         </div>
     )
 }

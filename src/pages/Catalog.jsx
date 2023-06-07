@@ -2,8 +2,9 @@ import BsCard from "../components/BsCard"
 import { useContext, useState } from "react";
 import AppContext from "../context/AppContext";
 import { Button } from "../components/Button/Button";
+import { useDispatch, useSelector } from "react-redux";
 
-const Catalog = ({setServerGoods}) => {
+const Catalog = ({ setServerGoods }) => {
     const { goods } = useContext(AppContext)
     const [sort, setSort] = useState(null)
     const filterSt = {
@@ -11,6 +12,11 @@ const Catalog = ({setServerGoods}) => {
         display: "flex",
         gap: "20px"
     }
+
+    // const { goods } = useSelector((s) => s.products)
+    // console.log(goods)
+    // const dispatch = useDispatch();
+
     const sortHandler = (vector) => {
         if (vector === sort) {
             setSort(null)
@@ -24,28 +30,39 @@ const Catalog = ({setServerGoods}) => {
     }
     return <div className="container">
         <div style={filterSt}>
-            <Button 
-                style={{color: '#88a3e2', backgroundColor: sort === "up" ? "#fc8dca" : "#aaecfc"}}
+            <Button
+                style={{ color: '#88a3e2', backgroundColor: sort === "up" ? "#fc8dca" : "#aaecfc" }}
                 onClick={() => sortHandler("up")}
             >По возростанию цены</Button>
             <Button
-                style={{color: '#88a3e2', backgroundColor: sort === "down" ? "#fc8dca" : "#aaecfc"}}
+                style={{ color: '#88a3e2', backgroundColor: sort === "down" ? "#fc8dca" : "#aaecfc" }}
                 onClick={() => sortHandler("down")}
             >По убыванию цены</Button>
-            <Button 
-                style={{color: '#88a3e2', backgroundColor: sort === "up" ? "#fc8dca" : "#aaecfc"}}
+            <Button
+                style={{ color: '#88a3e2', backgroundColor: sort === "up" ? "#fc8dca" : "#aaecfc" }}
                 onClick={() => sortHandler("up")}>Новинки</Button>
-            <Button 
-                style={{color: '#88a3e2', backgroundColor: sort === "up" ? "#fc8dca" : "#aaecfc"}}
+            <Button
+                style={{ color: '#88a3e2', backgroundColor: sort === "up" ? "#fc8dca" : "#aaecfc" }}
                 onClick={() => sortHandler("up")}>Скидки</Button>
         </div>
-        {goods.map(g => <BsCard 
-            key={g._id} 
-            {...g} 
-            img={g.pictures} 
+        {goods.map(g => <BsCard
+            key={g._id}
+            {...g}
+            img={g.pictures}
             setServerGoods={setServerGoods}
-        />)}   
+        />)}
     </div>
 }
 
 export default Catalog;
+
+{/*<span className='' key={g._id} onClick={() => dispatch(setServerGoods(g._id))}>{g._id}</span>
+         */}
+
+         
+{/* <BsCard 
+            key={g._id} 
+            {...g} 
+            img={g.pictures} 
+            setServerGoods={setServerGoods}
+        />  */}

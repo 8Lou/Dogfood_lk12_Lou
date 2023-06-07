@@ -43,3 +43,6 @@ export const filterFavoriteProd = (products, userID) => {
     const fav = products.filter(product => product.likes.includes(userID))
     return fav
 }
+
+
+    export const INITIAL_VALUE_RATING = 1;
