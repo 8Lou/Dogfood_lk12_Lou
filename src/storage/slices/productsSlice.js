@@ -1,5 +1,5 @@
 /* import { CHEAPEST, EXPENSIVE, NEWEST, POPULAR, RATE, SALE } from "../../constants/constants"; */
-import { api } from "../../utils/Api";
+import api from "../../utils/Api";
 import { filterFavoriteProd } from "../../utils/Utils";
 import { isError, isLoading } from "../utilsStore";
 

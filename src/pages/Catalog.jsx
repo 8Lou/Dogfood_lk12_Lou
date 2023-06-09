@@ -1,11 +1,15 @@
 import BsCard from "../components/BsCard"
-import { useContext, useState } from "react";
-import AppContext from "../context/AppContext";
+import { useContext, useEffect, useState } from "react";
+import AppContext from "../context/context";
 import { Button } from "../components/Button/Button";
-import { useDispatch, useSelector } from "react-redux";
+/* import { useDispatch, useSelector } from "react-redux"; */
+import usePagination from "../hooks/usePagination";
+import Pagination from "../components/Pagination";
 
 const Catalog = ({ setServerGoods }) => {
-    const { goods } = useContext(AppContext)
+    const { goods, text } = useContext(AppContext)
+
+    const paginate = usePagination(goods, 10)
     const [sort, setSort] = useState(null)
     const filterSt = {
         gridColumnEnd: "span 4",
@@ -16,6 +20,10 @@ const Catalog = ({ setServerGoods }) => {
     // const { goods } = useSelector((s) => s.products)
     // console.log(goods)
     // const dispatch = useDispatch();
+
+    useEffect(() => {
+        paginate.step(1);
+    }, [text])
 
     const sortHandler = (vector) => {
         if (vector === sort) {
@@ -29,6 +37,7 @@ const Catalog = ({ setServerGoods }) => {
         }
     }
     return <div className="container">
+        <div style={{ gridColumnEnd: "span 4" }}>{/* <Pagination hk={paginate} /> */}</div>
         <div style={filterSt}>
             <Button
                 style={{ color: '#88a3e2', backgroundColor: sort === "up" ? "#fc8dca" : "#aaecfc" }}
@@ -43,9 +52,9 @@ const Catalog = ({ setServerGoods }) => {
                 onClick={() => sortHandler("up")}>Новинки</Button>
             <Button
                 style={{ color: '#88a3e2', backgroundColor: sort === "up" ? "#fc8dca" : "#aaecfc" }}
-                onClick={() => sortHandler("up")}>Скидки</Button>
+                onClick={() => sortHandler("up")}>По скидке</Button>
         </div>
-        {goods.map(g => <BsCard
+        {paginate.setDataPerPage().map(g => <BsCard
             key={g._id}
             {...g}
             img={g.pictures}
@@ -59,7 +68,7 @@ export default Catalog;
 {/*<span className='' key={g._id} onClick={() => dispatch(setServerGoods(g._id))}>{g._id}</span>
          */}
 
-         
+
 {/* <BsCard 
             key={g._id} 
             {...g} 

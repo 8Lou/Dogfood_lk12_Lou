@@ -86,4 +86,4 @@ const config = {
   baseUserUrl: "https://api.react-learning.ru/users",
 };
 
-export const api = new Api(config);
+export default Api;

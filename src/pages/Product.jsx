@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import Loader from "../components/Loader";
 import ButtonBack from "./ButtonBack";
-import AppContext from "../context/AppContext";
+import AppContext from "../context/context";
 import { Basket2, Plus } from "react-bootstrap-icons"
 import { Button } from "../components/Button/Button";
 import { FormReview } from '../components/FormReview/form-review';
@@ -16,6 +16,7 @@ import { fetchSetReview } from "../storage/slices/singleProductSlice";
 const Product = ({ name, _id }) => {
 	const [product, setProduct] = useState({});
 	const { id } = useParams();
+
 	const [revText, setRevText] = useState("");
 	const [rating, setRating] = useState(0);
 	const [hideForm, setHideForm] = useState(true);
@@ -80,7 +81,6 @@ const Product = ({ name, _id }) => {
 	const delHandler = () => {
 		api.delSingleProduct(id)
 			.then(product => {
-				console.log(product)
 				setServerGoods(prev => prev.filter(el => el._id !== id));
 				navigate("/catalog");
 			})
