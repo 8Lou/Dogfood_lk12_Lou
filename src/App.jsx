@@ -117,7 +117,6 @@ const App = () => {
         <main>
           <Search arr={serverGoods} upd={setGoods} />
           <Routes>
-            <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route
               path="/catalog"

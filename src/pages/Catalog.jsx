@@ -11,11 +11,6 @@ const Catalog = ({ setServerGoods }) => {
 
     const paginate = usePagination(goods, 10)
     const [sort, setSort] = useState(null)
-    const filterSt = {
-        gridColumnEnd: "span 4",
-        display: "flex",
-        gap: "20px"
-    }
 
     // const { goods } = useSelector((s) => s.products)
     // console.log(goods)
@@ -38,7 +33,11 @@ const Catalog = ({ setServerGoods }) => {
     }
     return <div className="container">
         <div style={{ gridColumnEnd: "span 4" }}>{<Pagination num={paginate} />}</div>
-        <div style={filterSt}>
+        <div style={{
+            gridColumnEnd: "span 4",
+            display: "flex",
+            gap: "20px"
+        }}>
             <Button
                 style={{ color: '#88a3e2', backgroundColor: sort === "up" ? "#fc8dca" : "#aaecfc" }}
                 onClick={() => sortHandler("up")}

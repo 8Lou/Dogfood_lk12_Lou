@@ -45,10 +45,10 @@ const BsCard = ({
         setBasket(prev => [...prev, {
             id: _id,
             cnt: 1,
-            name: name,
-            img: img,
-            price: price,
-            discount: discount
+            name,
+            img,
+            price,
+            discount
         }])
     }
 
