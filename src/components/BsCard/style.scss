@@ -43,17 +43,18 @@
     font-size: 20px;
     font-weight: 600;
   }
+  &__tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
 }
-
-.card-link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  &__tags span {
+    background-color: palevioletred;
+    color: #88a3e2;
+    border-radius: 4px;
+    padding: 0 4px;
 }
-
-.card__like {
+  &__like {
   font-size: 1.3em;
   position: absolute;
   top: 10px;
@@ -63,8 +64,7 @@
   color: rgb(240, 70, 127);
   padding: 4px;
 }
-
-.card__discount {
+  &__discount {
   position: absolute;
   top: 40px;
   left: 10px;
@@ -73,4 +73,13 @@
   border-radius: 4px;
   display: flex;
   align-items: center;
+}
+}
+
+.card-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

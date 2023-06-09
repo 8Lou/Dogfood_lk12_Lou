@@ -71,7 +71,7 @@ const Product = ({ name, _id }) => {
 	}
 
 	useEffect(() => {
-		api.getProductsByID(id)
+		api.getSingleProduct(id)
 			.then(product => {
 				setProduct(product);
 			})
@@ -83,6 +83,14 @@ const Product = ({ name, _id }) => {
 			.then(product => {
 				setServerGoods(prev => prev.filter(el => el._id !== id));
 				navigate("/catalog");
+			})
+	}
+
+	const del = () => {
+		api.delProduct(id)
+			.then(data => {
+				setServerGoods(prev => prev.filter(el => el._id !== id))
+				navigate("/catalog")
 			})
 	}
 

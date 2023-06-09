@@ -3,18 +3,18 @@ import "./style.scss";
 import { Link } from "react-router-dom";
 import { SuitHeart, SuitHeartFill, Percent } from "react-bootstrap-icons";
 import { Button } from "../Button/Button";
+import AppContext from "../../context/context";
 
 const BsCard = ({
     discount,
     likes,
     name,
-    pictures,
     price,
     _id,
-    user,
     img,
+    tags,
 }) => {
-    const { setServerGoods, userId, api, setBasket, serverGoods, basket } = useContext
+    const { setServerGoods, userId, api, setBasket, serverGoods, basket } = useContext(AppContext)
     const [isLike, setIsLike] = useState(likes.includes(userId));
     const [inBasket, setInBasket] = useState(basket.filter(el => el.id === _id).length > 0)
 
@@ -38,7 +38,7 @@ const BsCard = ({
             })
     }
 
-    const addBascet = (e) => {
+    const addBasket = (e) => {
         e.preventDefault();
         e.stopPropagation();
         setInBasket(true);
@@ -70,8 +70,11 @@ const BsCard = ({
             }
             &nbsp;₽</span>
         <Button className="card__btn"
-            onClick={addBascet}
+            onClick={addBasket}
             disabled={inBasket}>В корзину</Button>
+        {<span className="card__tags">
+            {tags.map(el => <span key={el}>{el}</span>)}
+        </span>}
     </Link>
 }
 

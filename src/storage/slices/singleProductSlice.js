@@ -5,7 +5,7 @@ export const fetchSingleProduct = createAsyncThunk(
   'singleProduct/fetchSingleProduct',
   async function (productID,{ rejectWithValue, fulfillWithValue, extra: api }) {
     try {
-      const goods = await api.getProductsById(productID);
+      const goods = await api.getSingleProduct(productID);
 
       return fulfillWithValue(goods);
     } catch (error) {

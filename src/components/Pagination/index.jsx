@@ -1,4 +1,4 @@
-/* import Number from "./Number"
+import Number from "./Number"
 import "./style.css"
 
 const Pagination = ({ num }) => {
@@ -20,4 +20,4 @@ const Pagination = ({ num }) => {
     </div>
 }
 
-export default Pagination; */
+export default Pagination;

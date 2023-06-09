@@ -37,7 +37,7 @@ const Catalog = ({ setServerGoods }) => {
         }
     }
     return <div className="container">
-        <div style={{ gridColumnEnd: "span 4" }}>{/* <Pagination hk={paginate} /> */}</div>
+        <div style={{ gridColumnEnd: "span 4" }}>{<Pagination num={paginate} />}</div>
         <div style={filterSt}>
             <Button
                 style={{ color: '#88a3e2', backgroundColor: sort === "up" ? "#fc8dca" : "#aaecfc" }}
@@ -67,11 +67,3 @@ export default Catalog;
 
 {/*<span className='' key={g._id} onClick={() => dispatch(setServerGoods(g._id))}>{g._id}</span>
          */}
-
-
-{/* <BsCard 
-            key={g._id} 
-            {...g} 
-            img={g.pictures} 
-            setServerGoods={setServerGoods}
-        />  */}

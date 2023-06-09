@@ -8,12 +8,12 @@ class Api {
     this.headers = config.headers;
     this.baseUserUrl = config.baseUserUrl;
   }
-    getProduct() {
+    getProducts() {
     return fetch(`${this.baseUrl}/products`, {
       headers: this.headers,
     }).then((res) => res.json());
   }
-  getProductsByID(id) {
+  getSingleProduct(id) {
     return fetch(`${this.baseUrl}/products/${id}`, {
       method: "GET",
       headers: this.headers,

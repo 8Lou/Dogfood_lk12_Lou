@@ -19,7 +19,7 @@ export const fetchGoods = createAsyncThunk(
   async function (id, { fulfillWithValue, getState, rejectWithValue }) {
     try {
       const state = getState();
-      const data = await api.getProduct();
+      const data = await api.getProducts();
       return fulfillWithValue({ ...data, userId: state.user.data?._id });
     } catch (error) {
       return rejectWithValue(error);
