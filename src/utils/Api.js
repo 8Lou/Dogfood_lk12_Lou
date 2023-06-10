@@ -15,13 +15,28 @@ class Api {
   }
   getProductsByID(id) {
     return fetch(`${this.baseUrl}/products/${id}`, {
+      method: "GET",
       headers: this.headers,
     }).then((res) => res.json());
   }
-
+    
+    updSingleProduct(id, body) {
+        return fetch(`${this.baseUrl}/products/${id}`, {
+            method: "PATCH",
+            headers: this.headers(true),
+            body: JSON.stringify(body),
+        }).then(res => res.json())
+    }
+    delSingleProduct(id) {
+        return fetch(`${this.baseUrl}/products/${id}`, {
+            method: "DELETE",
+            headers: this.headers(),
+        }).then(res => res.json())
+    }
   getUsers() {
-    return fetch(`${this.baseUrl}/v2/${this.group}/users`, {
-      headers: this.headers,
+    return fetch(`${this.baseUrl}/users`, {
+      method: "GET",
+      headers: this.headers(),
     }).then((res) => res.json());
   }
   
@@ -30,12 +45,7 @@ class Api {
       headers: this.headers,
     }).then((res) => res.json());
   }
-delSingleProduct(id) {
-        return fetch(`${this.baseUrl}/products/${id}`, {
-            method: "DELETE",
-            headers: this.headers,
-        }).then(res => res.json());
-    }
+
   getUserInfo() {
     return fetch(`${this.baseUserUrl}/me`, {
       headers: this.headers,
@@ -47,15 +57,15 @@ delSingleProduct(id) {
       headers: this.headers,
     }).then((res) => res.json());
   }
-  setReview(id, body) {
-        return fetch(`${this.baseUrl}/products/review/${id}`, {
+  setReview(productID, body) {
+        return fetch(`${this.baseUrl}/products/review/${productID}`, {
             method: "POST",
             headers: this.headers,
             body: JSON.stringify(body)
         }).then(res => res.json())
     }
-    delReview(id, r_id) {
-        return fetch(`${this.baseUrl}/products/review/${id}/${r_id}`, {
+  delReview(productID, reviewId) {
+        return fetch(`${this.baseUrl}/products/review/${productID}/${reviewId}`, {
             method: "DELETE",
             headers: this.headers,
         }).then(res => res.json())
@@ -70,10 +80,10 @@ delSingleProduct(id) {
 const config = {
   headers: {
     "Content-Type": "application/json",
-        "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ1NzNlZTMyOTFkNzkwYjMwNzNkOGQiLCJncm91cCI6IjEyIiwiaWF0IjoxNjgyMzIwMTUwLCJleHAiOjE3MTM4NTYxNTB9.JAgKY9HDB1n6OXtsYFOngnu5K8SMjmyQAMCOtLFK0Ao"
+    "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ1NzNlZTMyOTFkNzkwYjMwNzNkOGQiLCJncm91cCI6IjEyIiwiaWF0IjoxNjgyMzIwMTUwLCJleHAiOjE3MTM4NTYxNTB9.JAgKY9HDB1n6OXtsYFOngnu5K8SMjmyQAMCOtLFK0Ao"
   },
   baseUrl: "https://api.react-learning.ru",
   baseUserUrl: "https://api.react-learning.ru/users",
 };
 
-export const api = new Api(config);
+export default Api;

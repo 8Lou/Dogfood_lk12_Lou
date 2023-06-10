@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./style.scss"
 import { Folder2Open } from "react-bootstrap-icons";
-import Advertisement from "../components/advertisement/Advertisement";
+/* import Advertisement from "../components/advertisement/Advertisement"; */
 
 const Home = ({ user, setActive, pictures }) => {
   return <>
@@ -26,7 +26,7 @@ const Home = ({ user, setActive, pictures }) => {
             <span className="info-link" onClick={() => setActive(true)}>
 {/*               Необходима авторизация, для доступа
  */}            </span>
- <Advertisement/>
+ {/* <Advertisement/> */}
           </>
         )}
       </div>

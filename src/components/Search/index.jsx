@@ -1,20 +1,19 @@
 import { useState, useEffect, useContext } from "react";
 import "./style.css";
 import { Button } from "../Button/Button";
-import AppContex from "../../context/AppContext";
+import AppContex from "../../context/context";
 
-const Search = ({ arr /* , upd */ }) => {
-  const { setGoods } = useContext(AppContex);
-  const [text, setText] = useState("");
+const Search = ({ arr }) => {
+  const { setGoods, text, setText } = useContext(AppContex);
   const [quantity, setQuantity] = useState(arr.length);
   const [count, updateCount] = useState(0);
   useEffect(() => {
     if (text) {
       let result = arr.filter((el) => new RegExp(text, "i").test(el.name));
-      /* upd(result); */
+      setGoods(result);
       setQuantity(result.length);
     } else {
-      /* upd(arr); */
+      setGoods(arr);
       setQuantity(arr.length);
     }
   }, [arr]);

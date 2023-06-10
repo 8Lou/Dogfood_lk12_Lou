@@ -2,6 +2,7 @@
   "name": "Lou_B00tS",
   "version": "0.1.0",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "classnames": "^2.3.2",
     "eslint": "^8.41.0",
     "eslint-plugin-disable": "^2.0.3",
@@ -10,6 +11,7 @@
     "react-bootstrap-icons": "^1.10.3",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.44.2",
+    "react-redux": "^8.0.7",
     "react-router": "^6.11.0",
     "react-router-dom": "^6.11.0",
     "react-scripts": "5.0.1",

@@ -9,26 +9,39 @@ import Product from "./pages/Product";
 import FavoritePage from "./pages/FavoritePage";
 import Search from "./components/Search";
 import Draft from "./pages/Draft";
-import AppContext from './context/AppContext';
-import { api } from "./utils/Api";
+import AppContext from './context/context';
+import Api from "./utils/Api";
+import { Basket } from "react-bootstrap-icons";
 
 const App = () => {
   const [user, setUser] = useState(localStorage.getItem("user"));
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [userId, setUserId] = useState(localStorage.getItem("id"));
   const [serverGoods, setServerGoods] = useState([]);
-  const [goods, setGoods] = useState(serverGoods);  
+  const [goods, setGoods] = useState(serverGoods);  // Товары для филтрации
   const [modalActive, setModalActive] = useState(false);
+  // Поиск
+  const [text, setText] = useState("");
+  const [api, setApi] = useState(new Api(token));
+  let bascStore = localStorage.getItem("basket");
+  if (bascStore) {
+    bascStore = JSON.parse(bascStore);
+  } else {
+    bascStore = [];
+  }
+  const [basket, setBasket] = useState(bascStore);
+  const [news, setNews] = useState([]);
+
   // let key = "6c7fc5e6a754429ab47063a1b1a54774"
   //"https://newsapi.org/v2/everything?apiKey=6c7fc5e6a754429ab47063a1b1a54774&q=dogs"
-  const [news, setNews] = useState([]);
-  useEffect(() => {
-        fetch("https://newsapi.org/v2/everything?q=животные&sources=lenta&apiKey=6c7fc5e6a754429ab47063a1b1a54774")
+  /* useEffect(() => {
+        fetch(`https://newsapi.org/v2/everything?apiKey=${key}&q=${inp}&language=ru&pageSize=21`)
+                .then(res => res.json())
             .then(res => res.json())
             .then(data => {
                 setNews(data.articles)
             })
-    }, [])
+    }, []) */
 
   /* const config = {
     headers: {
@@ -40,19 +53,22 @@ const App = () => {
 } */
 
   useEffect(() => {
-    if (token) {
-      fetch("https://api.react-learning.ru/products", {
-        headers: {
-                    "Authorization": `Bearer ${token}`
-                }
-      })
-                .then(res => res.json())
-                .then(data => {
-                    setServerGoods(data.products.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
+    setApi(new Api(token));
+  }, [token])
+
+  useEffect(() => {
+    localStorage.setItem("basket", JSON.stringify(basket));
+  }, [basket])
+
+  useEffect(() => {
+    if (api.token) {
+      api.getProduct()
+        .then(data => {
+          /* console.log(data); */
+          setServerGoods(data.products.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
         })
-                .catch(error => console.error("Что-то пошло не так...(", error))
     }
-  }, [token]);
+  }, [api.token])
 
   useEffect(() => {
     if (!goods.length) {
@@ -77,13 +93,12 @@ const App = () => {
     setUser,
     goods,
     modalActive,
-    goods,
     setGoods,
     news,
     userId,
     setServerGoods,
-        token,
-        api,
+    token,
+    api,
   };
 
   return (
@@ -103,7 +118,6 @@ const App = () => {
               path="/catalog"
               element={
                 <Catalog
-                  /* goods={goods}  */
                   setServerGoods={setServerGoods}
                 />
               }
@@ -124,6 +138,7 @@ const App = () => {
               element={<Profile user={user} setUser={setUser} color="pink" />}
             />
             <Route path="/product/:id" element={<Product />} />
+            <Route path="/basket" element={<Basket />} />
           </Routes>
         </main>
         <Footer />
