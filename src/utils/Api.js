@@ -8,31 +8,32 @@ class Api {
     this.headers = config.headers;
     this.baseUserUrl = config.baseUserUrl;
   }
-    getProduct() {
+    getProducts() {
     return fetch(`${this.baseUrl}/products`, {
+      method: "GET",
       headers: this.headers,
     }).then((res) => res.json());
   }
-  getProductsByID(id) {
+  getSingleProduct(id) {
     return fetch(`${this.baseUrl}/products/${id}`, {
       method: "GET",
       headers: this.headers,
     }).then((res) => res.json());
   }
     
-    updSingleProduct(id, body) {
-        return fetch(`${this.baseUrl}/products/${id}`, {
-            method: "PATCH",
-            headers: this.headers(true),
-            body: JSON.stringify(body),
-        }).then(res => res.json())
-    }
-    delSingleProduct(id) {
-        return fetch(`${this.baseUrl}/products/${id}`, {
-            method: "DELETE",
-            headers: this.headers(),
-        }).then(res => res.json())
-    }
+  updSingleProduct(id, body) {
+      return fetch(`${this.baseUrl}/products/${id}`, {
+          method: "PATCH",
+          headers: this.headers(true),
+          body: JSON.stringify(body),
+      }).then(res => res.json())
+  }
+  delSingleProduct(id) {
+      return fetch(`${this.baseUrl}/products/${id}`, {
+          method: "DELETE",
+          headers: this.headers(),
+      }).then(res => res.json())
+  }
   getUsers() {
     return fetch(`${this.baseUrl}/users`, {
       method: "GET",
@@ -51,6 +52,15 @@ class Api {
       headers: this.headers,
     }).then((res) => res.json());
   }
+
+  updUserInfo(body, changeImg = false) {
+    return fetch(`${this.baseUserUrl}/me${changeImg ? "/avatar" : ""}`, {
+      method: "PATCH",
+      headers: this.headers(true),
+      body: JSON.stringify(body)
+    }).then((res) => res.json());
+  }
+
   swithLike(productID, wasLiked) {
     return fetch(`${this.baseUrl}/likes/${productID}`, {
       method: wasLiked ? "DELETE" : "PUT",

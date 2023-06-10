@@ -3,7 +3,7 @@
     justify-content: center;
     gap: 8px;
 }
-.pagination__item {
+.pagination__num {
     display: flex;
     justify-content: center;
     width: 35px;
@@ -12,12 +12,14 @@
     background-color: transparent;
     border-radius: 4px;
     cursor: pointer;
-    border: 1px solid silver;
+    background-color: pink;
+    color: #88a3e2;
 }
-.pagination__item:hover {
-    background-color: silver;
+.pagination__num:hover {
+    color: pink;
+    background-color: #aaecfc;
 }
-.pagination__item.active {
-    background-color: #fff;
-    color: palevioletred;
+.pagination__num.active {
+    background-color: #aaecfc;
+    color:pink;
 }

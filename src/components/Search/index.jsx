@@ -39,7 +39,7 @@ const Search = ({ arr }) => {
         onChange={searchByText}
         className="search__input"
       />
-      {<Button onClick={click}>Найти</Button>}
+      {/* {<Button onClick={click}>Найти</Button>} */}
       <hr />
       <div>
         По вашему запросу « {text} » найдено {quantity} товаров

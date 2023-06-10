@@ -22,7 +22,7 @@ const Number = ({
         case prev: result = <ChevronLeft />; break;
         default: result = val;
     }
-    return <div className={active ? "pagination__item active" : "pagination__item"} onClick={onClick}>
+    return <div className={active ? "pagination__num active" : "pagination__num"} onClick={onClick}>
         {result}
     </div>
 }

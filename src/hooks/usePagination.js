@@ -6,7 +6,7 @@ const usePagination = (data, cnt) => {
     // el => 15 el/page => pages = 4 (не 3,2!)
     const max = Math.ceil(data.length / cnt);
 
-    // функция принимает в себя номер страницы, которая становится активной
+    // функция принимает в себя номер активной страницы
     const step = (page) => {
         setCurrent(page);
     }

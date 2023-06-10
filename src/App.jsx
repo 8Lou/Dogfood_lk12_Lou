@@ -23,14 +23,14 @@ const App = () => {
   // Поиск
   const [text, setText] = useState("");
   const [api, setApi] = useState(new Api(token));
-  let bascStore = localStorage.getItem("basket");
-  if (bascStore) {
-    bascStore = JSON.parse(bascStore);
+  let baskStore = localStorage.getItem("basket");
+  if (baskStore) {
+    baskStore = JSON.parse(baskStore);
   } else {
-    bascStore = [];
+    baskStore = [];
   }
-  const [basket, setBasket] = useState(bascStore);
-  const [news, setNews] = useState([]);
+  const [basket, setBasket] = useState(baskStore);
+  /* const [news, setNews] = useState([]); */
 
   // let key = "6c7fc5e6a754429ab47063a1b1a54774"
   //"https://newsapi.org/v2/everything?apiKey=6c7fc5e6a754429ab47063a1b1a54774&q=dogs"
@@ -62,9 +62,10 @@ const App = () => {
 
   useEffect(() => {
     if (api.token) {
-      api.getProduct()
+      api.getProducts()
         .then(data => {
           /* console.log(data); */
+          const result = data.products.filter(el => el.tags.includes("num"));
           setServerGoods(data.products.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
         })
     }
@@ -88,17 +89,21 @@ const App = () => {
 
   const Context = {
     setModalActive,
-    serverGoods,
-    user,
-    setUser,
-    goods,
     modalActive,
+    serverGoods,
+    goods,
     setGoods,
-    news,
-    userId,
     setServerGoods,
+    setUser,
+    user,
+    /* news, */
+    userId,
     token,
     api,
+    text,
+    setText,
+    basket,
+    setBasket
   };
 
   return (
@@ -112,7 +117,6 @@ const App = () => {
         <main>
           <Search arr={serverGoods} upd={setGoods} />
           <Routes>
-            <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route
               path="/catalog"
