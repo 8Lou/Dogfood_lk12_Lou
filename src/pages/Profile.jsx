@@ -101,11 +101,11 @@ const Profile = ({ user, divor, setUser }) => {
         </div>
 
         <div>
-            {/* <Button
-                onClick={() => Basket()}
-            >
-                <Basket />
-            </Button> */}
+            {<Button
+                onClick={() => <Basket />}
+            >Моя корзина
+
+            </Button>}
 
             {serverGoods.filter(el => el.author._id === userData._id).map(el => <div xs={6} md={3} key={el._id}>
                 <BsCard {...el} />

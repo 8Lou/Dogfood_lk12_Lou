@@ -22,7 +22,7 @@ const BsCard = ({
         e.stopPropagation();
         e.preventDefault();
         setIsLike(!isLike);
-        api.setLike(_id, !isLike)
+        api.swithLike(_id, !isLike)
             .then(data => {
                 console.log(data);
                 setServerGoods(function (old) {

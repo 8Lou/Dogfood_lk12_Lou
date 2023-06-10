@@ -38,10 +38,10 @@ export const getMyUser = createAsyncThunk(
 export const updateUser = createAsyncThunk("updateUser", async function (data) {
   console.log({ data });
   if (data.avatar) {
-    const res = await api.updateUserAvatar({avatar: data.avatar});
+    const res = await api.updUserInfo({avatar: data.avatar});
     return res;
   } else {
-    const res = await api.updateUserInfo({name: data.name, about: data.about});
+    const res = await api.updUserInfo({name: data.name, about: data.about});
     return res;
   }
 });

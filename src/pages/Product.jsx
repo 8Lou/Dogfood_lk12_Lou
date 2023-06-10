@@ -8,7 +8,7 @@ import { Basket2, Plus } from "react-bootstrap-icons"
 import { Button } from "../components/Button/Button";
 import { FormReview } from '../components/Forms/form-review';
 import { useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
+import { Form, FormProvider, useForm } from "react-hook-form";
 import { INITIAL_VALUE_RATING } from "../utils/Utils";
 import { fetchSetReview } from "../storage/slices/singleProductSlice";
 
@@ -38,7 +38,7 @@ const Product = ({ name, _id }) => {
 		}
 	]
 
-	/* const addReview = (e) => {
+	const addReview = (e) => {
 		e.preventDefault();
 		api.setReview(product._id, {
 			text: revText,
@@ -49,8 +49,8 @@ const Product = ({ name, _id }) => {
 			setRating(0);
 			setHideForm(true);
 		})
-	} */
-	const dispatch = useDispatch();
+	}
+	/* const dispatch = useDispatch();
 	const setReview = (e) => {
 		dispatch(fetchSetReview(product._id, {
 			text: revText,
@@ -63,7 +63,7 @@ const Product = ({ name, _id }) => {
 				setHideForm(true); reset();
 				setRating(INITIAL_VALUE_RATING)
 			})
-	}
+	} */
 	const delReview = (id) => {
 		api.delReview(product._id, id).then(d => {
 			setProduct(d);
@@ -83,14 +83,6 @@ const Product = ({ name, _id }) => {
 			.then(product => {
 				setServerGoods(prev => prev.filter(el => el._id !== id));
 				navigate("/catalog");
-			})
-	}
-
-	const del = () => {
-		api.delSingleProduct(id)
-			.then(data => {
-				setServerGoods(prev => prev.filter(el => el._id !== id))
-				navigate("/catalog")
 			})
 	}
 
@@ -169,7 +161,7 @@ const Product = ({ name, _id }) => {
 					: hideForm && <div><Button variant="outline-info" onClick={() => setHideForm(false)}>Написать отзыв</Button></div>
 				}
 				{!hideForm && <div className="">
-					<FormReview title={`Отзыв о товаре ${name}`} productID={_id} />
+					<FormReview title={`Отзыв о товаре ${name}`} productID={_id} onSubmit={addReview} />
 					<Button
 						type="reset"
 						className="product__btn"
