@@ -64,9 +64,8 @@ const App = () => {
     if (api.token) {
       api.getProducts()
         .then(data => {
-          /* console.log(data); */
-          const result = data.products.filter(el => el.tags.includes("num"));
-          setServerGoods(data.products.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()));
+          /* const result = data.products.filter(el => el.tags.includes(""));
+          setServerGoods(result.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())); */
         })
     }
   }, [api.token])

@@ -5,11 +5,11 @@ import { fetchSetReview } from "../../storage/slices/singleProductSlice";
 import Form from "./form";
 import { Button } from "../Button/Button";
 import { FormInput } from "./form-input";
-import { Rating } from "../Rating/rating";
+import { Rating } from "../Rating/Rating";
 import { INITIAL_VALUE_RATING } from "../../utils/Utils";
 
 export const FormReview = ({ title = 'Отзыв о товаре', productID, setProduct }) => {
-    const { register, handleSubmit, formState: { errors }, reset } = useForm({ mode: "onBlur" })
+    const { registration, handleSubmit, formState: { errors }, reset } = useForm({ mode: "onBlur" })
     const dispatch = useDispatch();
     const [rating, setRating] = useState(INITIAL_VALUE_RATING)
     /* const [revText, setRevText] = useState("");
@@ -23,7 +23,7 @@ export const FormReview = ({ title = 'Отзыв о товаре', productID, se
             })
     }
 
-    const textReview = register('text', {
+    const textReview = registration('text', {
         required: {
             value: true
         }

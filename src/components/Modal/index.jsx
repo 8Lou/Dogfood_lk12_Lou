@@ -5,7 +5,7 @@ import { Button } from "../Button/Button";
 import AppContext from "../../context/context";
 
 const Modal = ({ active, setActive, setUser }) => {
-	const [auth, setAuth] = useState(true);
+	const [authorisation, setAuth] = useState(true);
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [pwd, setPwd] = useState("");
@@ -14,7 +14,7 @@ const Modal = ({ active, setActive, setUser }) => {
 
 	const switchAuth = (e) => {
 		e.preventDefault();
-		setAuth(!auth);
+		setAuth(!authorisation);
 		clearForm();
 	}
 
@@ -31,17 +31,17 @@ const Modal = ({ active, setActive, setUser }) => {
 			email: email,
 			password: pwd
 		}
-		if (!auth) {
+		if (!authorisation) {
 			body.name = name;
 			body.group = "group-12";
 		}
 
-		let data = await (auth ? api.auth(body) : api.reg(body))
+		let data = await (authorisation ? api.authorisation(body) : api.registration(body))
 		if (!data.err) {
-			if (!auth) {
+			if (!authorisation) {
 				delete body.name;
 				delete body.group;
-				let dataLog = await api.auth(body);
+				let dataLog = await api.authorisation(body);
 				if (!dataLog.err) {
 					localStorage.setItem("user", dataLog.data.name);
 					localStorage.setItem("token", dataLog.token);
@@ -72,7 +72,7 @@ const Modal = ({ active, setActive, setUser }) => {
 			<div onClick={() => setActive(false)}><XLg /></div>
 			<h3>Авторизация</h3>
 			<form onSubmit={sendForm}>
-				{!auth && <label>
+				{!authorisation && <label>
 					Имя пользователя
 					<input
 						type="text"
@@ -96,7 +96,7 @@ const Modal = ({ active, setActive, setUser }) => {
 						onChange={(e) => setPwd(e.target.value)}
 					/>
 				</label>
-				{!auth && <label>
+				{!authorisation && <label>
 					Повторить пароль
 					<input
 						type="password"
@@ -108,16 +108,16 @@ const Modal = ({ active, setActive, setUser }) => {
 				<div className="modal-ctl">
 					<Button
 						className="modal-link"
-						disabled={!auth && (!pwd || pwd !== testPwd)}
+						disabled={!authorisation && (!pwd || pwd !== testPwd)}
 					>
-						{auth ? "Войти" : "Создать аккаунт"}
+						{authorisation ? "Войти" : "Создать аккаунт"}
 					</Button>
 					<a
 						href=""
 						className="modal-link"
 						onClick={switchAuth}
 					>
-						{auth ? "Регистрация" : "Войти"}
+						{authorisation ? "Регистрация" : "Войти"}
 					</a>
 				</div>
 			</form>

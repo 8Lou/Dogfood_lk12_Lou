@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { Basket, BoxArrowLeft } from "react-bootstrap-icons";
+import { BoxArrowLeft } from "react-bootstrap-icons";
 import { useContext, useEffect, useState } from "react";
 import AppContext from "../context/context";
-import Input from "../components/FormReview/pro-input";
+import Input from "../components/Forms/pro-input";
 import BsCard from "../components/BsCard";
 import { Button } from "../components/Button/Button";
+import Basket from './Basket'
 
 const Profile = ({ user, divor, setUser }) => {
     const navigate = useNavigate();
@@ -42,20 +43,26 @@ const Profile = ({ user, divor, setUser }) => {
             })
     }, [])
 
-    return <>
-        <h2>Личный кабинет</h2>
-        <div style={{ gridTemplatedivumns: "1fr", fontSize: "3em" }} >
-            Добро пожаловать,&nbsp;
-            <span style={{
-                fontWeight: "bold",
-                divor: divor
-            }}>{user}</span>
-            !
-        </div>
+    return <div style={{
+        gridColumnEnd: "span 4",
+        display: 'block',
+        gap: "20px"
+    }}>
+
+
 
         <div>
             {userData?.name && <>
                 <div>
+                    <h2>Личный кабинет</h2>
+                    <div style={{ gridTemplatedivumns: "1fr", fontSize: "3em" }} >
+                        Добро пожаловать,&nbsp;
+                        <span style={{
+                            fontWeight: "bold",
+                            divor: divor
+                        }}>{user}</span>
+                        !
+                    </div>
                     <div><Input
                         val={userData.name}
                         isActive={correctName}
@@ -94,21 +101,21 @@ const Profile = ({ user, divor, setUser }) => {
         </div>
 
         <div>
-            <div style={{
-                gridColumnEnd: "span 4"
-            }}>
-                <Button onClick={Basket}><h3>Перейти в карзину</h3></Button>
+            {/* <Button
+                onClick={() => Basket()}
+            >
+                <Basket />
+            </Button> */}
 
-            </div>
             {serverGoods.filter(el => el.author._id === userData._id).map(el => <div xs={6} md={3} key={el._id}>
                 <BsCard {...el} />
             </div>)}
         </div>
 
-        <a href="" onClick={logOut} title="Выйти">
+        <a href="" onClick={logOut} title="Выйти" style={{ fontSize: '2em' }}>
             <BoxArrowLeft />
-        </a>
-    </>
+        </a >
+    </div>
 }
 
 export default Profile;

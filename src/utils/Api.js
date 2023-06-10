@@ -3,12 +3,28 @@ const res = (res) => {
 };
 
 class Api {
-  constructor(config) {
-    this.baseUrl = config.baseUrl;
-    this.headers = config.headers;
-    this.baseUserUrl = config.baseUserUrl;
-  }
-    getProducts() {
+  constructor(token) {
+    this.baseUrl = "https://api.react-learning.ru";
+    this.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ1NzNlZTMyOTFkNzkwYjMwNzNkOGQiLCJncm91cCI6IjEyIiwiaWF0IjoxNjgyMzIwMTUwLCJleHAiOjE3MTM4NTYxNTB9.JAgKY9HDB1n6OXtsYFOngnu5K8SMjmyQAMCOtLFK0Ao";
+    }
+    headers(isContentType = false, noToken = false) {
+      const headerObj = {
+            "Authorization": `Bearer ${this.token}`
+        }
+        if (isContentType) {
+            headerObj["Content-Type"] = "application/json"
+        }
+        if (noToken) {
+            delete headerObj["Authorization"]
+        }
+        return headerObj;
+    }
+    body(body) {
+        return JSON.stringify(body);
+    }
+
+    
+  getProducts() {
     return fetch(`${this.baseUrl}/products`, {
       method: "GET",
       headers: this.headers,
@@ -34,27 +50,49 @@ class Api {
           headers: this.headers(),
       }).then(res => res.json())
   }
+   
+  searchProducts(search) {
+    return fetch(`${this.baseUrl}/search?query=${search}`, {
+      headers: this.headers,
+    }).then((res) => res.json());
+  }
+  
+  registration(body) {
+        return fetch(`${this.baseUrl}/signup`, {
+            method: "POST",
+            headers: this.headers(true, true),
+            body: JSON.stringify(body)
+        }).then(res => res.json())
+    }
+    authorisation(body) {
+        return fetch(`${this.baseUrl}/signin`, {
+            method: "POST",
+            headers: this.headers(true, true),
+            body: JSON.stringify(body)
+        }).then(res => res.json())
+    }
+
   getUsers() {
     return fetch(`${this.baseUrl}/users`, {
       method: "GET",
       headers: this.headers(),
     }).then((res) => res.json());
   }
-  
-  searchProducts(search) {
-    return fetch(`${this.baseUrl}/search?query=${search}`, {
-      headers: this.headers,
-    }).then((res) => res.json());
-  }
+ 
+  getSingleUser(id) {
+    return fetch(`${this.baseUrl}/users/${id}`, {
+        headers: this.headers,
+    }).then(res => res.json())
+    }
 
   getUserInfo() {
-    return fetch(`${this.baseUserUrl}/me`, {
+    return fetch(`${this.baseUser}/users/me`, {
       headers: this.headers,
     }).then((res) => res.json());
   }
 
   updUserInfo(body, changeImg = false) {
-    return fetch(`${this.baseUserUrl}/me${changeImg ? "/avatar" : ""}`, {
+    return fetch(`${this.baseUser}/users/me${changeImg ? "/avatar" : ""}`, {
       method: "PATCH",
       headers: this.headers(true),
       body: JSON.stringify(body)
@@ -86,14 +124,5 @@ class Api {
         }).then(res => res.json())
     }
 }
-
-const config = {
-  headers: {
-    "Content-Type": "application/json",
-    "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ1NzNlZTMyOTFkNzkwYjMwNzNkOGQiLCJncm91cCI6IjEyIiwiaWF0IjoxNjgyMzIwMTUwLCJleHAiOjE3MTM4NTYxNTB9.JAgKY9HDB1n6OXtsYFOngnu5K8SMjmyQAMCOtLFK0Ao"
-  },
-  baseUrl: "https://api.react-learning.ru",
-  baseUserUrl: "https://api.react-learning.ru/users",
-};
 
 export default Api;

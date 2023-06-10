@@ -6,7 +6,7 @@ import ButtonBack from "./ButtonBack";
 import AppContext from "../context/context";
 import { Basket2, Plus } from "react-bootstrap-icons"
 import { Button } from "../components/Button/Button";
-import { FormReview } from '../components/FormReview/form-review';
+import { FormReview } from '../components/Forms/form-review';
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { INITIAL_VALUE_RATING } from "../utils/Utils";
@@ -22,7 +22,7 @@ const Product = ({ name, _id }) => {
 	const [hideForm, setHideForm] = useState(true);
 	const { api, userId, setServerGoods } = useContext(AppContext);
 	const navigate = useNavigate();
-	const { register, handleSubmit, formState: { errors }, reset } = useForm({ mode: "onBlur" })
+	const { registration, handleSubmit, formState: { errors }, reset } = useForm({ mode: "onBlur" })
 	const tableInfo = [
 		{
 			name: "wight",
@@ -87,7 +87,7 @@ const Product = ({ name, _id }) => {
 	}
 
 	const del = () => {
-		api.delProduct(id)
+		api.delSingleProduct(id)
 			.then(data => {
 				setServerGoods(prev => prev.filter(el => el._id !== id))
 				navigate("/catalog")
