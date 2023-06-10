@@ -5,7 +5,7 @@ const res = (res) => {
 class Api {
   constructor(token) {
     this.baseUrl = "https://api.react-learning.ru";
-    this.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ1NzNlZTMyOTFkNzkwYjMwNzNkOGQiLCJncm91cCI6IjEyIiwiaWF0IjoxNjgyMzIwMTUwLCJleHAiOjE3MTM4NTYxNTB9.JAgKY9HDB1n6OXtsYFOngnu5K8SMjmyQAMCOtLFK0Ao";
+    this.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ1NzNlZTMyOTFkNzkwYjMwNzNkOGQiLCJncm91cCI6IjEyIiwiaWF0IjoxNjgyMzIwMTUwLCJleHAiOjE3MTM4NTYxNTB9.JAgKY9HDB1n6OXtsYFOngnu5K8SMjmyQAMCOtLFK0Ao" || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ1NzNlZTMyOTFkNzkwYjMwNzNkOGQiLCJncm91cCI6IjEyIiwiaWF0IjoxNjg2Mzc4MzY1LCJleHAiOjE3MTc5MTQzNjV9.P8Wx2EZLr2-iiKWIYz-e_7V0OElCFyJB5pbZ3-ATmBo";
     }
     headers(isContentType = false, noToken = false) {
       const headerObj = {
@@ -27,13 +27,13 @@ class Api {
   getProducts() {
     return fetch(`${this.baseUrl}/products`, {
       method: "GET",
-      headers: this.headers,
+      headers: this.headers(),
     }).then((res) => res.json());
   }
   getSingleProduct(id) {
     return fetch(`${this.baseUrl}/products/${id}`, {
       method: "GET",
-      headers: this.headers,
+      headers: this.headers(),
     }).then((res) => res.json());
   }
     
@@ -81,13 +81,13 @@ class Api {
  
   getSingleUser(id) {
     return fetch(`${this.baseUrl}/users/${id}`, {
-        headers: this.headers,
+        headers: this.headers(),
     }).then(res => res.json())
     }
 
   getUserInfo() {
     return fetch(`${this.baseUser}/users/me`, {
-      headers: this.headers,
+      headers: this.headers(),
     }).then((res) => res.json());
   }
 
@@ -102,25 +102,25 @@ class Api {
   swithLike(productID, wasLiked) {
     return fetch(`${this.baseUrl}/likes/${productID}`, {
       method: wasLiked ? "DELETE" : "PUT",
-      headers: this.headers,
+      headers: this.headers(true),
     }).then((res) => res.json());
   }
   setReview(productID, body) {
         return fetch(`${this.baseUrl}/products/review/${productID}`, {
             method: "POST",
-            headers: this.headers,
+            headers: this.headers(true),
             body: JSON.stringify(body)
         }).then(res => res.json())
     }
   delReview(productID, reviewId) {
         return fetch(`${this.baseUrl}/products/review/${productID}/${reviewId}`, {
             method: "DELETE",
-            headers: this.headers,
+            headers: this.headers(),
         }).then(res => res.json())
     }
   getReview(id) {
         return fetch(`${this.baseUrl}/products/review/${id}`, {
-            headers: this.headers,
+            headers: this.headers(),
         }).then(res => res.json())
     }
 }
