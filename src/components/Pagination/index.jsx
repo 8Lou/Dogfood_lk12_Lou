@@ -7,7 +7,7 @@ const Pagination = ({ num }) => {
         items.push(<Number
             val={i + 1}
             onClick={() => { num.step(i + 1) }}
-            active={num.current === i + 1}
+            active={num.page === i + 1}
             key={"pag_" + i}
         />)
     }

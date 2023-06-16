@@ -8,7 +8,7 @@ import { FormInput } from "./form-input";
 import { Rating } from "../Rating/Rating";
 import { INITIAL_VALUE_RATING } from "../../utils/Utils";
 
-export const FormReview = ({ title = 'Отзыв о товаре', productID, setProduct }) => {
+export const FormReview = ({ title = 'Отзыв о товаре', productID, setGoods }) => {
     const { registration, handleSubmit, formState: { errors }, reset } = useForm({ mode: "onBlur" })
     const dispatch = useDispatch();
     const [rating, setRating] = useState(INITIAL_VALUE_RATING)
@@ -28,7 +28,7 @@ export const FormReview = ({ title = 'Отзыв о товаре', productID, se
             value: true
         }
     })
-
+    
     return (
         <Form title={title} handleFormSubmit={handleSubmit(sendReviewGoods)}>
 

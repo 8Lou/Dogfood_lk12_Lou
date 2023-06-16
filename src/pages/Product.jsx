@@ -50,7 +50,7 @@ const Product = ({ name, _id }) => {
 			setHideForm(true);
 		})
 	}
-	/* const dispatch = useDispatch();
+	const dispatch = useDispatch();
 	const setReview = (e) => {
 		dispatch(fetchSetReview(product._id, {
 			text: revText,
@@ -63,7 +63,7 @@ const Product = ({ name, _id }) => {
 				setHideForm(true); reset();
 				setRating(INITIAL_VALUE_RATING)
 			})
-	} */
+	}
 	const delReview = (id) => {
 		api.delReview(product._id, id).then(d => {
 			setProduct(d);

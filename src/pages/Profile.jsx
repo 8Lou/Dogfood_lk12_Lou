@@ -50,6 +50,15 @@ const Profile = ({ user, divor, setUser }) => {
     }}>
 
 
+        <h2>Личный кабинет</h2>
+        <div style={{ gridTemplatedivumns: "1fr", fontSize: "3em" }} >
+            Добро пожаловать,&nbsp;
+            <span style={{
+                fontWeight: "bold",
+                divor: divor
+            }}>{user}</span>
+            !
+        </div>
 
         <div>
             {userData?.name && <>

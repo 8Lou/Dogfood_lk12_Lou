@@ -4,6 +4,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "classnames": "^2.3.2",
+    "echarts": "^5.4.2",
     "eslint": "^8.41.0",
     "eslint-plugin-disable": "^2.0.3",
     "hooks": "^0.3.2",

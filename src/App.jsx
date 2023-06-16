@@ -8,7 +8,6 @@ import Profile from "./pages/Profile";
 import Product from "./pages/Product";
 import FavoritePage from "./pages/FavoritePage";
 import Search from "./components/Search";
-import Draft from "./pages/Draft";
 import AppContext from './context/context';
 import Api from "./utils/Api";
 import { Basket } from "react-bootstrap-icons";
@@ -64,7 +63,7 @@ const App = () => {
     if (api.token) {
       api.getProducts()
         .then(data => {
-          console.log(data);
+          /* console.log(data); */
           /* const result = data.products.filter(el => el.tags.includes(""));
           setServerGoods(result.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())); */
           setServerGoods(data.products);
@@ -139,7 +138,6 @@ const App = () => {
                 />
               }
             />
-            <Route path="/draft" element={<Draft />} />
             <Route
               path="/profile"
               element={<Profile user={user} setUser={setUser} color="pink" />}
