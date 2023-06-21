@@ -9,7 +9,7 @@ import { Rating } from "../Rating/Rating";
 import { INITIAL_VALUE_RATING } from "../../utils/Utils";
 
 export const FormReview = ({ title = 'Отзыв о товаре', productID, setGoods }) => {
-    const { registration, handleSubmit, formState: { errors }, reset } = useForm({ mode: "onBlur" })
+    const { reg, handleSubmit, formState: { errors }, reset } = useForm({ mode: "onBlur" })
     const dispatch = useDispatch();
     const [rating, setRating] = useState(INITIAL_VALUE_RATING)
     /* const [revText, setRevText] = useState("");
@@ -23,7 +23,7 @@ export const FormReview = ({ title = 'Отзыв о товаре', productID, se
             })
     }
 
-    const textReview = registration('text', {
+    const textReview = reg('text', {
         required: {
             value: true
         }

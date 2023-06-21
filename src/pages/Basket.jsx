@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import AppContext from "../context/context";
 import { Button } from "../components/Button/Button";
 import ButtonBack from "./ButtonBack";
+import { Trash3 } from "react-bootstrap-icons/dist";
 
 const Basket = () => {
     const { basket, setBasket } = useContext(AppContext);
@@ -36,6 +37,10 @@ const Basket = () => {
             }))
         }
     }
+    const del = (id) => {
+        setBasket(prev => prev.filter(el => el.id !== id))
+    }
+
     return <>
         <span style={{
             fontSize: '.8em', padding: '60px', margin: "60px"
@@ -70,6 +75,7 @@ const Basket = () => {
                     <td>{el.price * el.count}&nbsp;₽</td>
                     <td>{el.discount > 0 && `${el.discount}%`}</td>
                     <td>{el.discount > 0 && <>{setPrice(el).toFixed(2)}&nbsp;₽</>}</td>
+                    <td ><Trash3 onClick={() => del(el.id)} style={{ cursor: "pointer" }} /></td>
                 </tr>)}
             </tbody>
             <tfoot>

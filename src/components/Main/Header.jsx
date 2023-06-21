@@ -12,15 +12,16 @@ import { useState, useEffect, useContext } from "react";
 import AppContext from "../../context/context";
 
 const Header = ({ user, setModalActive, serverGoods }) => {
-    const [likeCnt, setLikeCnt] = useState(0);
-    const [cartCnt, setCartCnt] = useState(0);
+    const [likeCount, setLikeCount] = useState(0);
+    const [cartCount, setCartCount] = useState(0);
     const { basket } = useContext(AppContext)
     useEffect(() => {
-        setLikeCnt(serverGoods.filter(el => el.likes.includes(localStorage.getItem("id"))).length)
+        setLikeCount(serverGoods.filter(el => el.likes.includes(localStorage.getItem("id"))).length)
+
     }, [serverGoods]);
 
     useEffect(() => {
-        setCartCnt(basket.reduce((acc, el) => acc + el.cnt, 0))
+        setCartCount(basket.reduce((acc, el) => acc + el.count, 0))
     }, [basket])
 
     const logIn = (e) => {
@@ -36,11 +37,11 @@ const Header = ({ user, setModalActive, serverGoods }) => {
                 </Link>
                 <Link to="/favorites" title="Избранное" className="badge-el">
                     <Star />
-                    <span className="badge-item">{likeCnt}</span>
+                    <span className="badge-item">{likeCount}</span>
                 </Link>
                 <Link to="/basket" title="Корзина" className="badge-el">
                     <Cart4 />
-                    <span className="badge-item">{cartCnt}</span>
+                    <span className="badge-item">{cartCount}</span>
                 </Link>
                 <Link to="/profile" title="Профиль">
                     <PersonCircle />

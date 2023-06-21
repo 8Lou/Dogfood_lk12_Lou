@@ -4,26 +4,28 @@ import AppContext from "../context/context";
 import Input from "../components/Forms/pro-input";
 import BsCard from "../components/BsCard";
 import { Button } from "../components/Button/Button";
+import UpdatedInput from "../components/UpdatedInput";
 
-const Profile = ({ user, divor, setUser }) => {
+const Profile = ({ setUser }) => {
     const navigate = useNavigate();
     const { api, serverGoods } = useContext(AppContext);
-    const [userData, setUserData] = useState({});
-    const [correctName, setСorrectName] = useState(false);
-    const [correctData, setCorrectData] = useState(false);
-    const [correctAv, setCorrectAv] = useState(false);
+    const [user, setuser] = useState({});
+    const [inpName, setInpName] = useState(false);
+    const [inpData, setInpData] = useState(false);
+    const [inpAbout, setInpAbout] = useState(false);
+    const [inpAvatar, setInpAvatar] = useState(false);
 
 
-    const updProfile = (name, val) => {
+    const updUser = (name, val) => {
         let body = {
-            name: userData.name,
-            about: userData.about
+            name: user.name,
+            about: user.about
         }
         if (name === "avatar") {
-            body = { avatar: userData.avatar };
+            body = { avatar: user.avatar };
         }
         body[name] = val;
-        api.updUserInfo(body, name === "avatar").then(data => setUserData(data));
+        api.updUserInfo(body, name === "avatar").then(data => setuser(data));
     }
 
     const logOut = (e) => {
@@ -37,7 +39,7 @@ const Profile = ({ user, divor, setUser }) => {
     useEffect(() => {
         api.getUserInfo()
             .then(data => {
-                setUserData(data);
+                setuser(data);
             })
     }, [])
 
@@ -52,53 +54,62 @@ const Profile = ({ user, divor, setUser }) => {
         <div style={{ gridTemplatedivumns: "1fr", fontSize: "3em" }} >
             Добро пожаловать,&nbsp;
             <span style={{
-                fontWeight: "bold",
-                divor: divor
+                fontWeight: "bold"
             }}>{user}</span>
             !
         </div>
 
         <div>
-            {userData?.name && <>
+            {user?.name && <>
                 <div>
                     <h2>Личный кабинет</h2>
                     <div style={{ gridTemplatedivumns: "1fr", fontSize: "3em" }} >
                         Добро пожаловать,&nbsp;
                         <span style={{
-                            fontWeight: "bold",
-                            divor: divor
+                            fontWeight: "bold"
                         }}>{user}</span>
                         !
                     </div>
-                    <div><Input
-                        val={userData.name}
-                        isActive={correctName}
-                        changeActive={setСorrectName}
-                        upd={updProfile}
+                    <div><UpdatedInput
+                        val={user.name}
+                        isActive={inpName}
+                        changeActive={setInpName}
+                        upd={updUser}
                         name="name"
                     /></div>
-                    <div className="">{userData.email}</div>
+
+                    <div className="">{user.email}</div>
+
+                    <div><UpdatedInput
+                        val={user.about}
+                        isActive={inpAbout}
+                        changeActive={setInpAbout}
+                        upd={updUser}
+                        name="about"
+                    /></div>
+
+                    <div className="">{user.email}</div>
                     <div>
-                        <Input
-                            val={userData.about}
-                            isActive={correctData}
-                            changeActive={setCorrectData}
-                            upd={updProfile}
-                            name="about"
+                        <UpdatedInput
+                            val={user.avatar}
+                            isActive={inpAvatar}
+                            changeActive={setInpAvatar}
+                            upd={updUser}
+                            name="avatar"
                         /></div>
                 </div>
                 <div>
                     <div>
                         <image
-                            src={userData.avatar}
-                            alt={userData.email}
+                            src={user.avatar}
+                            alt={user.email}
                         />
                         <div>
                             <Input
-                                val={userData.avatar}
-                                isActive={correctAv}
-                                changeActive={setCorrectAv}
-                                upd={updProfile}
+                                val={user.avatar}
+                                isActive={inpAvatar}
+                                changeActive={setInpAvatar}
+                                upd={updUser}
                                 name="avatar"
                             />
                         </div>
@@ -108,8 +119,7 @@ const Profile = ({ user, divor, setUser }) => {
         </div>
 
         <div>
-
-            {/*  */}{serverGoods.filter(el => el.author._id === userData._id).map(el => <div key={el._id}>
+            {serverGoods.filter(el => el.author._id === user._id).map(el => <div key={el._id}>
                 <BsCard {...el} />
             </div>)}
         </div>

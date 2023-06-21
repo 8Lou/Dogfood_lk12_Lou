@@ -26,7 +26,7 @@ const BsCard = ({
         setInBasket(true);
         setBasket(prev => [...prev, {
             id: _id,
-            cnt: 1,
+            count: 1,
             name: name,
             img: img,
             price: price,
