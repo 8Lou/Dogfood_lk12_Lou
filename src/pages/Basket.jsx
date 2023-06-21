@@ -7,37 +7,42 @@ import ButtonBack from "./ButtonBack";
 
 const Basket = () => {
     const { basket, setBasket } = useContext(AppContext);
-    const setPrice = ({ price, cnt, discount }) => {
-        return price * cnt * (1 - discount / 100)
+    const setPrice = ({ price, count, discount }) => {
+        return price * count * (1 - discount / 100)
     }
     const sum = basket.reduce((acc, el) => {
-        return acc + el.cnt * el.price
+        return acc + el.count * el.price
     }, 0)
     const sale = basket.reduce((acc, el) => {
-        return acc + el.cnt * el.price * (1 - el.discount / 100)
+        return acc + el.count * el.price * (1 - el.discount / 100)
     }, 0)
-    const inc = (id) => {
+    const increment = (id) => {
         setBasket(prev => prev.map(el => {
             if (el.id === id) {
-                el.cnt++;
+                el.count++;
             }
             return el;
         }))
     }
-    const dec = (id, cnt) => {
-        if (cnt === 1) {
+    const decrement = (id, count) => {
+        if (count === 1) {
             setBasket(prev => prev.filter(el => el.id !== id))
         } else {
             setBasket(prev => prev.map(el => {
                 if (el.id === id) {
-                    el.cnt--;
+                    el.count--;
                 }
                 return el;
             }))
         }
     }
     return <>
-        <h1 style={{ fontSize: '1.5em', margin: "0 60px" }}>Моя корзина</h1>
+        <span style={{
+            fontSize: '.8em', padding: '60px', margin: "60px"
+        }}>
+            < h1 > Моя корзина</h1 >
+            <ButtonBack />
+        </span >
         <table>
             <thead>
                 <tr>
@@ -58,11 +63,11 @@ const Basket = () => {
                         <Link to={`/product/${el.id}`} style={{ color: "#c37edb" }}>{el.name}</Link>
                     </td>
                     <td>
-                        <Button onClick={() => dec(el.id, el.cnt)}>-</Button>
-                        <span style={{ padding: "0 10px" }}>{el.cnt}</span>
-                        <Button onClick={() => inc(el.id)}>+</Button>
+                        <Button onClick={() => decrement(el.id, el.count)}>-</Button>
+                        <span style={{ padding: "0 10px" }}>{el.count}</span>
+                        <Button onClick={() => increment(el.id)}>+</Button>
                     </td>
-                    <td>{el.price * el.cnt}&nbsp;₽</td>
+                    <td>{el.price * el.count}&nbsp;₽</td>
                     <td>{el.discount > 0 && `${el.discount}%`}</td>
                     <td>{el.discount > 0 && <>{setPrice(el).toFixed(2)}&nbsp;₽</>}</td>
                 </tr>)}
@@ -74,7 +79,6 @@ const Basket = () => {
                 </tr>
             </tfoot>
         </table >
-        <ButtonBack style={{ margin: "0 60px" }} />
     </>
 }
 

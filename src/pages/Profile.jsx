@@ -1,5 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
-import { BoxArrowLeft } from "react-bootstrap-icons";
+import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import AppContext from "../context/context";
 import Input from "../components/Forms/pro-input";
