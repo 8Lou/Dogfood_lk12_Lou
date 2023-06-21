@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BoxArrowLeft } from "react-bootstrap-icons";
 import { useContext, useEffect, useState } from "react";
 import AppContext from "../context/context";
@@ -110,10 +110,9 @@ const Profile = ({ user, divor, setUser }) => {
         </div>
 
         <div>
-            {<Button
-                onClick={() => <Basket />}
-            >Моя корзина
+            {<Button>Моя корзина
 
+                <Link to="/basket" title="Корзина"></Link>
             </Button>}
 
             {serverGoods.filter(el => el.author._id === userData._id).map(el => <div xs={6} md={3} key={el._id}>
