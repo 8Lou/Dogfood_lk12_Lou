@@ -1,10 +1,10 @@
 .search {
   font-size: 1rem;
-	background-color: white;
+	background-color: pink;
 	color: #88a3e2;
 	border-radius: 14px;
 	padding: 10px 60px;
-	margin: 5px 20px 0 20px;
+	margin: 20px 60px;
 }
 .search__input:focus {
   outline: none

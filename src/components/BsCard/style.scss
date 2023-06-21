@@ -30,7 +30,8 @@
 
   &__img {
     border-radius: 8px;
-    height: 150px;
+    max-width: 200px;
+    max-height: 220px;
     justify-self: normal;
   }
 

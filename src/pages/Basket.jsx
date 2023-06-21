@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import AppContext from "../context/context";
+import { Button } from "../components/Button/Button";
+import { Display, Grid } from "react-bootstrap-icons";
 
 const Basket = () => {
     const { basket, setBasket } = useContext(AppContext);
@@ -35,7 +37,7 @@ const Basket = () => {
         }
     }
     return <>
-        <h1>Корзина</h1>
+        <h1 style={{ fontSize: '1.5em', margin: "0 60px" }}>Моя корзина</h1>
         <table>
             <thead>
                 <tr>
@@ -53,12 +55,12 @@ const Basket = () => {
                         <img src={el.img} alt={el.name} height="50" />
                     </td>
                     <td>
-                        <Link to={`/product/${el.id}`}>{el.name}</Link>
+                        <Link to={`/product/${el.id}`} style={{ color: "#c37edb" }}>{el.name}</Link>
                     </td>
                     <td>
-                        <button onClick={() => dec(el.id, el.cnt)}>-</button>
+                        <Button onClick={() => dec(el.id, el.cnt)}>-</Button>
                         <span style={{ padding: "0 10px" }}>{el.cnt}</span>
-                        <button onClick={() => inc(el.id)}>+</button>
+                        <Button onClick={() => inc(el.id)}>+</Button>
                     </td>
                     <td>{el.price * el.cnt}&nbsp;₽</td>
                     <td>{el.discount > 0 && `${el.discount}%`}</td>
@@ -67,11 +69,11 @@ const Basket = () => {
             </tbody>
             <tfoot>
                 <tr>
-                    <td colSpan={3}>Cумма:</td>
+                    <td colSpan={3}>Cумма:</td> {/* colSpan сколько столбцов пересекает ячейка */}
                     <td colSpan={3}>{sale.toFixed(2)} ₽<del>{sum}  ₽</del></td>
                 </tr>
             </tfoot>
-        </table>
+        </table >
     </>
 }
 

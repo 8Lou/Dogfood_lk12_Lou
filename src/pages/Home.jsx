@@ -4,17 +4,12 @@ import { Folder2Open } from "react-bootstrap-icons";
 /* import Advertisement from "../components/advertisement/Advertisement"; */
 
 const Home = ({ user, setActive, pictures }) => {
-  return <>
+  return <div>
 
-    <span className="welcome">Наелся и спит...</span>
+    <span className="welcome">Добро пожаловать в магазин <br />"Собачье счастье"</span>
     <div className="home__img">
-      <img src="https://i.gifer.com/S6jK.gif" alt="home__picture" />
+      <img src="https://cdn.dribbble.com/users/1981303/screenshots/7058473/media/7a0ce2416add97c3bf0b8cd921cb4666.gif" />
     </div>
-    <span className="welcome">
-      Добро пожаловать в магазин "Собачье счастье"
-      <br />Вы находитесь на главной странице
-      <br />Данная страница в процессе стиллизации...
-    </span>
     <div className="info">
       {user && (
         <Link to="/catalog" className="info-link">
@@ -22,15 +17,21 @@ const Home = ({ user, setActive, pictures }) => {
           Выбрать
         </Link>
       )}
-      {!user && (
-        <>
-          <span className="info-link" onClick={() => setActive(true)}>
-            {/*               Необходима авторизация, для доступа
- */}            </span>
-          {/* <Advertisement/> */}
-        </>
-      )}
+      {/* {!user && (
+        <span className="info-link" onClick={() => setActive(true)}>
+          Необходима авторизация, для доступа</span>
+      )} */}
     </div>
-  </>
+    <div className="welcome__title">
+      <span>
+        Наелся и спит...
+        <br />
+        <Link to="/catalog" className="info-link">
+          <Folder2Open style={{ marginRight: "10px" }} />
+          Выбрать лакомства
+        </Link>
+      </span>
+    </div>
+  </div>
 };
 export default Home;

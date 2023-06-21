@@ -1,13 +1,29 @@
 .welcome {
     display: flex;
+    justify-content: left;
+    margin: 10px 80px;
+    font-size: 4em;
+    color: rgb(91, 60, 141);
+    position: relative;
+
+  &__title{
+    margin: 450px 80px;
+    font-size: 1.4em;
+    color: #aaecfc;
+}}
+.home__img {
+    width: 100%;
+    top: 0;
+    display: flex;
     justify-content: center;
-
+    align-items: center;
+    position: absolute;
+    z-index: -1;
 }
-
 .sort-goods {
     background: #aaecfc;
     box-shadow: 0px 2px 4px rgba(40, 41, 61, 0.04),
-        0px 8px 16px rgba(96, 97, 112, 0.16);
+    0px 8px 16px rgba(96, 97, 112, 0.16);
     border-radius: 12px;
     padding: 12px 16px;
     display: flex;
@@ -16,7 +32,6 @@
     max-height: 25px;
     margin: -25px 20px 0 40px;
 }
-
 .sort-item {
     font-weight: 400;
     font-size: 16px;
@@ -25,34 +40,22 @@
     cursor: pointer;
     padding: 5px;
 }
-.home__img {
-    height: 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .product{
-    display: flex;
-    flex-direction: column;
-    align-items: center;    
-    padding: 20px;
     &__container {
-    margin: 20px;
+    margin: 20px 60px;
 }
     &__picture {
-    max-width: 300px;
-    border-radius: 8px;
-    padding: 20px 0 20;
+    max-width: 400px;
+    border-radius: 15px;
+    margin: 25px 0;
     }
     &__btn {
-        padding: 20px;
     }
     &__mark {
-    color: hotpink;
+    color: rgb(192, 56, 124);
     font-size: larger;
 }
 }
-
 
 .reviews {
     margin-top: 20px;
@@ -103,4 +106,49 @@
         padding: 2rem 0;
     }
   }
+  
+.container.bs {
+  display: block;
+}
+table {
+  /* width: 100%; */
+  background-color: white;
+  color: #88a3e2;
+  border-radius: 14px;
+  overflow: hidden;  
+	padding: 10px 60px;
+	margin: 5px 60px;
+}
+td {
+  padding: .6rem 1rem;
+  color: #88a3e2;
+}
+td:first-child {
+  text-align: center;
+}
+thead td {
+  text-align: center;
+  font-weight: bold;
+}
+tbody td {
+  border-bottom: 1px solid #88a3e2;
+
+}
+tfoot td {
+  vertical-align: bottom;
+  line-height: 1;
+}
+tfoot td:first-child {
+  text-align: right;
+  text-transform: uppercase;
+}
+tfoot td:last-child {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+tfoot del {
+  padding-left: 12px;
+  font-size: .6em;
+  color: silver;
+}
   

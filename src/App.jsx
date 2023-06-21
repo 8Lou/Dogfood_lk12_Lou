@@ -10,7 +10,7 @@ import FavoritePage from "./pages/FavoritePage";
 import Search from "./components/Search";
 import AppContext from './context/context';
 import Api from "./utils/Api";
-import { Basket } from "react-bootstrap-icons";
+import Basket from "./pages/Basket";
 
 const App = () => {
   const [user, setUser] = useState(localStorage.getItem("user"));
@@ -22,6 +22,7 @@ const App = () => {
   // Поиск
   const [text, setText] = useState("");
   const [api, setApi] = useState(new Api(token));
+  
   let baskStore = localStorage.getItem("basket");
   if (baskStore) {
     baskStore = JSON.parse(baskStore);
@@ -42,15 +43,6 @@ const App = () => {
             })
     }, []) */
 
-  /* const config = {
-    headers: {
-        "Content-Type": "application/json",
-        "authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ1NzNlZTMyOTFkNzkwYjMwNzNkOGQiLCJncm91cCI6IjEyIiwiaWF0IjoxNjgyMzIwMTUwLCJleHAiOjE3MTM4NTYxNTB9.JAgKY9HDB1n6OXtsYFOngnu5K8SMjmyQAMCOtLFK0Ao"
-    },
-    baseUrl: "https://api.react-learning.ru/products",
-    baseUserUrl: "https://api.react-learning.ru/users"
-} */
-
   useEffect(() => {
     setApi(new Api(token));
   }, [token])
@@ -63,7 +55,7 @@ const App = () => {
     if (api.token) {
       api.getProducts()
         .then(data => {
-          /* console.log(data); */
+          console.log(data);
           /* const result = data.products.filter(el => el.tags.includes(""));
           setServerGoods(result.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())); */
           setServerGoods(data.products);

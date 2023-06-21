@@ -28,7 +28,7 @@ export const FormReview = ({ title = 'Отзыв о товаре', productID, se
             value: true
         }
     })
-    
+
     return (
         <Form title={title} handleFormSubmit={handleSubmit(sendReviewGoods)}>
 

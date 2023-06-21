@@ -50,7 +50,7 @@ const Product = ({ name, _id }) => {
 			setHideForm(true);
 		})
 	}
-	const dispatch = useDispatch();
+	/* const dispatch = useDispatch();
 	const setReview = (e) => {
 		dispatch(fetchSetReview(product._id, {
 			text: revText,
@@ -63,7 +63,7 @@ const Product = ({ name, _id }) => {
 				setHideForm(true); reset();
 				setRating(INITIAL_VALUE_RATING)
 			})
-	}
+	} */
 	const delReview = (id) => {
 		api.delReview(product._id, id).then(d => {
 			setProduct(d);
@@ -87,7 +87,6 @@ const Product = ({ name, _id }) => {
 	}
 
 	return <div className="product__container">
-		<ButtonBack />
 		{product.name
 			? <>
 				<div>
@@ -117,6 +116,7 @@ const Product = ({ name, _id }) => {
 					</tbody>
 				</div>
 				{product.reviews.length > 0 ? <div>
+					<ButtonBack />
 					<h2>Отзывы</h2>
 					<div className="">
 						{product.reviews.map(el => <div key={el._id}>

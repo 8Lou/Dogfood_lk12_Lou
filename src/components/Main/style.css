@@ -4,7 +4,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 20px;
+  padding: 5px 50px;
   flex-wrap: wrap;
   gap: 10px;
   height: 60px;
@@ -26,6 +26,9 @@ footer {
   background: #88a3e2;
   color: #aaecfc;
   font-weight: 400;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .getFullYear {
@@ -38,7 +41,7 @@ footer {
   display: flex;
   align-items: center;
   font-weight: bold;
-  font-size: 1.3em;
+  font-size: 1.5em;
 }
 
 .logo img {
@@ -66,7 +69,7 @@ footer {
 .header__menu,
 .header__menu > span > * {
   color: #aaecfc;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   display: flex;
   align-items: center;
   gap: 19px;

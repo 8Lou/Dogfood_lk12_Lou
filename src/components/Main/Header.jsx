@@ -29,11 +29,8 @@ const Header = ({ user, setModalActive, serverGoods }) => {
     }
     return <header>
         <Logo />
-        {/* <div className="search"></div> */}
         <nav className="header__menu">
             {user && <>
-                {/* <span className="badge-item">{serverGoods.length}</span> */}
-                {/* </Link> */}
                 <Link to="/home" title="На главную" className="badge-el">
                     <HouseDoor />
                 </Link>
@@ -41,7 +38,7 @@ const Header = ({ user, setModalActive, serverGoods }) => {
                     <Star />
                     <span className="badge-item">{likeCnt}</span>
                 </Link>
-                <Link to="/" title="Корзина" className="badge-el">
+                <Link to="/basket" title="Корзина" className="badge-el">
                     <Cart4 />
                     <span className="badge-item">{cartCnt}</span>
                 </Link>

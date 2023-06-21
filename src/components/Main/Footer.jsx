@@ -2,11 +2,10 @@ import { Link } from "react-router-dom"
 
 import Logo from "./Logo";
 const links = [
-  { name: "Каталог", src: "/catalog" },
-  { name: "Избранное", src: "/favorites" },
-  { name: "Корзина", src: "/" },
+    { name: "Каталог", src: "/catalog" },
+    { name: "Избранное", src: "/favorites" },
+    { name: "Корзина", src: "/basket" },
 ];
-
 const Footer = () => <footer>
     <div className="footer__copy">
         <Logo />
