@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { SuitHeart, SuitHeartFill, Percent } from "react-bootstrap-icons";
 import { Button } from "../Button/Button";
 import AppContext from "../../context/context";
-import { useSelector, useDispatch } from "react-redux";
 
 const BsCard = ({
     discount,
@@ -17,7 +16,6 @@ const BsCard = ({
     description,
     pictures,
 }) => {
-    const dispatch = useDispatch();
     const { setServerGoods, userId, api, setBasket, serverGoods, basket } = useContext(AppContext)
     const [isLike, setIsLike] = useState(likes.includes(userId));
     const [inBasket, setInBasket] = useState(basket.filter(el => el.id === _id).length > 0)
@@ -56,20 +54,6 @@ const BsCard = ({
             })
     }
 
-    const addBasket = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        setInBasket(true);
-        setBasket(prev => [...prev, {
-            id: _id,
-            cnt: 1,
-            name,
-            img,
-            price,
-            discount
-        }])
-    }
-
     return <Link className="card" to={`/product/${_id}`}>
         {discount > 0 && <span className="card__discount"><Percent /> {discount}</span>}
         <span className="card__like" onClick={updLike}>
@@ -88,7 +72,7 @@ const BsCard = ({
             }
             &nbsp;₽</span>
         <Button className="card__btn"
-            Click={addToCart}
+            onClick={addToCart}
             disabled={inBasket}>В корзину</Button>
         {<span className="card__tags">
             {tags.map(el => <span key={el}>{el}</span>)}

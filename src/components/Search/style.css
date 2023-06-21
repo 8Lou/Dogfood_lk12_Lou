@@ -2,7 +2,7 @@
   font-size: 1rem;
 	background-color: pink;
 	color: #88a3e2;
-	border-radius: 14px;
+	border-radius: 6px;
 	padding: 10px 60px;
 	margin: 20px 60px;
 }
@@ -11,7 +11,7 @@
 }
 .search__input {
 border: 1px solid #88a3e2;
-border-radius: 8px;
+border-radius: 6px;
 width: 300px;
 height: 30px;
 margin: 5px;

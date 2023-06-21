@@ -31,7 +31,7 @@ const Header = ({ user, setModalActive, serverGoods }) => {
         <Logo />
         <nav className="header__menu">
             {user && <>
-                <Link to="/home" title="На главную" className="badge-el">
+                <Link to="/" title="На главную" className="badge-el">
                     <HouseDoor />
                 </Link>
                 <Link to="/favorites" title="Избранное" className="badge-el">

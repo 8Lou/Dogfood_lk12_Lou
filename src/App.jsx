@@ -22,14 +22,14 @@ const App = () => {
   // Поиск
   const [text, setText] = useState("");
   const [api, setApi] = useState(new Api(token));
-  
-  let baskStore = localStorage.getItem("basket");
-  if (baskStore) {
-    baskStore = JSON.parse(baskStore);
+
+  let bStore = localStorage.getItem("basket");
+  if (bStore) {
+    bStore = JSON.parse(bStore);
   } else {
-    baskStore = [];
+    bStore = [];
   }
-  const [basket, setBasket] = useState(baskStore);
+  const [basket, setBasket] = useState(bStore);
   /* const [news, setNews] = useState([]); */
 
   // let key = "6c7fc5e6a754429ab47063a1b1a54774"
@@ -111,7 +111,7 @@ const App = () => {
         <main>
           <Search arr={serverGoods} upd={setGoods} />
           <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route
               path="/catalog"
               element={

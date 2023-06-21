@@ -32,7 +32,6 @@ const Catalog = ({ setServerGoods }) => {
         }
     }
     return <div className="container">
-        <div style={{ gridColumnEnd: "span 4" }}>{<Pagination num={paginate} />}</div>
         <div style={{
             gridColumnEnd: "span 4",
             display: "flex",
@@ -53,6 +52,7 @@ const Catalog = ({ setServerGoods }) => {
                 style={{ color: '#88a3e2', backgroundColor: sort === "up" ? "#fc8dca" : "#aaecfc" }}
                 onClick={() => sortHandler("up")}>По скидке</Button>
         </div>
+        <div style={{ gridColumnEnd: "span 4" }}>{<Pagination num={paginate} />}</div>
         {paginate.setDataPerPage().map(g => <BsCard
             key={g._id}
             {...g}

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import AppContext from "../context/context";
 import { Button } from "../components/Button/Button";
-import { Display, Grid } from "react-bootstrap-icons";
+import ButtonBack from "./ButtonBack";
 
 const Basket = () => {
     const { basket, setBasket } = useContext(AppContext);
@@ -74,6 +74,7 @@ const Basket = () => {
                 </tr>
             </tfoot>
         </table >
+        <ButtonBack style={{ margin: "0 60px" }} />
     </>
 }
 

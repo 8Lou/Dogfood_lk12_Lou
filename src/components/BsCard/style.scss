@@ -2,24 +2,29 @@
   background-color: #b7a6f6;
   display: grid;
   gap: 15px;
-  padding: 12px;
+  padding: 30px;
   border-radius: 6px;
   grid-template-rows: 200px auto 1fr 30px;
   /* распределение элементов карточки по вертикали */
   align-content: flex-start;
-  width: 320px;
+  max-height: 420px;
+  width: 300px;
   position: relative;
   overflow: hidden;
-
+  box-shadow: 0px 0px 10px 5px rgba(160, 109, 202, 0.6);
 
   &:hover {
     transition: 0.1s ease-in-out;
-    box-shadow: 0px 0px 10px 5px rgba(160, 109, 202, 0.6);
+    box-shadow: 0px 0px 30px 15px rgba(241, 182, 210, 0.6);
   }
+  &__btn:disabled {
+    opacity: .8;
+    cursor: default;
+}
 
   &__h4 {
     color: #88a3e2;
-    font-size: 1.2em;
+    font-size: 1.3em;
     font-weight: 600;
     margin: 0;
   }
@@ -29,10 +34,11 @@
   }
 
   &__img {
-    border-radius: 8px;
+    border-radius: 6px;
     max-width: 200px;
-    max-height: 220px;
+    max-height: 200px;
     justify-self: normal;
+    box-shadow: 0px 0px 10px 5px rgba(232, 228, 236, 0.6);
   }
 
   &__name {
@@ -51,15 +57,15 @@
 }
   &__tags span {
     background-color: palevioletred;
-    color: #88a3e2;
+    color: #aaecfc;
     border-radius: 4px;
     padding: 0 4px;
 }
   &__like {
   font-size: 1.3em;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 20px;
+  right: 20px;
   cursor: pointer;
   z-index: 1;
   color: rgb(240, 70, 127);

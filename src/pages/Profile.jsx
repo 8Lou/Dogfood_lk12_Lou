@@ -5,7 +5,6 @@ import AppContext from "../context/context";
 import Input from "../components/Forms/pro-input";
 import BsCard from "../components/BsCard";
 import { Button } from "../components/Button/Button";
-import Basket from './Basket'
 
 const Profile = ({ user, divor, setUser }) => {
     const navigate = useNavigate();
@@ -110,20 +109,16 @@ const Profile = ({ user, divor, setUser }) => {
         </div>
 
         <div>
-            {<Button>Моя корзина
 
-                <Link to="/basket" title="Корзина"></Link>
-            </Button>}
-
-            {serverGoods.filter(el => el.author._id === userData._id).map(el => <div xs={6} md={3} key={el._id}>
+            {/*  */}{serverGoods.filter(el => el.author._id === userData._id).map(el => <div key={el._id}>
                 <BsCard {...el} />
             </div>)}
         </div>
-
-        <a href="" onClick={logOut} title="Выйти" style={{ fontSize: '2em' }}>
-            <BoxArrowLeft />
-        </a >
-    </div>
+        <span style={{ margin: "0 60px" }}>
+            <Button onClick={'/basket'}>Моя корзина</Button>
+            <Button onClick={logOut}>Выйти</Button>
+        </span>
+    </div >
 }
 
 export default Profile;
