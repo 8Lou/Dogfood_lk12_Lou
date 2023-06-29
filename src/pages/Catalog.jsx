@@ -9,7 +9,7 @@ import Pagination from "../components/Pagination";
 const Catalog = ({ setServerGoods }) => {
     const { goods, text } = useContext(AppContext)
 
-    const paginate = usePagination(goods, 10)
+    const paginate = usePagination(goods, 8)
     const [sort, setSort] = useState(null)
 
     // const { goods } = useSelector((s) => s.products)

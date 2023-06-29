@@ -100,7 +100,7 @@ class Api {
   }
 
   swithLike(productID, wasLiked) {
-    return fetch(`${this.baseUrl}/likes/${productID}`, {
+    return fetch(`${this.baseUrl}/products/likes/${productID}`, {
       method: wasLiked ? "DELETE" : "PUT",
       headers: this.headers(true),
     }).then((res) => res.json());

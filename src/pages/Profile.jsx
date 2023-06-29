@@ -9,7 +9,7 @@ import UpdatedInput from "../components/UpdatedInput";
 const Profile = ({ setUser }) => {
     const navigate = useNavigate();
     const { api, serverGoods } = useContext(AppContext);
-    const [user, setuser] = useState({});
+    const [user, setUserData] = useState({});
     const [inpName, setInpName] = useState(false);
     const [inpData, setInpData] = useState(false);
     const [inpAbout, setInpAbout] = useState(false);
@@ -25,12 +25,12 @@ const Profile = ({ setUser }) => {
             body = { avatar: user.avatar };
         }
         body[name] = val;
-        api.updUserInfo(body, name === "avatar").then(data => setuser(data));
+        api.updUserInfo(body, name === "avatar").then(data => setUserData(data));
     }
 
     const logOut = (e) => {
         e.preventDefault();
-        setUser("")// setUser() => setUser(null) 
+        setUserData("")// setUserData() => setUserData(null) 
         localStorage.removeItem("user");
         localStorage.removeItem("token");
         localStorage.removeItem("id");
@@ -39,7 +39,7 @@ const Profile = ({ setUser }) => {
     useEffect(() => {
         api.getUserInfo()
             .then(data => {
-                setuser(data);
+                setUserData(data);
             })
     }, [])
 
