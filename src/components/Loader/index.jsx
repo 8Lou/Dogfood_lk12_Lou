@@ -4,9 +4,9 @@ import "./style.css";
 const Loader = () => {
     return <div className="loader">
         <span className="loader-img">
-            <ArrowClockwise/>
+            <ArrowClockwise />
         </span>
-        <h6>Данные загружаются</h6>
+        <h6>Загрузка...</h6>
     </div>
 }
 export default Loader;

@@ -7,7 +7,6 @@ import {
     PersonCircle,
     HouseDoorFill,
 } from "react-bootstrap-icons";
-/* import Search from "../Search"; */
 import { useState, useEffect, useContext } from "react";
 import AppContext from "../../context/context";
 

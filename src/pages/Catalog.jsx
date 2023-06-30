@@ -2,7 +2,6 @@ import BsCard from "../components/BsCard"
 import { useContext, useEffect, useState } from "react";
 import AppContext from "../context/context";
 import { Button } from "../components/Button/Button";
-/* import { useDispatch, useSelector } from "react-redux"; */
 import usePagination from "../hooks/usePagination";
 import Pagination from "../components/Pagination";
 
@@ -11,10 +10,6 @@ const Catalog = ({ setServerGoods }) => {
 
     const paginate = usePagination(goods, 8)
     const [sort, setSort] = useState(null)
-
-    // const { goods } = useSelector((s) => s.products)
-    // console.log(goods)
-    // const dispatch = useDispatch();
 
     useEffect(() => {
         paginate.step(1);
@@ -63,6 +58,3 @@ const Catalog = ({ setServerGoods }) => {
 }
 
 export default Catalog;
-
-{/*<span className='' key={g._id} onClick={() => dispatch(setServerGoods(g._id))}>{g._id}</span>
-         */}

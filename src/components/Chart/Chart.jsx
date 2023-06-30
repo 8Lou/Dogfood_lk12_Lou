@@ -58,23 +58,6 @@ export const Chart = () => {
           color: '#fed700'
         }
       ],
-
-      // dataZoom: [
-      //   {
-      //     type: 'inside',
-      //     xAxisIndex: [0, 1],
-      //     start: 0,
-      //     end: 150
-      //   },
-      //   {
-      //     show: true,
-      //     xAxisIndex: [0, 1],
-      //     type: 'slider',
-      //     bottom: 200,
-      //     start: 0,
-      //     end: 150
-      //   }
-      // ], 
     };
 
     const chartDom = document.getElementById('chartsId')

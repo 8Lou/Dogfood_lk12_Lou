@@ -7,18 +7,15 @@ import AppContext from "../context/context";
 import { Trash, Plus } from "react-bootstrap-icons"
 import { Button } from "../components/Button/Button";
 import { FormReview } from '../components/Forms/form-review';
-import { useDispatch } from "react-redux";
-import { Form, FormProvider, useForm } from "react-hook-form";
-import { INITIAL_VALUE_RATING } from "../utils/Utils";
-import { fetchSetReview } from "../storage/slices/singleProductSlice";
+import { useForm } from "react-hook-form";
 
 
 const Product = ({ name, _id }) => {
 	const [product, setProduct] = useState({});
 	const { id } = useParams();
 
-	const [revText, setRevText] = useState("");
-	const [rating, setRating] = useState(0);
+	const [setRevText] = useState("");
+	const [setRating] = useState(0);
 	const [hideForm, setHideForm] = useState(true);
 	const { api, userId, setServerGoods } = useContext(AppContext);
 	const navigate = useNavigate();
@@ -46,20 +43,6 @@ const Product = ({ name, _id }) => {
 			setHideForm(true);
 		})
 	}
-	/* const dispatch = useDispatch();
-	const setReview = (e) => {
-		dispatch(fetchSetReview(product._id, {
-			text: revText,
-			rating: rating
-		}))
-			.then(() => {
-				setProduct();
-				setRevText("");
-				setRating(0);
-				setHideForm(true); reset();
-				setRating(INITIAL_VALUE_RATING)
-			})
-	} */
 	const delReview = (id) => {
 		api.delReview(product._id, id).then(d => {
 			setProduct(d);

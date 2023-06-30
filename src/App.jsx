@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Modal from "./components/Modal/index";
-import { Header, Footer } from "./components/Main"; // index.jsx
+import { Header, Footer } from "./components/Main";
 import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
 import Profile from "./pages/Profile";
@@ -19,7 +19,6 @@ const App = () => {
   const [serverGoods, setServerGoods] = useState([]);
   const [goods, setGoods] = useState(serverGoods);  // Товары для филтрации
   const [modalActive, setModalActive] = useState(false);
-  // Поиск
   const [text, setText] = useState("");
   const [api, setApi] = useState(new Api(token));
 
@@ -30,18 +29,6 @@ const App = () => {
     bStore = [];
   }
   const [basket, setBasket] = useState(bStore);
-  /* const [news, setNews] = useState([]); */
-
-  // let key = "6c7fc5e6a754429ab47063a1b1a54774"
-  //"https://newsapi.org/v2/everything?apiKey=6c7fc5e6a754429ab47063a1b1a54774&q=dogs"
-  /* useEffect(() => {
-        fetch(`https://newsapi.org/v2/everything?apiKey=${key}&q=${inp}&language=ru&pageSize=21`)
-                .then(res => res.json())
-            .then(res => res.json())
-            .then(data => {
-                setNews(data.articles)
-            })
-    }, []) */
 
   useEffect(() => {
     setApi(new Api(token));
@@ -56,8 +43,6 @@ const App = () => {
       api.getProducts()
         .then(data => {
           console.log(data);
-          /* const result = data.products.filter(el => el.tags.includes(""));
-          setServerGoods(result.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())); */
           setServerGoods(data.products);
         })
     } else {
@@ -90,7 +75,6 @@ const App = () => {
     setServerGoods,
     setUser,
     user,
-    /* news, */
     userId,
     token,
     api,

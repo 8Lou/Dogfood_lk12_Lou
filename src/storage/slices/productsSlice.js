@@ -1,4 +1,4 @@
-/* import { CHEAPEST, EXPENSIVE, NEWEST, POPULAR, RATE, SALE } from "../../constants/constants"; */
+//Начало изучения редакс...
 import api from "../../utils/Api";
 import { filterFavoriteProd } from "../../utils/Utils";
 import { isError, isLoading } from "../utilsStore";
@@ -10,7 +10,6 @@ const initialState = {
   loading: false,
   total: 0,
   favorites: [],
-  /* currentProduct: {}, */
 };
 
 
@@ -30,7 +29,6 @@ export const fetchGoods = createAsyncThunk(
 export const fetchSwithLike = createAsyncThunk(
   "goods/fetchSwithLike",
   async function (data, arg) {
-    // here will be in data -> { product: product, wasLiked: isLiked }
     console.log({ data });
     try {
       const updatedCard = await api.swithLike(
@@ -58,32 +56,6 @@ export const searchGoodsByQuery = createAsyncThunk('goods/searchGoodsByQuery', a
 const products = createSlice({
   name: "products",
   initialState,
-  /* reducers: {
-    sortedProducts: (state, action) => {
-      switch (action.payload) {
-        case CHEAPEST:
-          state.products = state.products.sort((a, b) => a.price - b.price);
-          break;
-        case EXPENSIVE:
-          state.products = state.products.sort((a, b) => b.price - a.price);
-          break;
-        case POPULAR:
-          state.products = state.products.sort((a, b) => b.likes.length - a.likes.length);
-          break;
-        case NEWEST:
-          state.products = state.products.sort((a, b) =>new Date(b.created_at) - new Date(a.created_at));
-          break;
-        case SALE:
-          state.products = state.products.sort((a, b) => b.discount - a.discount);
-          break;
-        case RATE:
-          state.products = state.products.sort((a, b) => summaryProductRating(b.reviews) - summaryProductRating(a.reviews))
-          break;
-        default:
-          state.products = state.products.sort((a, b) => a.price - b.price);
-      }
-    }
-  }, */
   extraReducers: (builder) => {
     // ПОЛУЧАЕМ СПИСОК ПРОДУКТОВ
     builder.addCase(fetchGoods.fulfilled, (state, action) => {

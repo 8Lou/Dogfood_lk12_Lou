@@ -12,8 +12,6 @@ export const FormReview = ({ title = 'Отзыв о товаре', productID, se
     const { register, handleSubmit, formState: { errors }, reset } = useForm({ mode: "onBlur" })
     const dispatch = useDispatch();
     const [rating, setRating] = useState(INITIAL_VALUE_RATING)
-    /* const [revText, setRevText] = useState("");
-    const [hideForm, setHideForm] = useState(true); */
 
     const sendReviewGoods = (goods) => {
         addReview({ ...goods, rating })
@@ -39,16 +37,6 @@ export const FormReview = ({ title = 'Отзыв о товаре', productID, se
             {errors?.email && <p className='errorMessage'>{errors?.email?.message}</p>}
 
             <Button type="submit" color="yellow">Отправить отзыв</Button>
-            {/* <Button
-                type="reset"
-                className="product__btn"
-                onClick={(e) => {
-                    e.preventDefault();
-                    setRating(0);
-                    setRevText("");
-                    setHideForm(true);
-                }}
-            >Отмена</Button> */}
         </Form>
     )
 }

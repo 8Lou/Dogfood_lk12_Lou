@@ -24,9 +24,7 @@ const Search = ({ arr }) => {
   const searchByText = (e) => {
     let val = e.target.value;
     setText(val);
-    // let result = arr.filter(el => el.name.toLowerCase().includes(val.toLowerCase()));
     let result = arr.filter((el) => new RegExp(val, "i").test(el.name));
-    /* upd(result); */
     setGoods(result);
     setQuantity(result.length);
   };
@@ -39,7 +37,6 @@ const Search = ({ arr }) => {
         onChange={searchByText}
         className="search__input"
       />
-      {/* {<Button onClick={click}>Найти</Button>} */}
       <hr />
       <div>
         По вашему запросу « {text} » найдено {quantity} товаров

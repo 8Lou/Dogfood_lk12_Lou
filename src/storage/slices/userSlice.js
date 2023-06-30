@@ -19,19 +19,9 @@ export const getMyUser = createAsyncThunk(
     dataFromUp,
     { getState, dispatch, fulfillWithValue, rejectWithValue }
   ) {
-    // console.log({ dataFromUp });
-    // const {products} = getState();
-    // console.log({ products });
-
     const data = await api.getUserInfo();
     return data;
 
-    // try {
-    //   const data = await api.getUserInfo();
-    //   return fulfillWithValue(data);
-    // } catch (error) {
-    //   return rejectWithValue(error);
-    // }
   }
 );
 
@@ -54,9 +44,6 @@ const userSlice = createSlice({
   name: "user",
   initialState: initialState,
   extraReducers: (builder) => {
-    // builder.addCase(getMyUser.pending, (state) => {
-    //   state.loading = true;
-    // });
     builder.addCase(getMyUser.fulfilled, (state, action) => {
       state.data = action.payload;
       state.loading = false;
@@ -65,15 +52,11 @@ const userSlice = createSlice({
       state.data = action.payload;
       state.loading = false;
     });
-    // builder.addCase(getMyUser.rejected, (state, action) => {
-    //   state.loading = false;
-    // });
     builder.addMatcher(isError, (state, action) => {
       state.loading = false;
       state.error = action.payload;
     });
     builder.addMatcher(isLoading, (state) => {
-      // state.loading = true;
     });
   },
 });
