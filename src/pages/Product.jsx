@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import ButtonBack from "./ButtonBack";
 import AppContext from "../context/context";
-import { Basket2, Plus } from "react-bootstrap-icons"
+import { Trash, Plus } from "react-bootstrap-icons"
 import { Button } from "../components/Button/Button";
 import { FormReview } from '../components/Forms/form-review';
 import { useDispatch } from "react-redux";
@@ -22,7 +22,7 @@ const Product = ({ name, _id }) => {
 	const [hideForm, setHideForm] = useState(true);
 	const { api, userId, setServerGoods } = useContext(AppContext);
 	const navigate = useNavigate();
-	const { registration, handleSubmit, formState: { errors }, reset } = useForm({ mode: "onBlur" })
+	const { register, handleSubmit, formState: { errors }, reset } = useForm({ mode: "onBlur" })
 	const tableInfo = [
 		{
 			name: "wight",
@@ -38,12 +38,8 @@ const Product = ({ name, _id }) => {
 		}
 	]
 
-	const addReview = (e) => {
-		e.preventDefault();
-		api.setReview(product._id, {
-			text: revText,
-			rating: rating
-		}).then(d => {
+	const addReview = (goods) => {
+		api.setReview(product._id, goods).then(d => {
 			setProduct(d);
 			setRevText("");
 			setRating(0);
@@ -91,7 +87,7 @@ const Product = ({ name, _id }) => {
 			? <>
 				<div>
 					<div>
-						{product.author._id === userId && <Basket2 onClick={delHandler} />}
+						{product.author._id === userId && <Trash onClick={delHandler} />}
 					</div>
 					<h1>{product.name}</h1>
 				</div>
@@ -140,8 +136,10 @@ const Product = ({ name, _id }) => {
 									</span>
 									<div>{el.rating}</div>
 									<div className="">{el.text}</div>
+									{console.log('userId', userId)}
+									{console.log('author', el.author._id)}
 									{el.author._id === userId && <span className="">
-										<Basket2 onClick={() => delReview(el._id)} />
+										<Trash onClick={() => delReview(el._id)} />
 									</span>}
 								</div>
 							</div>
@@ -161,7 +159,7 @@ const Product = ({ name, _id }) => {
 					: hideForm && <div><Button variant="outline-info" onClick={() => setHideForm(false)}>Написать отзыв</Button></div>
 				}
 				{!hideForm && <div className="">
-					<FormReview title={`Отзыв о товаре ${name}`} productID={_id} onSubmit={addReview} />
+					<FormReview title={`Отзыв о товаре ${name}`} productID={_id} addReview={addReview} />
 					<Button
 						type="reset"
 						className="product__btn"

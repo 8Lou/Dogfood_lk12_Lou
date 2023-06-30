@@ -8,22 +8,18 @@ import { FormInput } from "./form-input";
 import { Rating } from "../Rating/Rating";
 import { INITIAL_VALUE_RATING } from "../../utils/Utils";
 
-export const FormReview = ({ title = 'Отзыв о товаре', productID, setGoods }) => {
-    const { reg, handleSubmit, formState: { errors }, reset } = useForm({ mode: "onBlur" })
+export const FormReview = ({ title = 'Отзыв о товаре', productID, setGoods, addReview }) => {
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({ mode: "onBlur" })
     const dispatch = useDispatch();
     const [rating, setRating] = useState(INITIAL_VALUE_RATING)
     /* const [revText, setRevText] = useState("");
     const [hideForm, setHideForm] = useState(true); */
 
     const sendReviewGoods = (goods) => {
-        dispatch(fetchSetReview({ productID, goods }))
-            .then(() => {
-                reset();
-                setRating(INITIAL_VALUE_RATING)
-            })
+        addReview({ ...goods, rating })
     }
 
-    const textReview = reg('text', {
+    const textReview = register('text', {
         required: {
             value: true
         }
