@@ -1,12 +1,14 @@
 {
   "name": "L0U_D0gF00D",
   "version": "0.1.0",
+  "homepage": "https://8Lou.github.io/dogfood_12_lou",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "classnames": "^2.3.2",
     "echarts": "^5.4.2",
     "eslint": "^8.41.0",
     "eslint-plugin-disable": "^2.0.3",
+    "gh-pages": "^6.0.0",
     "hooks": "^0.3.2",
     "react": "^18.2.0",
     "react-bootstrap-icons": "^1.10.3",
@@ -21,6 +23,8 @@
     "scss": "^0.2.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build"
   },
