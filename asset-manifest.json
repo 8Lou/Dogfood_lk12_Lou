@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dogfood_12_lou/static/css/main.f18e6f73.css",
+    "main.js": "/dogfood_12_lou/static/js/main.d5c9bc72.js",
+    "static/media/logo.svg": "/dogfood_12_lou/static/media/logo.56ffcfaea9673f0235544696cfa0f0fc.svg",
+    "static/media/star.svg": "/dogfood_12_lou/static/media/star.ad46dd3815865f648066bf2a21ba64f1.svg",
+    "index.html": "/dogfood_12_lou/index.html",
+    "main.f18e6f73.css.map": "/dogfood_12_lou/static/css/main.f18e6f73.css.map",
+    "main.d5c9bc72.js.map": "/dogfood_12_lou/static/js/main.d5c9bc72.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f18e6f73.css",
+    "static/js/main.d5c9bc72.js"
+  ]
+}
